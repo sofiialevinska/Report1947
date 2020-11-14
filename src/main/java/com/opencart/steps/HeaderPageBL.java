@@ -10,17 +10,37 @@ public class HeaderPageBL {
         headerPage = new HeaderPage();
     }
 
+    /**
+     * Method clicks on Change Currency button that is located in website's header.
+     *
+     * @return HeaderPageBL
+     */
+
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
     }
 
-    public HeaderPageBL clickOnEurButton(String currencyName) {
+    /**
+     * Method clicks on specified currency button that is located in website's header.
+     *
+     * @param currencyName is a name of Currency, which button needs to be clicked.
+     * @return HeaderPageBL
+     */
+
+    public HeaderPageBL clickOnCurrencyButton(String currencyName) {
         headerPage.getCurrencyButton(currencyName).click();
         return this;
     }
 
-    public void verifyMacBookCost(String currencyName) {
+    /**
+     * Method checks if MacBook Cost in specified currency is correct.
+     *
+     * @param currencyName is a name of Currency that needs to be checked.
+     * @return HeaderPageBL
+     */
+
+    public HeaderPageBL verifyMacBookCost(String currencyName) {
         String expectedCost = null;
         switch (currencyName.toLowerCase()) {
             case "eur":
@@ -33,9 +53,10 @@ public class HeaderPageBL {
                 expectedCost = "368.73";
                 break;
             case "uah":
-                expectedCost = "16985.77";
+                expectedCost = "16,988";
                 break;
         }
-        Assert.assertTrue(headerPage.getMacBookCost().getText().contains(expectedCost), "Incorrect MacBook cost in " + currencyName + ". Please try again.");
+        Assert.assertTrue(headerPage.getMacBookCost().getText().contains(expectedCost), "\nIncorrect MacBook cost in " + currencyName + ". Please try again.");
+        return this;
     }
 }

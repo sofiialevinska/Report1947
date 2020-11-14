@@ -18,6 +18,9 @@ public class HeaderPage extends BasePage {
     @FindBy(name = "GBP")
     private WebElement gbpButton;
 
+    @FindBy(name = "UAH")
+    private WebElement uahButton;
+
     @FindBy(css = "div.product-thumb.transition:first-child")
     private WebElement macBookCost;
 
@@ -25,6 +28,13 @@ public class HeaderPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(currencyButton));
         return currencyButton;
     }
+
+    /**
+     * Method gets specified Currency Button from the Website's header
+     *
+     * @param currencyName is a name Currency Button method needs to find
+     * @return WebElement Currency Button of specified currency
+     */
 
     public WebElement getCurrencyButton(String currencyName) {
         switch (currencyName.toLowerCase()) {
@@ -37,12 +47,21 @@ public class HeaderPage extends BasePage {
             case "gbp":
                 wait.until(ExpectedConditions.visibilityOf(gbpButton));
                 return gbpButton;
+            case "uah":
+                wait.until(ExpectedConditions.visibilityOf(gbpButton));
+                return uahButton;
             default: {
-                System.err.println("Can not switch to " + currencyName + " currency because this currency is not available. Please try again with another currency.");
+                System.err.println("\nCan not switch to " + currencyName + " currency because this currency is not available. Please try again with another currency.");
                 return null;
             }
         }
     }
+
+    /**
+     * Method gets MacBook Cost
+     *
+     * @return WebElement text that contains MacBook Cost
+     */
 
     public WebElement getMacBookCost() {
         wait.until(ExpectedConditions.visibilityOf(macBookCost));
