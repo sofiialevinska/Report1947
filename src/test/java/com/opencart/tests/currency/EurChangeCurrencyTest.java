@@ -13,7 +13,7 @@ import static com.opencart.enums.URLs.BASE_URL;
 public class EurChangeCurrencyTest extends BaseTest {
 
     /**
-     * Test checks MacBook cost in EUR on the website's main page.
+     * Test checks MacBook cost in EUR on the website's header.
      */
     @Test
     public void changeCurrencyToEur() {

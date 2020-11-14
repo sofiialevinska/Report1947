@@ -6,6 +6,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HeaderPage extends BasePage {
 
+    @FindBy(xpath = ".//*[@title='My Account']")
+    private WebElement myAccountButton;
+
+    @FindBy(xpath = ".//*[contains (@href, 'login')]")
+    private WebElement loginButton;
+
     @FindBy(id = "form-currency")
     private WebElement currencyButton;
 
@@ -23,6 +29,31 @@ public class HeaderPage extends BasePage {
 
     @FindBy(css = "div.product-thumb.transition:first-child")
     private WebElement macBookCost;
+
+    @FindBy(xpath = ".//*[contains (@href, 'account/logout')]")
+    private WebElement logoutButton;
+
+    /**
+     * Method gets My Account Button that is located in the website's header
+     *
+     * @return WebElement My Account Button that is located in the website's header
+     */
+
+    public WebElement getMyAccountButton() {
+        wait.until(ExpectedConditions.visibilityOf(myAccountButton));
+        return myAccountButton;
+    }
+
+    /**
+     * Method gets Login Button that is located in the website's header
+     *
+     * @return WebElement Login Button that is located in the website's header
+     */
+
+    public WebElement getLoginButton() {
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        return loginButton;
+    }
 
     public WebElement getCurrencyButton() {
         wait.until(ExpectedConditions.visibilityOf(currencyButton));
@@ -66,5 +97,9 @@ public class HeaderPage extends BasePage {
     public WebElement getMacBookCost() {
         wait.until(ExpectedConditions.visibilityOf(macBookCost));
         return macBookCost;
+    }
+
+    public WebElement getLogoutButton() {
+        return logoutButton;
     }
 }

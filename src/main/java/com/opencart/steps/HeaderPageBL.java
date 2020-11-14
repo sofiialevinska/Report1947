@@ -11,6 +11,28 @@ public class HeaderPageBL {
     }
 
     /**
+     * Method clicks on My Account button that is located in website's header.
+     *
+     * @return HeaderPageBL
+     */
+
+    public HeaderPageBL clickOnMyAccountButton() {
+        headerPage.getMyAccountButton().click();
+        return this;
+    }
+
+    /**
+     * Method clicks on Login button that is located in website's header.
+     *
+     * @return HeaderPageBL
+     */
+
+    public HeaderPageBL clickOnLoginButton() {
+        headerPage.getLoginButton().click();
+        return this;
+    }
+
+    /**
      * Method clicks on Change Currency button that is located in website's header.
      *
      * @return HeaderPageBL
@@ -44,19 +66,25 @@ public class HeaderPageBL {
         String expectedCost = null;
         switch (currencyName.toLowerCase()) {
             case "eur":
-                expectedCost = "472.33€";
+                expectedCost = "392.30€";
                 break;
             case "usd":
-                expectedCost = "602.00";
+                expectedCost = "$500.00";
                 break;
             case "gbp":
-                expectedCost = "368.73";
+                expectedCost = "£306.25";
                 break;
             case "uah":
-                expectedCost = "16,988";
+                expectedCost = "14,110UAH";
                 break;
         }
         Assert.assertTrue(headerPage.getMacBookCost().getText().contains(expectedCost), "\nIncorrect MacBook cost in " + currencyName + ". Please try again.");
         return this;
     }
+
+    public HeaderPageBL clickOnLogoutButton() {
+        headerPage.getLogoutButton().click();
+        return this;
+    }
+
 }
