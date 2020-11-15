@@ -15,7 +15,6 @@ public class HeaderPageBL {
      *
      * @return HeaderPageBL
      */
-
     public HeaderPageBL clickOnMyAccountButton() {
         headerPage.getMyAccountButton().click();
         return this;
@@ -26,7 +25,6 @@ public class HeaderPageBL {
      *
      * @return HeaderPageBL
      */
-
     public HeaderPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
         return this;
@@ -37,7 +35,6 @@ public class HeaderPageBL {
      *
      * @return HeaderPageBL
      */
-
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
@@ -49,7 +46,6 @@ public class HeaderPageBL {
      * @param currencyName is a name of Currency, which button needs to be clicked.
      * @return HeaderPageBL
      */
-
     public HeaderPageBL clickOnCurrencyButton(String currencyName) {
         headerPage.getCurrencyButton(currencyName).click();
         return this;
@@ -61,7 +57,6 @@ public class HeaderPageBL {
      * @param currencyName is a name of Currency that needs to be checked.
      * @return HeaderPageBL
      */
-
     public HeaderPageBL verifyMacBookCost(String currencyName) {
         String expectedCost = null;
         switch (currencyName.toLowerCase()) {
@@ -82,6 +77,11 @@ public class HeaderPageBL {
         return this;
     }
 
+    /**
+     * Method clicks on Logout button that is located in website's header.
+     *
+     * @return HeaderPageBL
+     */
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
         return this;
