@@ -1,6 +1,7 @@
 package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
+import com.opencart.pages.RegisterPage;
 import org.testng.Assert;
 
 public class HeaderPageBL {
@@ -29,6 +30,12 @@ public class HeaderPageBL {
         headerPage.getLoginButton().click();
         return this;
     }
+
+    public RegisterPageBL clickOnRegisterButton() {
+        headerPage.getRegisterButton().click();
+        return new RegisterPageBL();
+    }
+
 
     /**
      * Method clicks on Change Currency button that is located in website's header.
@@ -86,5 +93,7 @@ public class HeaderPageBL {
         headerPage.getLogoutButton().click();
         return this;
     }
+
+
 
 }

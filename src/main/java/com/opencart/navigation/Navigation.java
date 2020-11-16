@@ -4,7 +4,7 @@ import com.opencart.driver.DriverRepository;
 import org.openqa.selenium.WebDriver;
 
 public class Navigation {
-    private final WebDriver driver;
+    private WebDriver driver;
 
     public Navigation() {
         driver = DriverRepository.DRIVERS.get();

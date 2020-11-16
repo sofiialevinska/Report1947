@@ -9,6 +9,9 @@ public class HeaderPage extends BasePage {
     @FindBy(xpath = ".//*[@title='My Account']")
     private WebElement myAccountButton;
 
+    @FindBy(xpath = ".//*[contains (@href,'register')]")
+    private WebElement registerButton;
+
     @FindBy(xpath = ".//*[contains (@href, 'login')]")
     private WebElement loginButton;
 
@@ -32,6 +35,7 @@ public class HeaderPage extends BasePage {
 
     @FindBy(xpath = ".//*[contains (@href, 'account/logout')]")
     private WebElement logoutButton;
+
 
     /**
      * Method gets My Account Button that is located in the website's header
@@ -58,6 +62,11 @@ public class HeaderPage extends BasePage {
     public WebElement getCurrencyButton() {
         wait.until(ExpectedConditions.visibilityOf(currencyButton));
         return currencyButton;
+    }
+
+    public WebElement getRegisterButton() {
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        return registerButton;
     }
 
     /**
@@ -102,4 +111,6 @@ public class HeaderPage extends BasePage {
     public WebElement getLogoutButton() {
         return logoutButton;
     }
+
+
 }
