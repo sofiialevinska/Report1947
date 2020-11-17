@@ -1,4 +1,4 @@
-package BaseTest;
+package com.opencart.tests;
 
 import com.opencart.driver.DriverRepository;
 import org.testng.annotations.AfterSuite;
