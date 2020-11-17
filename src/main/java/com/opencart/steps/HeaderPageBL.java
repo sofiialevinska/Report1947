@@ -1,6 +1,7 @@
 package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
+//import jdk.javadoc.internal.doclets.formats.html.markup.Head;
 import org.testng.Assert;
 
 public class HeaderPageBL {
@@ -112,6 +113,20 @@ public class HeaderPageBL {
         return this;
     }
 
+    public HeaderPageBL clickOnWishListButton() {
+        headerPage.getWishListButton().click();
+        return this;
+    }
+
+    public HeaderPageBL clickOnMacbookWishListButton() {
+        headerPage.getMacbookWishListButton().click();
+        return this;
+    }
+
+    public void verifyAddingMacbookToWishList() {
+        String expected = "Wish List (1)";
+        Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
+    }
 
 
 }

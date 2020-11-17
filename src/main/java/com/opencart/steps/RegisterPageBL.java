@@ -31,6 +31,64 @@ public class RegisterPageBL {
         return this;
     }
 
+    public RegisterPageBL registerNewPersonWithoutPrivacyPolicy() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
+        inputPassword(registerModel.getPassword());
+        clickOnContinueButton();
+
+        return this;
+    }
+
+    public RegisterPageBL registerNewPersonWithoutName() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
+        inputPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+
+
+    }
+
+    public RegisterPageBL registerNewPersonWithoutLastName() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
+        inputPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
+    public RegisterPageBL registerNewPersonWithoutEmail() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputTelephone(registerModel.getTelephone());
+        inputPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
+    public RegisterPageBL regiterNewPersonWithoutTelephone() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
     private void inputFirstName(String firstName) {
         registerPage.getFirstNameInput().clear();
         registerPage.getFirstNameInput().sendKeys(firstName);
@@ -73,5 +131,31 @@ public class RegisterPageBL {
     public void verifyUserRegistration() {
         String expectedMessage = "Your Account Has Been Created!";
         Assert.assertEquals(successRegisterPage.getSuccessTitle().getText(), expectedMessage, "Incorrect page title");
+    }
+
+    public void verifyPrivatePolicyWarning() {
+        String expectedMessage = "Warning: You must agree to the Privacy Policy!";
+        Assert.assertEquals(registerPage.getPrivacyPolicyWarning().getText(), expectedMessage, "The Privacy Policy is clicked");
+    }
+
+    public void verifyNameTextError() {
+        String expectedMessage = "First Name must be between 1 and 32 characters!";
+        Assert.assertEquals(registerPage.getNameErrorText().getText(), expectedMessage, "The name is correct");
+    }
+
+    public void verifyLastNameTextError() {
+        String expectedMessage = "Last Name must be between 1 and 32 characters!";
+        Assert.assertEquals(registerPage.getLastNameErrorText().getText(), expectedMessage, "The last name is correct");
+    }
+
+    public void verifyEmailTextError() {
+        String expectedMessage = "E-Mail Address does not appear to be valid!";
+        Assert.assertEquals(registerPage.getEmailErrorText().getText(), expectedMessage, "The email is correct");
+    }
+
+    public void verifyTelephoneTextError() {
+        String expectedMessage = "Telephone must be between 3 and 32 characters!";
+        Assert.assertEquals(registerPage.getTelephoneErrorText().getText(),
+                expectedMessage, "The telephone number is correct");
     }
 }

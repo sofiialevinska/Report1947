@@ -42,6 +42,11 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
+    @FindBy(css = "i[class=\"fa fa-heart\"] + .hidden-xs.hidden-sm.hidden-md")
+    private WebElement wishListButton;
+
+    @FindBy(css = "button[onclick=\"wishlist.add('43');\"]")
+    private WebElement macbookWishListButton;
 
     /**
      * Method gets My Account Button that is located in the website's header
@@ -73,6 +78,10 @@ public class HeaderPage extends BasePage {
     public WebElement getRegisterButton() {
         wait.until(ExpectedConditions.visibilityOf(registerButton));
         return registerButton;
+    }
+
+    public WebElement getWishListButton() {
+        return wishListButton;
     }
 
     /**
@@ -124,5 +133,9 @@ public class HeaderPage extends BasePage {
 
     public WebElement getSearchInput() {
         return searchInput;
+    }
+
+    public WebElement getMacbookWishListButton() {
+        return macbookWishListButton;
     }
 }

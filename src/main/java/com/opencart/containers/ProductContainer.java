@@ -30,14 +30,14 @@ public class ProductContainer {
     }
 
     public WebElement getShoppingCartButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-shopping-cart"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-shopping-cart"));
     }
 
     public WebElement getWishListButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-heart"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-heart"));
     }
 
     public WebElement getCompareButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-exchange"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-exchange"));
     }
 }
