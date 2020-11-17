@@ -68,5 +68,4 @@ public class LoginPageBL {
     private void clickOnLoginButton() {
         loginPage.getLoginButton().click();
     }
-
 }

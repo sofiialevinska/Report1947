@@ -27,6 +27,7 @@ public class AccountDashboard extends BasePage {
     private WebElement continueButton;
 
     @FindBy(css = ".alert")
+
     private WebElement successMessage;
 
     public WebElement getEditAccountButton() {

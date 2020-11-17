@@ -48,3 +48,4 @@ public class LoginUsingValidData_Logout extends BaseTest {
                 .clickOnLogoutButton();
     }
 }
+

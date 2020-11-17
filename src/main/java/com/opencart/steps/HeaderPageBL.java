@@ -86,5 +86,4 @@ public class HeaderPageBL {
         headerPage.getLogoutButton().click();
         return this;
     }
-
 }
