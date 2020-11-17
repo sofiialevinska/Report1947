@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchResultPage extends BasePage{
+public class SearchResultPage extends BasePage {
 
     @FindBy(css = ".product-layout")
     private List<WebElement> productContainers;

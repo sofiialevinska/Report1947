@@ -3,11 +3,9 @@ package com.opencart.containers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import javax.print.DocFlavor;
-
 public class ProductContainer {
 
-    private WebElement webElement;
+    private final WebElement webElement;
 
     public ProductContainer(WebElement webElement) {
         this.webElement = webElement;

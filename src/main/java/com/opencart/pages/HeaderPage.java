@@ -43,22 +43,11 @@ public class HeaderPage extends BasePage {
     private WebElement searchButton;
 
 
-    /**
-     * Method gets My Account Button that is located in the website's header
-     *
-     * @return WebElement My Account Button that is located in the website's header
-     */
-
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
     }
 
-    /**
-     * Method gets Login Button that is located in the website's header
-     *
-     * @return WebElement Login Button that is located in the website's header
-     */
 
     public WebElement getLoginButton() {
         wait.until(ExpectedConditions.visibilityOf(loginButton));
@@ -74,13 +63,6 @@ public class HeaderPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(registerButton));
         return registerButton;
     }
-
-    /**
-     * Method gets specified Currency Button from the Website's header
-     *
-     * @param currencyName is a name Currency Button method needs to find
-     * @return WebElement Currency Button of specified currency
-     */
 
     public WebElement getCurrencyButton(String currencyName) {
         switch (currencyName.toLowerCase()) {
@@ -102,12 +84,6 @@ public class HeaderPage extends BasePage {
             }
         }
     }
-
-    /**
-     * Method gets MacBook Cost
-     *
-     * @return WebElement text that contains MacBook Cost
-     */
 
     public WebElement getMacBookCost() {
         wait.until(ExpectedConditions.visibilityOf(macBookCost));

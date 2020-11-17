@@ -6,5 +6,4 @@ public enum CurrencyName {
     public String getValue() {
         return name();
     }
-
 }

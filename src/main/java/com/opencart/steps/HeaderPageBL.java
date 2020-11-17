@@ -1,10 +1,12 @@
 package com.opencart.steps;
 
+import com.opencart.containers.ProductContainer;
+import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.HeaderPage;
 import org.testng.Assert;
 
 public class HeaderPageBL {
-    private HeaderPage headerPage;
+    private final HeaderPage headerPage;
 
     public HeaderPageBL() {
         headerPage = new HeaderPage();
@@ -29,21 +31,11 @@ public class HeaderPageBL {
         headerPage.getSearchInput().sendKeys(search);
     }
 
-    /**
-     * Method clicks on My Account button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnMyAccountButton() {
         headerPage.getMyAccountButton().click();
         return this;
     }
 
-    /**
-     * Method clicks on Login button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
         return this;
@@ -53,7 +45,6 @@ public class HeaderPageBL {
         headerPage.getRegisterButton().click();
         return new RegisterPageBL();
     }
-
 
     /**
      * Method clicks on Change Currency button that is located in website's header.
@@ -79,39 +70,45 @@ public class HeaderPageBL {
     /**
      * Method checks if MacBook Cost in specified currency is correct.
      *
-     * @param currencyName is a name of Currency that needs to be checked.
+     * @param container is Container for Products where price needs to be checked;
+     * @param currencyName is name of Currency that needs to be checked.
      * @return HeaderPageBL
      */
-    public HeaderPageBL verifyMacBookCost(String currencyName) {
-        String expectedCost = null;
+
+    public HeaderPageBL verifyMacBookCost(ProductContainer container, String currencyName) {
+
+        new ProductModel();
+        double expectedCost = ProductModel.getProductPrice(container.getName());
+
         switch (currencyName.toLowerCase()) {
-            case "eur":
-                expectedCost = "392.30€";
-                break;
             case "usd":
-                expectedCost = "$500.00";
+                break;
+            case "eur":
+                expectedCost = expectedCost * 0.78460002;
                 break;
             case "gbp":
-                expectedCost = "£306.25";
+                expectedCost = expectedCost * 0.61250001;
                 break;
             case "uah":
-                expectedCost = "14,110UAH";
+                expectedCost = expectedCost * 28.22000000;
                 break;
         }
-        Assert.assertTrue(headerPage.getMacBookCost().getText().contains(expectedCost), "\nIncorrect MacBook cost in " + currencyName + ". Please try again.");
+
+        String expectedPrice = null;
+        if (expectedCost > 1000) {
+            expectedPrice = String.format("%,3.0f", expectedCost);
+        } else {
+            expectedPrice = String.format("%.2f", expectedCost);
+        }
+        System.out.println("container.getPrice()  = " + container.getPrice());
+        System.out.println("expectedPrice (calculated) = " + expectedPrice);
+        Assert.assertTrue(container.getPrice().contains(expectedPrice), "123");
         return this;
     }
 
-    /**
-     * Method clicks on Logout button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
+
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
         return this;
     }
-
-
-
 }
