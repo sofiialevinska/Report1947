@@ -21,4 +21,59 @@ public class UserRegisterTest extends BaseTest {
                 .registerNewPerson();
         registerPageBL.verifyUserRegistration();
     }
+
+    @Test
+    public void registerUserWithoutEmail() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutEmail();
+        registerPageBL.verifyEmailTextError();
+    }
+
+    @Test
+    public void registerUserWithoutLastName() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutLastName();
+        registerPageBL.verifyLastNameTextError();
+    }
+
+    @Test
+    public void registerUserWithoutName() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutName();
+        registerPageBL.verifyNameTextError();
+    }
+
+    @Test
+    public void registerUserWithoutPrivacyPolicy() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutPrivacyPolicy();
+        registerPageBL.verifyPrivatePolicyWarning();
+    }
+
+    @Test
+    public void registerUserWithoutTelephone() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .regiterNewPersonWithoutTelephone();
+        registerPageBL.verifyTelephoneTextError();
+    }
 }
