@@ -28,7 +28,7 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .regiterNewPersonWithoutTelephone();
+                .registerNewPersonWithoutTelephone();
         registerPageBL.verifyTelephoneTextError();
     }
 
@@ -76,5 +76,37 @@ public class UserRegisterTest extends BaseTest {
         registerPageBL.verifyEmailTextError();
     }
 
+    @Test
+    public void registerUserWithoutPassword() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutPassword();
+        registerPageBL.verifyPasswordTextError();
+    }
+
+    @Test
+    public void registerUserWithoutVerifyPassword() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithoutVerifyPassword();
+        registerPageBL.verifyConfirmPasswordTextError();
+    }
+
+    @Test
+    public void registerUserWithEmptyFields() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPersonWithEmptyFields();
+        registerPageBL.verifyAllFieldsEmptyError();
+    }
 
 }

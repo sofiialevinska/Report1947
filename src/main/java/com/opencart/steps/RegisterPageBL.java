@@ -22,7 +22,7 @@ public class RegisterPageBL {
         inputLastName(registerModel.getLastName());
         inputEmail(registerModel.getEmail());
         inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
         chooseSubscribe(1);
         clickPolicyCheckbox();
         clickOnContinueButton();
@@ -37,7 +37,7 @@ public class RegisterPageBL {
         inputLastName(registerModel.getLastName());
         inputEmail(registerModel.getEmail());
         inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
         clickOnContinueButton();
 
         return this;
@@ -48,7 +48,7 @@ public class RegisterPageBL {
         inputLastName(registerModel.getLastName());
         inputEmail(registerModel.getEmail());
         inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
         clickPolicyCheckbox();
         clickOnContinueButton();
         return this;
@@ -61,7 +61,7 @@ public class RegisterPageBL {
         inputFirstName(registerModel.getFirstName());
         inputEmail(registerModel.getEmail());
         inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
         clickPolicyCheckbox();
         clickOnContinueButton();
         return this;
@@ -72,19 +72,47 @@ public class RegisterPageBL {
         inputFirstName(registerModel.getFirstName());
         inputLastName(registerModel.getLastName());
         inputTelephone(registerModel.getTelephone());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
+    public RegisterPageBL registerNewPersonWithoutTelephone() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputPasswordAndConfirmPassword(registerModel.getPassword());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
+    public RegisterPageBL registerNewPersonWithoutPassword() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
+        clickPolicyCheckbox();
+        clickOnContinueButton();
+        return this;
+    }
+
+    public RegisterPageBL registerNewPersonWithoutVerifyPassword() {
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
         inputPassword(registerModel.getPassword());
         clickPolicyCheckbox();
         clickOnContinueButton();
         return this;
     }
 
-    public RegisterPageBL regiterNewPersonWithoutTelephone() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputPassword(registerModel.getPassword());
-        clickPolicyCheckbox();
+    public RegisterPageBL registerNewPersonWithEmptyFields() {
         clickOnContinueButton();
         return this;
     }
@@ -109,11 +137,16 @@ public class RegisterPageBL {
         registerPage.getTelephoneInput().sendKeys(telephone);
     }
 
-    private void inputPassword(String password) {
+    private void inputPasswordAndConfirmPassword(String password) {
         registerPage.getPasswordInput().clear();
         registerPage.getPasswordInput().sendKeys(password);
         registerPage.getPasswordConfirmInput().clear();
         registerPage.getPasswordConfirmInput().sendKeys(password);
+    }
+
+    private void inputPassword(String password) {
+        registerPage.getPasswordInput().clear();
+        registerPage.getPasswordInput().sendKeys(password);
     }
 
     private void chooseSubscribe(int value) {
@@ -157,5 +190,32 @@ public class RegisterPageBL {
         String expectedMessage = "Telephone must be between 3 and 32 characters!";
         Assert.assertEquals(registerPage.getTelephoneErrorText().getText(),
                 expectedMessage, "The telephone number is correct");
+    }
+
+    public void verifyPasswordTextError() {
+        String expectedMessage = "Password must be between 4 and 20 characters!";
+        Assert.assertEquals(registerPage.getPasswordErrorText().getText(), expectedMessage, "Password is entered");
+    }
+
+    public void verifyConfirmPasswordTextError() {
+        String expectedMessage = "Password confirmation does not match password!";
+        Assert.assertEquals(registerPage.getConfirmPasswordErrorText().getText(), expectedMessage, "Password is" +
+                "verified");
+    }
+
+    public void verifyAllFieldsEmptyError() {
+        String expectedMessage = "Warning: You must agree to the Privacy Policy!"
+                + "First Name must be between 1 and 32 characters!"
+                + "Last Name must be between 1 and 32 characters!"
+                + "E-Mail Address does not appear to be valid!"
+                + "Telephone must be between 3 and 32 characters!"
+                + "Password must be between 4 and 20 characters!";
+        String actualMessage = registerPage.getPrivacyPolicyWarning().getText()
+                + registerPage.getNameErrorText().getText()
+                + registerPage.getLastNameErrorText().getText()
+                + registerPage.getEmailErrorText().getText()
+                + registerPage.getTelephoneErrorText().getText()
+                + registerPage.getPasswordErrorText().getText();
+        Assert.assertEquals(actualMessage, expectedMessage, "Some/all fields is not empty");
     }
 }
