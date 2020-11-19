@@ -128,5 +128,7 @@ public class HeaderPageBL {
         Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
     }
 
-
+    public SearchResultPageBL getSearchResultPageBL() {
+        return new SearchResultPageBL();
+    }
 }
