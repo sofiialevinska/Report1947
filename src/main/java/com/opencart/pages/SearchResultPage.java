@@ -17,11 +17,4 @@ public class SearchResultPage extends BasePage{
                 .map(ProductContainer::new)
                 .collect(Collectors.toList());
     }
-
-    @FindBy(css = "div#content p:last-child")
-    private WebElement unsuccessfulTitle;
-
-    public WebElement getUnsuccessfulTitle() {
-        return unsuccessfulTitle;
-    }
 }
