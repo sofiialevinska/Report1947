@@ -21,11 +21,6 @@ public class SimpleSearchTest extends BaseTest {
 
         MainPageBL mainPageBL = new MainPageBL();
         mainPageBL.getHeaderPageBL().searchProduct(product);
-
-        List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
-
-        for (ProductContainer container : productContainers) {
-            Assert.assertTrue(container.getName().toLowerCase().contains(product.toLowerCase()));
-        }
+        mainPageBL.getHeaderPageBL().getSearchResultPageBL().verifySearching(product);
     }
 }
