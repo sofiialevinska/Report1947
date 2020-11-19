@@ -8,7 +8,6 @@ public class LoginModel {
     private final String newPassword = "newPassword";
     private final String newFirstName = "NewFirstName";
 
-
     public String getEmail() {
         return email;
     }

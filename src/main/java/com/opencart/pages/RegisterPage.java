@@ -34,7 +34,6 @@ public class RegisterPage extends BasePage {
         return driver.findElement(By.xpath("//*[@type = 'radio' and @value = '" + value + "']"));
     }
 
-
     public WebElement getEmailInput() {
         return emailInput;
     }

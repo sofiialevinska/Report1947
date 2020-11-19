@@ -3,7 +3,10 @@ package com.opencart.steps;
 import com.opencart.containers.ProductContainer;
 import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.HeaderPage;
+import com.opencart.pages.SearchResultPage;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class HeaderPageBL {
     private final HeaderPage headerPage;
@@ -12,23 +15,23 @@ public class HeaderPageBL {
         headerPage = new HeaderPage();
     }
 
-    private void clickOnSearchInput() {
-        headerPage.getSearchInput().click();
-    }
-
-    private void clickOnSearchButton() {
-        headerPage.getSearchButton().click();
-    }
-
     public void searchProduct(String product) {
         clickOnSearchInput();
         inputSearch(product);
         clickOnSearchButton();
     }
 
+    private void clickOnSearchInput() {
+        headerPage.getSearchInput().click();
+    }
+
     private void inputSearch(String search) {
         headerPage.getSearchInput().clear();
         headerPage.getSearchInput().sendKeys(search);
+    }
+
+    private void clickOnSearchButton() {
+        headerPage.getSearchButton().click();
     }
 
     public HeaderPageBL clickOnMyAccountButton() {
@@ -46,11 +49,6 @@ public class HeaderPageBL {
         return new RegisterPageBL();
     }
 
-    /**
-     * Method clicks on Change Currency button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
@@ -68,18 +66,29 @@ public class HeaderPageBL {
     }
 
     /**
-     * Method checks if MacBook Cost in specified currency is correct.
+     * Method finds all ProductContainers on the Page and checks
+     * if their Product Cost in specified currency is correct.
      *
-     * @param container is Container for Products where price needs to be checked;
      * @param currencyName is name of Currency that needs to be checked.
-     * @return HeaderPageBL
      */
 
-    public HeaderPageBL verifyMacBookCost(ProductContainer container, String currencyName) {
+    public void verifyAllProductsPrices(String currencyName) {
+        List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
+        for (ProductContainer container
+                : productContainers) {
+            verifyProductCost(container, currencyName);
+        }
+    }
 
+    /**
+     * Method checks if MacBook Cost in specified currency is correct.
+     *
+     * @param container    is Container for Products where price needs to be checked;
+     * @param currencyName is name of Currency that needs to be checked.
+     */
+    private void verifyProductCost(ProductContainer container, String currencyName) {
         new ProductModel();
         double expectedCost = ProductModel.getProductPrice(container.getName());
-
         switch (currencyName.toLowerCase()) {
             case "usd":
                 break;
@@ -93,19 +102,14 @@ public class HeaderPageBL {
                 expectedCost = expectedCost * 28.22000000;
                 break;
         }
-
-        String expectedPrice = null;
+        String expectedPrice;
         if (expectedCost > 1000) {
             expectedPrice = String.format("%,3.0f", expectedCost);
         } else {
             expectedPrice = String.format("%.2f", expectedCost);
         }
-        System.out.println("container.getPrice()  = " + container.getPrice());
-        System.out.println("expectedPrice (calculated) = " + expectedPrice);
         Assert.assertTrue(container.getPrice().contains(expectedPrice), "123");
-        return this;
     }
-
 
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();

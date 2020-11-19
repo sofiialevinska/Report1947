@@ -28,7 +28,7 @@ public class LoginPageBL {
     }
 
     /**
-     * Method logins user using NewEmail that was through Edit Account.
+     * Method logins user using NewEmail that was set through Edit Account.
      *
      * @return LoginPageBL
      */
@@ -36,6 +36,21 @@ public class LoginPageBL {
         LoginModel loginModel = new LoginModel();
         inputEmail(loginModel.getNewEmail());
         inputPassword(loginModel.getPassword());
+        clickOnLoginButton();
+
+        accountDashboard = new AccountDashboard();
+        return this;
+    }
+
+    /**
+     * Method logins user using New Password that was set through Edit Account.
+     *
+     * @return LoginPageBL
+     */
+    public LoginPageBL loginWithNewPassword() {
+        LoginModel loginModel = new LoginModel();
+        inputEmail(loginModel.getEmail());
+        inputPassword(loginModel.getNewPassword());
         clickOnLoginButton();
 
         accountDashboard = new AccountDashboard();
@@ -68,5 +83,4 @@ public class LoginPageBL {
     private void clickOnLoginButton() {
         loginPage.getLoginButton().click();
     }
-
 }
