@@ -29,62 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f67d584d-e328-43bd-95cb-77a9172c965e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20,_12_49_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20,_12_49_[Default_Changelist]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20__12_49__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20__12_49__Default_Changelist_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_27_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_47_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_48_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_27__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_47__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_48__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Report1947.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/opencart/containers/CurrencyContainerAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/opencart/datamodel/CurrencyModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/containers/CurrencyContainerAdmin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/containers/ProductContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/AdminLoginModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/CurrencyModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/LoginModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/ProductModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/RegisterModel$Builder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/RegisterModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/driver/DriverRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/enums/CurrencyName.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/enums/URLs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/navigation/Navigation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AccountDashboard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AdminDashboard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AdminLoginPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/BasePage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/HeaderPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/LoginPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/RegisterPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/SearchResultPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/SuccessRegisterPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/repository/RegisterModelRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AccountDashboardBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AdminDashboardBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AdminLoginPageBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/HeaderPageBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/LoginPageBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/MainPageBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/RegisterPageBL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/util/DriverUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/BaseTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/ProductsSearchTest/SimpleSearchTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/currency/ChangeCurrencyTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/currency/SetNewCurrencyTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/editAccount/EditAccountTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/userRegister/UserRegisterTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605884064163</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="clean from additional files .xml and folder _mac">
+      <created>1605884724165</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605884724165</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,7 +371,8 @@
     <MESSAGE value="Clean master from files" />
     <MESSAGE value="moved methods verifyAllProductsPrices() and verifyProductCost() to MainPageBL" />
     <MESSAGE value="add reading Currencies values from Admin Page and test for setting new Currency through Admin Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add reading Currencies values from Admin Page and test for setting new Currency through Admin Page" />
+    <MESSAGE value="clean from additional files .xml and folder _mac" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean from additional files .xml and folder _mac" />
   </component>
   <component name="WindowStateProjectService">
     <state x="473" y="242" key="#Notifications" timestamp="1605783130145">
@@ -501,11 +455,11 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="256" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1605799143199" />
-    <state x="421" y="151" key="Vcs.Push.Dialog.v2" timestamp="1605884209985">
+    <state x="421" y="151" key="Vcs.Push.Dialog.v2" timestamp="1605884743790">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="421" y="132" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1605602482987" />
-    <state x="421" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1605884209985" />
+    <state x="421" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1605884743790" />
     <state x="502" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605869337708">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
