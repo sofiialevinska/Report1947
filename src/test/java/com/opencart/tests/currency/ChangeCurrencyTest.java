@@ -27,7 +27,7 @@ public class ChangeCurrencyTest extends BaseTest {
         mainPageBL
                 .getHeaderPageBL()
                 .clickOnChangeCurrencyButton()
-                .clickOnCurrencyButton(data)
-                .verifyAllProductsPrices(data);
+                .clickOnCurrencyButton(data);
+        mainPageBL.verifyAllProductsPrices(data);
     }
 }
