@@ -1,6 +1,7 @@
 package com.opencart.steps;
 
 import com.opencart.containers.ProductContainer;
+import com.opencart.datamodel.CurrencyModel;
 import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.SearchResultPage;
 import org.testng.Assert;
@@ -36,27 +37,32 @@ public class MainPageBL {
      */
     private void verifyProductPrice(ProductContainer container, String currencyName) {
         new ProductModel();
-        double expectedCost = ProductModel.getProductPrice(container.getName());
-        switch (currencyName.toLowerCase()) {
-            case "usd":
-                break;
-            case "eur":
-                expectedCost = expectedCost * 0.78460002;
-                break;
-            case "gbp":
-                expectedCost = expectedCost * 0.61250001;
-                break;
-            case "uah":
-                expectedCost = expectedCost * 28.22000000;
-                break;
-        }
-        String expectedPrice;
-        if (expectedCost > 1000) {
-            expectedPrice = String.format("%,3.0f", expectedCost);
+//        new CurrencyModel();
+        Double expectedPrice = getExpectedPrice(container, currencyName);
+        String expectedPriceString;
+        if (expectedPrice > 1000) {
+            expectedPriceString = String.format("%,3.0f", expectedPrice);
         } else {
-            expectedPrice = String.format("%.2f", expectedCost);
+            expectedPriceString = String.format("%.2f", expectedPrice);
         }
-        Assert.assertTrue(container.getPrice().contains(expectedPrice), "123");
+        Assert.assertTrue(container.getPrice().contains(expectedPriceString), "\nError. "
+                + container.getName() + " price in " + currencyName + "is invalid.");
+    }
+
+
+    /**
+     * Method calculates expected price for Product in ProductContainer in specified currency
+     * by multiplying ProductPrice in USD (from Product Model) to currency Value (that was read
+     * from the Admin Page).
+     *
+     * @param container    is Container for Products where price needs to be checked;
+     * @param currencyName is name of Currency that needs to be checked.
+     *
+     * @return double expected price for Product in Container.
+     */
+    private double getExpectedPrice(ProductContainer container, String currencyName) {
+        return ProductModel.getProductPriceInUSD(container.getName()) *
+                Double.parseDouble(CurrencyModel.getCurrencyValue(currencyName));
     }
 }
 

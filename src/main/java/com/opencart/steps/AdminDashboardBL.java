@@ -1,6 +1,8 @@
 package com.opencart.steps;
 
+import com.opencart.containers.CurrencyContainerAdmin;
 import com.opencart.datamodel.AdminLoginModel;
+import com.opencart.datamodel.CurrencyModel;
 import com.opencart.pages.AdminDashboard;
 
 public class AdminDashboardBL {
@@ -13,6 +15,10 @@ public class AdminDashboardBL {
     public AdminDashboardBL clickOnSidebarButton (String buttonName) {
         adminDashboard.getButton(buttonName).click();
         return this;
+    }
+
+    public void getCurrencyValues() {
+        new CurrencyModel();
     }
 
     public AdminDashboardBL clickOnAddNewCurrencyButton () {
@@ -54,4 +60,7 @@ public class AdminDashboardBL {
         adminDashboard.getSaveNewCurrency().click();
     }
 
+//    public AdminDashboardBL deleteNewCurrency () {
+//        return this;
+//    }
 }

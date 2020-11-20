@@ -15,7 +15,7 @@ public class ProductModel {
      productPriceList.put("Canon EOS 5D",98.00);
  }
 
-    public static Double getProductPrice (String productName) {
+    public static Double getProductPriceInUSD (String productName) {
         return productPriceList.get(productName);
     }
 }

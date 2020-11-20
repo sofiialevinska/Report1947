@@ -1,9 +1,13 @@
 package com.opencart.pages;
 
+import com.opencart.containers.CurrencyContainerAdmin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminDashboard extends BasePage {
 
@@ -24,10 +28,19 @@ public class AdminDashboard extends BasePage {
 
     @FindBy (id = "input-value")
     WebElement inputValue;
+//
+//    @FindBy (xpath = ".//*[contains(text(), '"+20/11/2020+"')]")
+//    WebElement edit
 
-    @FindBy (xpath = ".//*[contains(text(), '"+20/11/2020+"')]")
-    WebElement edit
+    @FindBy(css = "tr")
+    private List<WebElement> currencyContainersAdmin;
 
+    public List<CurrencyContainerAdmin> getCurrencyContainersAdmin() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(currencyContainersAdmin));
+        return currencyContainersAdmin.stream()
+                .map(CurrencyContainerAdmin::new)
+                .collect(Collectors.toList());
+    }
 
     public WebElement getButton (String buttonName) {
         wait.until(ExpectedConditions.visibilityOf
