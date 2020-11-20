@@ -1,0 +1,16 @@
+/src/test/java/
+*.iml
+*.xml
+*.log
+.idea
+**/target/
+**/out/
+.gradle
+**/build/
+derby.log
+work/
+.settings/
+.allure
+.classpath
+.project
+
