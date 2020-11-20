@@ -1,15 +1,9 @@
-/src/
-**.xml
-*.xml
-!pom.xml
+/src/test/java/
 *.iml
+*.xml
 *.log
-*.idea
-*/.idea/
+.idea
 **/target/
-*/target/
-**/_mac/
-**/.idea/
 **/out/
 .gradle
 **/build/
@@ -19,4 +13,4 @@ work/
 .allure
 .classpath
 .project
-**.class
+
