@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Levinska_AdminCurrencyAdd" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f67d584d-e328-43bd-95cb-77a9172c965e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20,_12_49_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20,_12_49_[Default_Changelist]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20__12_49__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_19_20__12_49__Default_Changelist_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_27_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_47_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20,_12_48_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_27__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_47__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_20_20__12_48__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Report1947.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/opencart/containers/CurrencyContainerAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/opencart/datamodel/CurrencyModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/containers/CurrencyContainerAdmin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/containers/ProductContainer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/AdminLoginModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/CurrencyModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/LoginModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/ProductModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/RegisterModel$Builder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/datamodel/RegisterModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/driver/DriverRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/enums/CurrencyName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/enums/URLs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/navigation/Navigation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AccountDashboard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AdminDashboard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/AdminLoginPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/BasePage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/HeaderPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/LoginPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/RegisterPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/SearchResultPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/pages/SuccessRegisterPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/repository/RegisterModelRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AccountDashboardBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AdminDashboardBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/AdminLoginPageBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/HeaderPageBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/LoginPageBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/MainPageBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/steps/RegisterPageBL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/opencart/util/DriverUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/BaseTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/ProductsSearchTest/SimpleSearchTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/currency/ChangeCurrencyTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/currency/SetNewCurrencyTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/editAccount/EditAccountTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/opencart/tests/userRegister/UserRegisterTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="develop" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Levinska_AdminCurrencyAdd" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1k44EuhY4uju4Wru18GsGadYwu0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/com/opencart/tests/currency" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/opencart/tests/editAccount" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.ChangeCurrencyTest">
+    <configuration name="ChangeCurrencyTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Report1947" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.opencart.tests.currency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.opencart.tests.currency" />
+      <option name="MAIN_CLASS_NAME" value="com.opencart.tests.currency.ChangeCurrencyTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EditAccountTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Report1947" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.opencart.tests.editAccount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.opencart.tests.editAccount" />
+      <option name="MAIN_CLASS_NAME" value="com.opencart.tests.editAccount.EditAccountTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EditAccountTest.changePasswordVerifyLogin" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Report1947" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.opencart.tests.editAccount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.opencart.tests.editAccount" />
+      <option name="MAIN_CLASS_NAME" value="com.opencart.tests.editAccount.EditAccountTest" />
+      <option name="METHOD_NAME" value="changePasswordVerifyLogin" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleSearchTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Report1947" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.opencart.tests.ProductsSearchTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.opencart.tests.ProductsSearchTest" />
+      <option name="MAIN_CLASS_NAME" value="com.opencart.tests.ProductsSearchTest.SimpleSearchTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsdChangeCurrencyTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Report1947" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.opencart.tests.currency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.opencart.tests.currency" />
+      <option name="MAIN_CLASS_NAME" value="com.opencart.tests.currency.UsdChangeCurrencyTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.ChangeCurrencyTest" />
+        <item itemvalue="TestNG.UsdChangeCurrencyTest" />
+        <item itemvalue="TestNG.SimpleSearchTest" />
+        <item itemvalue="TestNG.EditAccountTest.changePasswordVerifyLogin" />
+        <item itemvalue="TestNG.EditAccountTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f67d584d-e328-43bd-95cb-77a9172c965e" name="Default Changelist" comment="" />
+      <created>1604946423643</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604946423643</updated>
+    </task>
+    <task id="LOCAL-00001" summary="testing push-&gt;develop branch">
+      <created>1604946920203</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604946920204</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Change Currency Test">
+      <created>1605285623128</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605285623128</updated>
+    </task>
+    <task id="LOCAL-00003" summary="BASE_URL changed, package com.opencart.tests.currency - is added, 4 currency tests are added (EUR, USD, GBP, UAH), javadoc comments for currency tests and methods are added">
+      <created>1605354933725</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605354933725</updated>
+    </task>
+    <task id="LOCAL-00004" summary="BASE_URL changed, package com.opencart.tests.currency - is added, 4 currency tests are added (EUR, USD, GBP, UAH), javadoc comments for currency tests and methods are added">
+      <created>1605355124888</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605355124888</updated>
+    </task>
+    <task id="LOCAL-00005" summary="EditAccount tests added&#10;Change Email, change Password, Change FirstName">
+      <created>1605381893687</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605381893687</updated>
+    </task>
+    <task id="LOCAL-00006" summary="EditAccount tests added&#10;Change Email, change Password, Change FirstName">
+      <created>1605382061560</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605382061560</updated>
+    </task>
+    <task id="LOCAL-00007" summary="EditAccount tests added&#10;Change Email, change Password, Change FirstName">
+      <created>1605444901760</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605444901760</updated>
+    </task>
+    <task id="LOCAL-00008" summary="EditAccount tests (positive) - initial commit&#10;Change Email, change Password, Change FirstName">
+      <created>1605590691359</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605590691359</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Check if the cost in EUR, USD, GBP of all products on the website's main page is correct">
+      <created>1605602462003</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605602462003</updated>
+    </task>
+    <task id="LOCAL-00010" summary="method getCurrencyButton() simplified; getMacBookCost locator and method deleted; Searching of product containers and checking if their prices is correct moved from Test to BL; ChangeEmail, ChangePassword, ChangeName tests and LoginUsingValidData_Logout class moved into EditAccountTest class; additional verification of password added.">
+      <created>1605787652113</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605787652113</updated>
+    </task>
+    <task id="LOCAL-00011" summary="adding new currency through admin page is added">
+      <created>1605867923424</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605867923424</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Clean master from files">
+      <created>1605869761512</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605869761512</updated>
+    </task>
+    <task id="LOCAL-00013" summary="moved methods verifyAllProductsPrices() and verifyProductCost() to MainPageBL">
+      <created>1605871093480</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605871093480</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add reading Currencies values from Admin Page and test for setting new Currency through Admin Page">
+      <created>1605884064163</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605884064163</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Levinska_AdminCurrencyAdd" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="testing push-&gt;develop branch" />
+    <MESSAGE value="Change Currency Test" />
+    <MESSAGE value="BASE_URL changed, package com.opencart.tests.currency - is added, 4 currency tests are added (EUR, USD, GBP, UAH), javadoc comments for currency tests and methods are added" />
+    <MESSAGE value="EditAccount tests added&#10;Change Email, change Password, Change FirstName" />
+    <MESSAGE value="EditAccount tests (positive) - initial commit&#10;Change Email, change Password, Change FirstName" />
+    <MESSAGE value="Check if the cost in EUR, USD, GBP of all products on the website's main page is correct" />
+    <MESSAGE value="method getCurrencyButton() simplified; getMacBookCost locator and method deleted; Searching of product containers and checking if their prices is correct moved from Test to BL; ChangeEmail, ChangePassword, ChangeName tests and LoginUsingValidData_Logout class moved into EditAccountTest class; additional verification of password added." />
+    <MESSAGE value="adding new currency through admin page is added" />
+    <MESSAGE value="Clean master from files" />
+    <MESSAGE value="moved methods verifyAllProductsPrices() and verifyProductCost() to MainPageBL" />
+    <MESSAGE value="add reading Currencies values from Admin Page and test for setting new Currency through Admin Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add reading Currencies values from Admin Page and test for setting new Currency through Admin Page" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="473" y="242" key="#Notifications" timestamp="1605783130145">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="473" y="242" key="#Notifications/0.23.1280.777@0.23.1280.777" timestamp="1605783130145" />
+    <state x="256" y="23" key="#Project_Structure" timestamp="1605172565149">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="256" y="23" key="#Project_Structure/0.23.1280.777@0.23.1280.777" timestamp="1605172565149" />
+    <state x="551" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605781459253">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="551" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.23.1280.777@0.23.1280.777" timestamp="1605781459253" />
+    <state x="634" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1605799981526">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="634" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1605799981526" />
+    <state x="693" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605274944111">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="693" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1605274944111" />
+    <state x="420" y="270" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605877970098">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="420" y="270" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1280.777@0.23.1280.777" timestamp="1605877970098" />
+    <state x="689" y="315" key="Github.ShareDialog" timestamp="1604946619621">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="689" y="315" key="Github.ShareDialog/0.23.1280.777@0.23.1280.777" timestamp="1604946619621" />
+    <state x="631" y="123" key="Github.UntrackedFilesDialog" timestamp="1604946646091">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="631" y="123" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1604946646091" />
+    <state width="888" height="176" key="GridCell.Tab.0.bottom" timestamp="1605882461799">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="971" height="197" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1605602197817" />
+    <state width="888" height="176" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1605882461799" />
+    <state width="888" height="176" key="GridCell.Tab.0.center" timestamp="1605882461797">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="971" height="197" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1605602197816" />
+    <state width="888" height="176" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1605882461797" />
+    <state width="888" height="176" key="GridCell.Tab.0.left" timestamp="1605882461797">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="971" height="197" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1605602197815" />
+    <state width="888" height="176" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1605882461797" />
+    <state width="888" height="176" key="GridCell.Tab.0.right" timestamp="1605882461798">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="971" height="197" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1605602197816" />
+    <state width="888" height="176" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1605882461798" />
+    <state width="718" height="246" key="GridCell.Tab.1.bottom" timestamp="1605881825578">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="718" height="246" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1605881825578" />
+    <state width="718" height="246" key="GridCell.Tab.1.center" timestamp="1605881825577">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="718" height="246" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1605881825577" />
+    <state width="718" height="246" key="GridCell.Tab.1.left" timestamp="1605881825577">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="718" height="246" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1605881825577" />
+    <state width="718" height="246" key="GridCell.Tab.1.right" timestamp="1605881825578">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="718" height="246" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1605881825578" />
+    <state x="392" y="161" key="IDE.errors.dialog" timestamp="1605792225332">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="392" y="161" key="IDE.errors.dialog/0.23.1280.777@0.23.1280.777" timestamp="1605792225332" />
+    <state x="230" y="90" key="MergeDialog" timestamp="1605782975442">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="230" y="90" key="MergeDialog/0.23.1280.777@0.23.1280.777" timestamp="1605782975442" />
+    <state x="256" y="23" key="SettingsEditor" timestamp="1605799143199">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="256" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1605799143199" />
+    <state x="421" y="151" key="Vcs.Push.Dialog.v2" timestamp="1605884209985">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="421" y="132" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1605602482987" />
+    <state x="421" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1605884209985" />
+    <state x="502" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605869337708">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="502" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.777@0.23.1280.777" timestamp="1605869337708" />
+    <state x="689" y="131" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605871300037">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="689" y="131" key="git4idea.branch.GitSmartOperationDialog/0.23.1280.777@0.23.1280.777" timestamp="1605871300037" />
+    <state width="600" height="385" key="javadoc.popup" timestamp="1605098511407">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="600" height="385" key="javadoc.popup/0.23.1280.777@0.23.1280.777" timestamp="1605098511407" />
+    <state x="300" y="74" key="new project wizard" timestamp="1605542024730">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="300" y="74" key="new project wizard/0.23.1280.777@0.23.1280.777" timestamp="1605542024730" />
+    <state x="550" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1605381799283">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="550" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1605381799283" />
+  </component>
+</project>

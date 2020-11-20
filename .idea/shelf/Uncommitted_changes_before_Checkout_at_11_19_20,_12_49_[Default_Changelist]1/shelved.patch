@@ -1,0 +1,87 @@
+Index: src/test/java/com/opencart/tests/editAccount/LoginUsingValidData_Logout.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.tests.editAccount;\n\nimport com.opencart.navigation.Navigation;\nimport com.opencart.steps.AccountDashboardBL;\nimport com.opencart.steps.HeaderPageBL;\nimport com.opencart.steps.LoginPageBL;\nimport com.opencart.steps.MainPageBL;\nimport com.opencart.tests.BaseTest;\nimport org.testng.annotations.AfterMethod;\nimport org.testng.annotations.BeforeMethod;\n\nimport static com.opencart.enums.URLs.BASE_URL;\n\npublic class LoginUsingValidData_Logout extends BaseTest {\n\n    /**\n     * Announcing fields that will be used in .editAccount package\n     */\n    protected MainPageBL mainPageBL;\n    protected HeaderPageBL headerPageBL;\n    protected LoginPageBL loginPageBL;\n    protected AccountDashboardBL accountDashboardBL;\n\n    /**\n     * Method @BeforeMethod login to user account using valid data.\n     */\n    @BeforeMethod\n    public void loginUsingValidData() {\n        new Navigation().navigateToURrl(BASE_URL.getValue());\n        mainPageBL = new MainPageBL();\n        headerPageBL = mainPageBL.getHeaderPageBL();\n        loginPageBL = new LoginPageBL();\n        accountDashboardBL = new AccountDashboardBL();\n        headerPageBL\n                .clickOnMyAccountButton()\n                .clickOnLoginButton();\n        loginPageBL\n                .login();\n    }\n\n    /**\n     * Method @AfterMethod logout from user account.\n     */\n    @AfterMethod\n    public void logout() {\n        headerPageBL\n                .clickOnMyAccountButton()\n                .clickOnLogoutButton();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/com/opencart/tests/editAccount/LoginUsingValidData_Logout.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/test/java/com/opencart/tests/editAccount/LoginUsingValidData_Logout.java	(date 1605782779767)
+@@ -16,35 +16,5 @@
+     /**
+      * Announcing fields that will be used in .editAccount package
+      */
+-    protected MainPageBL mainPageBL;
+-    protected HeaderPageBL headerPageBL;
+-    protected LoginPageBL loginPageBL;
+-    protected AccountDashboardBL accountDashboardBL;
+ 
+-    /**
+-     * Method @BeforeMethod login to user account using valid data.
+-     */
+-    @BeforeMethod
+-    public void loginUsingValidData() {
+-        new Navigation().navigateToURrl(BASE_URL.getValue());
+-        mainPageBL = new MainPageBL();
+-        headerPageBL = mainPageBL.getHeaderPageBL();
+-        loginPageBL = new LoginPageBL();
+-        accountDashboardBL = new AccountDashboardBL();
+-        headerPageBL
+-                .clickOnMyAccountButton()
+-                .clickOnLoginButton();
+-        loginPageBL
+-                .login();
+-    }
+-
+-    /**
+-     * Method @AfterMethod logout from user account.
+-     */
+-    @AfterMethod
+-    public void logout() {
+-        headerPageBL
+-                .clickOnMyAccountButton()
+-                .clickOnLogoutButton();
+-    }
+ }
+Index: src/main/java/com/opencart/pages/SearchResultPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.pages;\n\nimport com.opencart.containers.ProductContainer;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.support.FindBy;\n\nimport java.util.List;\nimport java.util.stream.Collectors;\n\npublic class SearchResultPage extends BasePage {\n\n    @FindBy(css = \".product-layout\")\n    private List<WebElement> productContainers;\n\n    public List<ProductContainer> getProductContainers() {\n        return productContainers.stream()\n                .map(ProductContainer::new)\n                .collect(Collectors.toList());\n    }\n}\n
+===================================================================
+--- src/main/java/com/opencart/pages/SearchResultPage.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/main/java/com/opencart/pages/SearchResultPage.java	(date 1605782296769)
+@@ -3,6 +3,7 @@
+ import com.opencart.containers.ProductContainer;
+ import org.openqa.selenium.WebElement;
+ import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
+ 
+ import java.util.List;
+ import java.util.stream.Collectors;
+@@ -13,8 +14,9 @@
+     private List<WebElement> productContainers;
+ 
+     public List<ProductContainer> getProductContainers() {
++        wait.until(ExpectedConditions.visibilityOfAllElements(productContainers));
+         return productContainers.stream()
+                 .map(ProductContainer::new)
+                 .collect(Collectors.toList());
+     }
+-}
++}
+\ No newline at end of file
+Index: src/main/java/com/opencart/pages/RegisterPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.pages;\n\nimport org.openqa.selenium.By;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.support.FindBy;\n\npublic class RegisterPage extends BasePage {\n\n    @FindBy(id = \"input-firstname\")\n    private WebElement firstNameInput;\n\n    @FindBy(id = \"input-lastname\")\n    private WebElement lastNameInput;\n\n    @FindBy(id = \"input-email\")\n    private WebElement emailInput;\n\n    @FindBy(id = \"input-telephone\")\n    private WebElement telephoneInput;\n\n    @FindBy(id = \"input-password\")\n    private WebElement passwordInput;\n\n    @FindBy(id = \"input-confirm\")\n    private WebElement passwordConfirmInput;\n\n    @FindBy(name = \"agree\")\n    private WebElement policy;\n\n    @FindBy(xpath = \".//*[@type='submit']\")\n    private WebElement continueButton;\n\n    public WebElement getSubscribeRadioButton(int value) {\n        return driver.findElement(By.xpath(\"//*[@type = 'radio' and @value = '\" + value + \"']\"));\n    }\n\n\n    public WebElement getEmailInput() {\n        return emailInput;\n    }\n\n    public WebElement getContinueButton() {\n        return continueButton;\n    }\n\n    public WebElement getFirstNameInput() {\n        return firstNameInput;\n    }\n\n    public WebElement getLastNameInput() {\n        return lastNameInput;\n    }\n\n    public WebElement getPasswordConfirmInput() {\n        return passwordConfirmInput;\n    }\n\n    public WebElement getPasswordInput() {\n        return passwordInput;\n    }\n\n    public WebElement getPolicy() {\n        return policy;\n    }\n\n    public WebElement getTelephoneInput() {\n        return telephoneInput;\n    }\n}
+===================================================================
+--- src/main/java/com/opencart/pages/RegisterPage.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/main/java/com/opencart/pages/RegisterPage.java	(date 1605780751791)
+@@ -34,7 +34,6 @@
+         return driver.findElement(By.xpath("//*[@type = 'radio' and @value = '" + value + "']"));
+     }
+ 
+-
+     public WebElement getEmailInput() {
+         return emailInput;
+     }

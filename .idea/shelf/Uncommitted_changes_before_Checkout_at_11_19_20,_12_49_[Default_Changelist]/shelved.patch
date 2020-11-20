@@ -1,0 +1,308 @@
+Index: src/test/java/com/opencart/tests/editAccount/ChangeEmail.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.tests.editAccount;\n\nimport org.testng.annotations.Test;\n\npublic class ChangeEmail extends LoginUsingValidData_Logout {\n\n    /**\n     * Test checks if customer can change email to newEmail, safe changes and change email to oldEmail.\n     */\n    @Test\n    public void changeUserEmailToNewToOld() {\n        accountDashboardBL\n                .clickOnEditAccountButton()\n                .setNewEmail()\n                .verifyAccountEdit()\n                .clickOnEditAccountButton()\n                .returnOldEmail();\n    }\n\n    /**\n     * Test checks if customer can change email to newEmail, logout and login\n     * with newEmail and change email to previousEmail.\n     */\n    @Test\n    public void changeUserEmailToNewLogoutLoginChangeUserEmailToOld() {\n        accountDashboardBL\n                .clickOnEditAccountButton()\n                .setNewEmail()\n                .verifyAccountEdit();\n        headerPageBL.clickOnMyAccountButton()\n                .clickOnLogoutButton()\n                .clickOnMyAccountButton()\n                .clickOnLoginButton();\n        loginPageBL.loginWithNewEmail();\n        accountDashboardBL\n                .clickOnEditAccountButton()\n                .returnOldEmail()\n                .verifyAccountEdit();\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/com/opencart/tests/editAccount/ChangeEmail.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/test/java/com/opencart/tests/editAccount/ChangeEmail.java	(date 1605782910750)
+@@ -4,38 +4,6 @@
+ 
+ public class ChangeEmail extends LoginUsingValidData_Logout {
+ 
+-    /**
+-     * Test checks if customer can change email to newEmail, safe changes and change email to oldEmail.
+-     */
+-    @Test
+-    public void changeUserEmailToNewToOld() {
+-        accountDashboardBL
+-                .clickOnEditAccountButton()
+-                .setNewEmail()
+-                .verifyAccountEdit()
+-                .clickOnEditAccountButton()
+-                .returnOldEmail();
+-    }
+ 
+-    /**
+-     * Test checks if customer can change email to newEmail, logout and login
+-     * with newEmail and change email to previousEmail.
+-     */
+-    @Test
+-    public void changeUserEmailToNewLogoutLoginChangeUserEmailToOld() {
+-        accountDashboardBL
+-                .clickOnEditAccountButton()
+-                .setNewEmail()
+-                .verifyAccountEdit();
+-        headerPageBL.clickOnMyAccountButton()
+-                .clickOnLogoutButton()
+-                .clickOnMyAccountButton()
+-                .clickOnLoginButton();
+-        loginPageBL.loginWithNewEmail();
+-        accountDashboardBL
+-                .clickOnEditAccountButton()
+-                .returnOldEmail()
+-                .verifyAccountEdit();
+-    }
+ }
+ 
+Index: src/main/java/com/opencart/steps/HeaderPageBL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.steps;\n\nimport com.opencart.containers.ProductContainer;\nimport com.opencart.datamodel.ProductModel;\nimport com.opencart.pages.HeaderPage;\nimport org.testng.Assert;\n\npublic class HeaderPageBL {\n    private final HeaderPage headerPage;\n\n    public HeaderPageBL() {\n        headerPage = new HeaderPage();\n    }\n\n    private void clickOnSearchInput() {\n        headerPage.getSearchInput().click();\n    }\n\n    private void clickOnSearchButton() {\n        headerPage.getSearchButton().click();\n    }\n\n    public void searchProduct(String product) {\n        clickOnSearchInput();\n        inputSearch(product);\n        clickOnSearchButton();\n    }\n\n    private void inputSearch(String search) {\n        headerPage.getSearchInput().clear();\n        headerPage.getSearchInput().sendKeys(search);\n    }\n\n    public HeaderPageBL clickOnMyAccountButton() {\n        headerPage.getMyAccountButton().click();\n        return this;\n    }\n\n    public HeaderPageBL clickOnLoginButton() {\n        headerPage.getLoginButton().click();\n        return this;\n    }\n\n    public RegisterPageBL clickOnRegisterButton() {\n        headerPage.getRegisterButton().click();\n        return new RegisterPageBL();\n    }\n\n    /**\n     * Method clicks on Change Currency button that is located in website's header.\n     *\n     * @return HeaderPageBL\n     */\n    public HeaderPageBL clickOnChangeCurrencyButton() {\n        headerPage.getCurrencyButton().click();\n        return this;\n    }\n\n    /**\n     * Method clicks on specified currency button that is located in website's header.\n     *\n     * @param currencyName is a name of Currency, which button needs to be clicked.\n     * @return HeaderPageBL\n     */\n    public HeaderPageBL clickOnCurrencyButton(String currencyName) {\n        headerPage.getCurrencyButton(currencyName).click();\n        return this;\n    }\n\n    /**\n     * Method checks if MacBook Cost in specified currency is correct.\n     *\n     * @param container is Container for Products where price needs to be checked;\n     * @param currencyName is name of Currency that needs to be checked.\n     * @return HeaderPageBL\n     */\n\n    public HeaderPageBL verifyMacBookCost(ProductContainer container, String currencyName) {\n\n        new ProductModel();\n        double expectedCost = ProductModel.getProductPrice(container.getName());\n\n        switch (currencyName.toLowerCase()) {\n            case \"usd\":\n                break;\n            case \"eur\":\n                expectedCost = expectedCost * 0.78460002;\n                break;\n            case \"gbp\":\n                expectedCost = expectedCost * 0.61250001;\n                break;\n            case \"uah\":\n                expectedCost = expectedCost * 28.22000000;\n                break;\n        }\n\n        String expectedPrice = null;\n        if (expectedCost > 1000) {\n            expectedPrice = String.format(\"%,3.0f\", expectedCost);\n        } else {\n            expectedPrice = String.format(\"%.2f\", expectedCost);\n        }\n        System.out.println(\"container.getPrice()  = \" + container.getPrice());\n        System.out.println(\"expectedPrice (calculated) = \" + expectedPrice);\n        Assert.assertTrue(container.getPrice().contains(expectedPrice), \"123\");\n        return this;\n    }\n\n\n    public HeaderPageBL clickOnLogoutButton() {\n        headerPage.getLogoutButton().click();\n        return this;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/opencart/steps/HeaderPageBL.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/main/java/com/opencart/steps/HeaderPageBL.java	(date 1605782475660)
+@@ -3,8 +3,11 @@
+ import com.opencart.containers.ProductContainer;
+ import com.opencart.datamodel.ProductModel;
+ import com.opencart.pages.HeaderPage;
++import com.opencart.pages.SearchResultPage;
+ import org.testng.Assert;
+ 
++import java.util.List;
++
+ public class HeaderPageBL {
+     private final HeaderPage headerPage;
+ 
+@@ -12,25 +15,25 @@
+         headerPage = new HeaderPage();
+     }
+ 
+-    private void clickOnSearchInput() {
+-        headerPage.getSearchInput().click();
+-    }
+-
+-    private void clickOnSearchButton() {
+-        headerPage.getSearchButton().click();
+-    }
+-
+     public void searchProduct(String product) {
+         clickOnSearchInput();
+         inputSearch(product);
+         clickOnSearchButton();
+     }
+ 
++    private void clickOnSearchInput() {
++        headerPage.getSearchInput().click();
++    }
++
+     private void inputSearch(String search) {
+         headerPage.getSearchInput().clear();
+         headerPage.getSearchInput().sendKeys(search);
+     }
+ 
++    private void clickOnSearchButton() {
++        headerPage.getSearchButton().click();
++    }
++
+     public HeaderPageBL clickOnMyAccountButton() {
+         headerPage.getMyAccountButton().click();
+         return this;
+@@ -46,11 +49,6 @@
+         return new RegisterPageBL();
+     }
+ 
+-    /**
+-     * Method clicks on Change Currency button that is located in website's header.
+-     *
+-     * @return HeaderPageBL
+-     */
+     public HeaderPageBL clickOnChangeCurrencyButton() {
+         headerPage.getCurrencyButton().click();
+         return this;
+@@ -68,15 +66,28 @@
+     }
+ 
+     /**
+-     * Method checks if MacBook Cost in specified currency is correct.
++     * Method finds all ProductContainers on the Page and checks
++     * if their Product Costs in specified currency are correct.
++     *
++     * @param currencyName is name of Currency that needs to be checked.
++     * @return HeaderPageBL
++     */
++    public HeaderPageBL verifyAllProductsPrices (String currencyName) {
++        List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
++        for (ProductContainer container : productContainers) {
++            verifyProductCost(container, currencyName);
++        }
++        return this;
++    }
++
++    /**
++     * Method checks if Product Cost in specified currency is correct.
+      *
+-     * @param container is Container for Products where price needs to be checked;
++     * @param container    is Container for Products where price needs to be checked;
+      * @param currencyName is name of Currency that needs to be checked.
+      * @return HeaderPageBL
+      */
+-
+-    public HeaderPageBL verifyMacBookCost(ProductContainer container, String currencyName) {
+-
++    private void verifyProductCost(ProductContainer container, String currencyName) {
+         new ProductModel();
+         double expectedCost = ProductModel.getProductPrice(container.getName());
+ 
+@@ -93,19 +104,14 @@
+                 expectedCost = expectedCost * 28.22000000;
+                 break;
+         }
+-
+         String expectedPrice = null;
+         if (expectedCost > 1000) {
+             expectedPrice = String.format("%,3.0f", expectedCost);
+         } else {
+             expectedPrice = String.format("%.2f", expectedCost);
+         }
+-        System.out.println("container.getPrice()  = " + container.getPrice());
+-        System.out.println("expectedPrice (calculated) = " + expectedPrice);
+         Assert.assertTrue(container.getPrice().contains(expectedPrice), "123");
+-        return this;
+     }
+-
+ 
+     public HeaderPageBL clickOnLogoutButton() {
+         headerPage.getLogoutButton().click();
+Index: src/main/java/com/opencart/pages/HeaderPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.pages;\n\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.support.FindBy;\nimport org.openqa.selenium.support.ui.ExpectedConditions;\n\npublic class HeaderPage extends BasePage {\n\n    @FindBy(xpath = \".//*[@title='My Account']\")\n    private WebElement myAccountButton;\n\n    @FindBy(xpath = \".//*[contains (@href,'register')]\")\n    private WebElement registerButton;\n\n    @FindBy(xpath = \".//*[contains (@href, 'login')]\")\n    private WebElement loginButton;\n\n    @FindBy(id = \"form-currency\")\n    private WebElement currencyButton;\n\n    @FindBy(name = \"EUR\")\n    private WebElement euroButton;\n\n    @FindBy(name = \"USD\")\n    private WebElement usdButton;\n\n    @FindBy(name = \"GBP\")\n    private WebElement gbpButton;\n\n    @FindBy(name = \"UAH\")\n    private WebElement uahButton;\n\n    @FindBy(css = \"div.product-thumb.transition:first-child\")\n    private WebElement macBookCost;\n\n    @FindBy(xpath = \".//*[contains (@href, 'account/logout')]\")\n    private WebElement logoutButton;\n\n    @FindBy(css = \"input[name = 'search']\")\n    private WebElement searchInput;\n\n    @FindBy(css = \"* button > i.fa.fa-search\")\n    private WebElement searchButton;\n\n\n    public WebElement getMyAccountButton() {\n        wait.until(ExpectedConditions.visibilityOf(myAccountButton));\n        return myAccountButton;\n    }\n\n\n    public WebElement getLoginButton() {\n        wait.until(ExpectedConditions.visibilityOf(loginButton));\n        return loginButton;\n    }\n\n    public WebElement getCurrencyButton() {\n        wait.until(ExpectedConditions.visibilityOf(currencyButton));\n        return currencyButton;\n    }\n\n    public WebElement getRegisterButton() {\n        wait.until(ExpectedConditions.visibilityOf(registerButton));\n        return registerButton;\n    }\n\n    public WebElement getCurrencyButton(String currencyName) {\n        switch (currencyName.toLowerCase()) {\n            case \"eur\":\n                wait.until(ExpectedConditions.visibilityOf(euroButton));\n                return euroButton;\n            case \"usd\":\n                wait.until(ExpectedConditions.visibilityOf(usdButton));\n                return usdButton;\n            case \"gbp\":\n                wait.until(ExpectedConditions.visibilityOf(gbpButton));\n                return gbpButton;\n            case \"uah\":\n                wait.until(ExpectedConditions.visibilityOf(gbpButton));\n                return uahButton;\n            default: {\n                System.err.println(\"\\nCan not switch to \" + currencyName + \" currency because this currency is not available. Please try again with another currency.\");\n                return null;\n            }\n        }\n    }\n\n    public WebElement getMacBookCost() {\n        wait.until(ExpectedConditions.visibilityOf(macBookCost));\n        return macBookCost;\n    }\n\n    public WebElement getLogoutButton() {\n        return logoutButton;\n    }\n\n    public WebElement getSearchButton() {\n        return searchButton;\n    }\n\n    public WebElement getSearchInput() {\n        return searchInput;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/opencart/pages/HeaderPage.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/main/java/com/opencart/pages/HeaderPage.java	(date 1605780232802)
+@@ -1,5 +1,6 @@
+ package com.opencart.pages;
+ 
++import org.openqa.selenium.By;
+ import org.openqa.selenium.WebElement;
+ import org.openqa.selenium.support.FindBy;
+ import org.openqa.selenium.support.ui.ExpectedConditions;
+@@ -18,20 +19,6 @@
+     @FindBy(id = "form-currency")
+     private WebElement currencyButton;
+ 
+-    @FindBy(name = "EUR")
+-    private WebElement euroButton;
+-
+-    @FindBy(name = "USD")
+-    private WebElement usdButton;
+-
+-    @FindBy(name = "GBP")
+-    private WebElement gbpButton;
+-
+-    @FindBy(name = "UAH")
+-    private WebElement uahButton;
+-
+-    @FindBy(css = "div.product-thumb.transition:first-child")
+-    private WebElement macBookCost;
+ 
+     @FindBy(xpath = ".//*[contains (@href, 'account/logout')]")
+     private WebElement logoutButton;
+@@ -48,50 +35,27 @@
+         return myAccountButton;
+     }
+ 
++    public WebElement getRegisterButton() {
++        wait.until(ExpectedConditions.visibilityOf(registerButton));
++        return registerButton;
++    }
+ 
+     public WebElement getLoginButton() {
+         wait.until(ExpectedConditions.visibilityOf(loginButton));
+         return loginButton;
+     }
+ 
++    public WebElement getLogoutButton() {
++        return logoutButton;
++    }
++
+     public WebElement getCurrencyButton() {
+         wait.until(ExpectedConditions.visibilityOf(currencyButton));
+         return currencyButton;
+     }
+ 
+-    public WebElement getRegisterButton() {
+-        wait.until(ExpectedConditions.visibilityOf(registerButton));
+-        return registerButton;
+-    }
+-
+     public WebElement getCurrencyButton(String currencyName) {
+-        switch (currencyName.toLowerCase()) {
+-            case "eur":
+-                wait.until(ExpectedConditions.visibilityOf(euroButton));
+-                return euroButton;
+-            case "usd":
+-                wait.until(ExpectedConditions.visibilityOf(usdButton));
+-                return usdButton;
+-            case "gbp":
+-                wait.until(ExpectedConditions.visibilityOf(gbpButton));
+-                return gbpButton;
+-            case "uah":
+-                wait.until(ExpectedConditions.visibilityOf(gbpButton));
+-                return uahButton;
+-            default: {
+-                System.err.println("\nCan not switch to " + currencyName + " currency because this currency is not available. Please try again with another currency.");
+-                return null;
+-            }
+-        }
+-    }
+-
+-    public WebElement getMacBookCost() {
+-        wait.until(ExpectedConditions.visibilityOf(macBookCost));
+-        return macBookCost;
+-    }
+-
+-    public WebElement getLogoutButton() {
+-        return logoutButton;
++        return driver.findElement(By.xpath(".//*[@name='"+currencyName+"']"));
+     }
+ 
+     public WebElement getSearchButton() {
+Index: src/test/java/com/opencart/tests/editAccount/ChangeName.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.tests.editAccount;\n\nimport org.testng.annotations.Test;\n\npublic class ChangeName extends LoginUsingValidData_Logout {\n\n    /**\n     * Test checks if customer can change First Name to new First Name.\n     */\n    @Test\n    public void changeUserName() {\n        accountDashboardBL\n                .clickOnEditAccountButton()\n                .setNewName()\n                .verifyAccountEdit();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/com/opencart/tests/editAccount/ChangeName.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/test/java/com/opencart/tests/editAccount/ChangeName.java	(date 1605782910755)
+@@ -5,9 +5,9 @@
+ public class ChangeName extends LoginUsingValidData_Logout {
+ 
+     /**
+-     * Test checks if customer can change First Name to new First Name.
++     * .
+      */
+-    @Test
++    @Test (description = "Test checks if customer can change First Name to new First Name")
+     public void changeUserName() {
+         accountDashboardBL
+                 .clickOnEditAccountButton()
+Index: src/main/java/com/opencart/enums/URLs.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.opencart.enums;\n\npublic enum URLs {\n    BASE_URL (\"https://localhost/opencart/upload/index.php\");\n\n//    BASE_URL(\"http://localhost:8888/opencart/index.php\");\n//    ADMIN_BASE_URL(\"http://localhost:8888/opencart/admin\");\n\n\n    private final String value;\n\n    URLs (String value) {\n        this.value = value;\n    }\n\n    public String getValue () {\n        return value;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/opencart/enums/URLs.java	(revision 7b46a4c60243901b64cb524e6f1222b17fc7e9bd)
++++ src/main/java/com/opencart/enums/URLs.java	(date 1605779964231)
+@@ -1,9 +1,9 @@
+ package com.opencart.enums;
+ 
+ public enum URLs {
+-    BASE_URL ("https://localhost/opencart/upload/index.php");
++//    BASE_URL ("https://localhost/opencart/upload/index.php");
+ 
+-//    BASE_URL("http://localhost:8888/opencart/index.php");
++    BASE_URL("http://localhost:8888/opencart/index.php");
+ //    ADMIN_BASE_URL("http://localhost:8888/opencart/admin");
+ 
+ 
