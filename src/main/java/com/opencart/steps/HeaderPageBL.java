@@ -131,4 +131,12 @@ public class HeaderPageBL {
     public SearchResultPageBL getSearchResultPageBL() {
         return new SearchResultPageBL();
     }
+
+    public void clickOnShoppingCartSpan() {
+        headerPage.getShoppingCartSpan().click();
+    }
+
+    public ShoppingCartPageBL getShoppingCartPageBL() {
+        return new ShoppingCartPageBL();
+    }
 }

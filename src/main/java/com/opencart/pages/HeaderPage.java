@@ -48,6 +48,10 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "button[onclick=\"wishlist.add('43');\"]")
     private WebElement macbookWishListButton;
 
+    @FindBy(css = "a[title = 'Shopping Cart'] span")
+    private WebElement shoppingCartSpan;
+
+
     /**
      * Method gets My Account Button that is located in the website's header
      *
@@ -137,5 +141,9 @@ public class HeaderPage extends BasePage {
 
     public WebElement getMacbookWishListButton() {
         return macbookWishListButton;
+    }
+
+    public WebElement getShoppingCartSpan() {
+        return shoppingCartSpan;
     }
 }
