@@ -150,4 +150,24 @@ public class RegisterPageBL {
         String actualMessage = registerPage.getDifferentPasswordErrorText().getText();
         Assert.assertEquals(actualMessage, expectedMessage, "Password is equal");
     }
+
+    public void verifyNotValidEmail() {
+        String expectedMessage = "E-Mail Address does not appear to be valid!";
+        String actualMessage = registerPage.getEmailErrorText().getText();
+        Assert.assertEquals(actualMessage, expectedMessage, "Email is valid!");
+    }
+
+    public void verifyNotValidDataLength() {
+        String expectedMessage = "First Name must be between 1 and 32 characters!"
+                + "Last Name must be between 1 and 32 characters!"
+                + "E-Mail Address does not appear to be valid!"
+                + "Telephone must be between 3 and 32 characters!"
+                + "Password must be between 4 and 20 characters!";
+        String actualMessage = registerPage.getNameErrorText().getText()
+                + registerPage.getLastNameErrorText().getText()
+                + registerPage.getEmailErrorText().getText()
+                + registerPage.getTelephoneErrorText().getText()
+                + registerPage.getPasswordErrorText().getText();
+        Assert.assertEquals(actualMessage, expectedMessage, "All data is valid!");
+    }
 }

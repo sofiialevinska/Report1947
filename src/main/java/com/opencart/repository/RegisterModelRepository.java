@@ -115,4 +115,30 @@ public class RegisterModelRepository {
                 .build();
     }
 
+    public static RegisterModel getRegisterModelWithNotValidEmail() {
+        String password = RandomStringUtils.randomAlphabetic(10);
+        return RegisterModel.getBuilder()
+                .firstName(RandomStringUtils.randomAlphabetic(5))
+                .lastName(RandomStringUtils.randomAlphabetic(5))
+                .email("!#$%^&*||@j.ia")
+                .telephone(RandomStringUtils.randomNumeric(10))
+                .password(password)
+                .passwordConfirm(password)
+                .build();
+    }
+
+    public static RegisterModel getRegistrationModelWithNotValidLength() {
+        String password = RandomStringUtils.randomAlphabetic(3);
+        String emailBreaker =
+                "superdima2020undefeatedtanoskillertonystarkisnotdeadwhyicanentertheresomuchsymbols@gmail.com";
+        return RegisterModel.getBuilder()
+                .firstName(RandomStringUtils.randomAlphabetic(33))
+                .lastName(RandomStringUtils.randomAlphabetic(33))
+                .email(emailBreaker)
+                .telephone(RandomStringUtils.randomNumeric(33))
+                .password(password)
+                .passwordConfirm(password)
+                .build();
+    }
+
 }

@@ -134,4 +134,27 @@ public class UserRegisterTest extends BaseTest {
         registerPageBL.verifyDifferentPasswordsError();
     }
 
+    @Test
+    public void registerUserWithNotValidEmail() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithNotValidEmail();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .userRegister(registerModel);
+        registerPageBL.verifyNotValidEmail();
+    }
+
+    @Test
+    public void registerUserWithNotValidDataLength() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegistrationModelWithNotValidLength();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .userRegister(registerModel);
+        registerPageBL.verifyNotValidDataLength();
+    }
 }
