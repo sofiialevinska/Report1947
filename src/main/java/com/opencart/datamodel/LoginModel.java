@@ -7,7 +7,16 @@ public class LoginModel {
     private final String password = "dfghszdfgh";
     private final String newPassword = "newPassword";
     private final String newFirstName = "NewFirstName";
+    private String wrongEmail = "uiu1@k.o";
+    private String wrongPassword = "12345678";
 
+    public String getWrongEmail() {
+        return wrongEmail;
+    }
+
+    public String getWrongPassword() {
+        return wrongPassword;
+    }
 
     public String getEmail() {
         return email;

@@ -51,10 +51,16 @@ public class RegisterPage extends BasePage {
     @FindBy(css = "#input-confirm + .text-danger")
     private WebElement confirmPasswordErrorText;
 
+    @FindBy(css = "div .text-danger")
+    private WebElement differentPasswordErrorText;
+
     public WebElement getSubscribeRadioButton(int value) {
         return driver.findElement(By.xpath("//*[@type = 'radio' and @value = '" + value + "']"));
     }
 
+    public WebElement getDifferentPasswordErrorText() {
+        return differentPasswordErrorText;
+    }
 
     public WebElement getEmailInput() {
         return emailInput;

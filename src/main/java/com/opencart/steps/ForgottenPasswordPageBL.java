@@ -31,5 +31,4 @@ public class ForgottenPasswordPageBL {
     public LoginPageBL getLoginPageBL() {
         return new LoginPageBL();
     }
-
 }

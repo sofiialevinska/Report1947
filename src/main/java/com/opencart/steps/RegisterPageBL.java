@@ -16,105 +16,36 @@ public class RegisterPageBL {
         registerPage = new RegisterPage();
     }
 
-    public RegisterPageBL registerNewPerson() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        chooseSubscribe(1);
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-
-        successRegisterPage = new SuccessRegisterPage();
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutPrivacyPolicy() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        clickOnContinueButton();
-
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutName() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-        return this;
-
-
-    }
-
-    public RegisterPageBL registerNewPersonWithoutLastName() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutEmail() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputTelephone(registerModel.getTelephone());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutTelephone() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputPasswordAndConfirmPassword(registerModel.getPassword());
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutPassword() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        clickPolicyCheckbox();
-        clickOnContinueButton();
-        return this;
-    }
-
-    public RegisterPageBL registerNewPersonWithoutVerifyPassword() {
-        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
+    public RegisterPageBL userRegister(RegisterModel registerModel) {
         inputFirstName(registerModel.getFirstName());
         inputLastName(registerModel.getLastName());
         inputEmail(registerModel.getEmail());
         inputTelephone(registerModel.getTelephone());
         inputPassword(registerModel.getPassword());
+        inputConfirmPassword(registerModel.getPasswordConfirm());
+        chooseSubscribe(1);
         clickPolicyCheckbox();
         clickOnContinueButton();
+
+        successRegisterPage = new SuccessRegisterPage();
+
         return this;
     }
 
-    public RegisterPageBL registerNewPersonWithEmptyFields() {
+    public RegisterPageBL userRegisterWithoutPrivacy(RegisterModel registerModel) {
+        inputFirstName(registerModel.getFirstName());
+        inputLastName(registerModel.getLastName());
+        inputEmail(registerModel.getEmail());
+        inputTelephone(registerModel.getTelephone());
+        inputPassword(registerModel.getPassword());
+        inputConfirmPassword(registerModel.getPasswordConfirm());
         clickOnContinueButton();
+
         return this;
+    }
+
+    private void clickPolicyCheckbox() {
+        new DriverUtils().clickOnElementJS(registerPage.getPolicy());
     }
 
     private void inputFirstName(String firstName) {
@@ -137,24 +68,19 @@ public class RegisterPageBL {
         registerPage.getTelephoneInput().sendKeys(telephone);
     }
 
-    private void inputPasswordAndConfirmPassword(String password) {
-        registerPage.getPasswordInput().clear();
-        registerPage.getPasswordInput().sendKeys(password);
-        registerPage.getPasswordConfirmInput().clear();
-        registerPage.getPasswordConfirmInput().sendKeys(password);
-    }
 
     private void inputPassword(String password) {
         registerPage.getPasswordInput().clear();
         registerPage.getPasswordInput().sendKeys(password);
     }
 
-    private void chooseSubscribe(int value) {
-        new DriverUtils().clickOnElementJS(registerPage.getSubscribeRadioButton(value));
+    private void inputConfirmPassword(String confirmPassword) {
+        registerPage.getPasswordConfirmInput().clear();
+        registerPage.getPasswordConfirmInput().sendKeys(confirmPassword);
     }
 
-    private void clickPolicyCheckbox() {
-        new DriverUtils().clickOnElementJS(registerPage.getPolicy());
+    private void chooseSubscribe(int value) {
+        new DriverUtils().clickOnElementJS(registerPage.getSubscribeRadioButton(value));
     }
 
     private void clickOnContinueButton() {
@@ -217,5 +143,11 @@ public class RegisterPageBL {
                 + registerPage.getTelephoneErrorText().getText()
                 + registerPage.getPasswordErrorText().getText();
         Assert.assertEquals(actualMessage, expectedMessage, "Some/all fields is not empty");
+    }
+
+    public void verifyDifferentPasswordsError() {
+        String expectedMessage = "Password confirmation does not match password!";
+        String actualMessage = registerPage.getDifferentPasswordErrorText().getText();
+        Assert.assertEquals(actualMessage, expectedMessage, "Password is equal");
     }
 }

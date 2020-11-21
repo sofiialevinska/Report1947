@@ -1,7 +1,6 @@
 package com.opencart.steps;
 
 import com.opencart.datamodel.LoginModel;
-import com.opencart.datamodel.WrongLoginModel;
 import com.opencart.pages.AccountDashboard;
 import com.opencart.pages.LoginPage;
 import org.testng.Assert;
@@ -62,9 +61,9 @@ public class LoginPageBL {
     }
 
     public LoginPageBL loginWithWrongData() {
-        WrongLoginModel wrongLoginModel = new WrongLoginModel();
-        inputEmail(wrongLoginModel.getWrongEmail());
-        inputPassword(wrongLoginModel.getWrongPassword());
+        LoginModel LoginModel = new LoginModel();
+        inputEmail(LoginModel.getWrongEmail());
+        inputPassword(LoginModel.getWrongPassword());
         clickOnLoginButton();
 
         return this;
@@ -107,7 +106,7 @@ public class LoginPageBL {
         loginPage.getLoginButton().click();
     }
 
-    private void  clickOnForgottenPasswordButton() {
+    private void clickOnForgottenPasswordButton() {
         loginPage.getForgottenButton().click();
     }
 
@@ -122,9 +121,9 @@ public class LoginPageBL {
     }
 
     public void verifyLoginWithoutEmail() {
-        String expectedMessage = "Warning: No match for E-Mail Address and/or Password.";
-        String expectedMessage1 = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
-        Assert.assertTrue((expectedMessage + expectedMessage1).contains(loginPage.getWarning().getText()),
+        String expectedMessage = "Warning: No match for E-Mail Address and/or Password."
+                + "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
+        Assert.assertTrue(expectedMessage.contains(loginPage.getWarning().getText()),
                 "You are logged in!");
     }
 
@@ -134,9 +133,9 @@ public class LoginPageBL {
     }
 
     public void verifyLoginWithEmptyFields() {
-        String expectedMessage = "Warning: No match for E-Mail Address and/or Password.";
-        String expectedMessage1 = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
-        Assert.assertTrue((expectedMessage + expectedMessage1).contains(loginPage.getWarning().getText()));
+        String expectedMessage = "Warning: No match for E-Mail Address and/or Password." +
+                "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
+        Assert.assertTrue(expectedMessage.contains(loginPage.getWarning().getText()), "You are logged in!");
     }
 
     public void verifyForgottenPasswordText() {

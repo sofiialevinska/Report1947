@@ -1,9 +1,12 @@
 package com.opencart.tests.userRegister;
 
+import com.opencart.datamodel.RegisterModel;
 import com.opencart.navigation.Navigation;
+import com.opencart.repository.RegisterModelRepository;
 import com.opencart.steps.MainPageBL;
 import com.opencart.steps.RegisterPageBL;
 import com.opencart.tests.BaseTest;
+import org.apache.regexp.RE;
 import org.testng.annotations.Test;
 
 import static com.opencart.enums.URLs.BASE_URL;
@@ -11,24 +14,27 @@ import static com.opencart.enums.URLs.BASE_URL;
 public class UserRegisterTest extends BaseTest {
 
     @Test
-    public void registerUserWithValidParameters() {
+    public void registerUserWithValidParameters(){
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnRegisterButton()
-                .registerNewPerson();
+                .clickOnRegisterButton();
+        registerPageBL.userRegister(registerModel);
         registerPageBL.verifyUserRegistration();
     }
+
 
     @Test
     public void registerUserWithoutTelephone() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutTelephone();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutTelephone();
+                .userRegister(registerModel);
         registerPageBL.verifyTelephoneTextError();
     }
 
@@ -36,10 +42,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutPrivacyPolicy() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutPrivacyPolicy();
+                .userRegisterWithoutPrivacy(registerModel);
         registerPageBL.verifyPrivatePolicyWarning();
     }
 
@@ -47,10 +54,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutName() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutFirstName();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutName();
+                .userRegister(registerModel);
         registerPageBL.verifyNameTextError();
     }
 
@@ -58,10 +66,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutLastName() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutLastName();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutLastName();
+                .userRegister(registerModel);
         registerPageBL.verifyLastNameTextError();
     }
 
@@ -69,10 +78,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutEmail() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutEmail();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutEmail();
+                .userRegister(registerModel);
         registerPageBL.verifyEmailTextError();
     }
 
@@ -80,10 +90,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutPassword() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutPassword();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutPassword();
+                .userRegister(registerModel);
         registerPageBL.verifyPasswordTextError();
     }
 
@@ -91,10 +102,11 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithoutVerifyPassword() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithoutPasswordConfirm();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithoutVerifyPassword();
+                .userRegister(registerModel);
         registerPageBL.verifyConfirmPasswordTextError();
     }
 
@@ -102,11 +114,24 @@ public class UserRegisterTest extends BaseTest {
     public void registerUserWithEmptyFields() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithEmptyFields();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .registerNewPersonWithEmptyFields();
+                .userRegisterWithoutPrivacy(registerModel);
         registerPageBL.verifyAllFieldsEmptyError();
+    }
+
+    @Test
+    public void registerUserWithDifferentPasswords() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        RegisterModel registerModel = RegisterModelRepository.getRegisterModelWithDifferentPasswords();
+        RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .userRegister(registerModel);
+        registerPageBL.verifyDifferentPasswordsError();
     }
 
 }
