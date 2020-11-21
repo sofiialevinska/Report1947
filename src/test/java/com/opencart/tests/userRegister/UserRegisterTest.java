@@ -20,8 +20,10 @@ public class UserRegisterTest extends BaseTest {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnRegisterButton();
-        registerPageBL.userRegister(registerModel);
+                .clickOnRegisterButton()
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyUserRegistration();
     }
 
@@ -34,7 +36,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyTelephoneTextError();
     }
 
@@ -46,7 +50,8 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegisterWithoutPrivacy(registerModel);
+                .userRegister(registerModel)
+                .clickOnContinueButton();
         registerPageBL.verifyPrivatePolicyWarning();
     }
 
@@ -58,7 +63,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyNameTextError();
     }
 
@@ -70,7 +77,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyLastNameTextError();
     }
 
@@ -82,7 +91,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyEmailTextError();
     }
 
@@ -94,7 +105,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyPasswordTextError();
     }
 
@@ -106,7 +119,9 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickPolicyCheckbox()
+                .clickOnContinueButton();
         registerPageBL.verifyConfirmPasswordTextError();
     }
 
@@ -118,7 +133,8 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegisterWithoutPrivacy(registerModel);
+                .userRegister(registerModel)
+                .clickOnContinueButton();
         registerPageBL.verifyAllFieldsEmptyError();
     }
 
@@ -130,7 +146,8 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickOnContinueButton();
         registerPageBL.verifyDifferentPasswordsError();
     }
 
@@ -142,7 +159,8 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickOnContinueButton();
         registerPageBL.verifyNotValidEmail();
     }
 
@@ -154,7 +172,8 @@ public class UserRegisterTest extends BaseTest {
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
-                .userRegister(registerModel);
+                .userRegister(registerModel)
+                .clickOnContinueButton();
         registerPageBL.verifyNotValidDataLength();
     }
 }

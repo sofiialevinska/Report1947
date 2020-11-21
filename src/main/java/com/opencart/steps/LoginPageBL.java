@@ -44,35 +44,15 @@ public class LoginPageBL {
         return this;
     }
 
-    public LoginPageBL loginWithoutPassword() {
-        LoginModel loginModel = new LoginModel();
+    public LoginPageBL userLogin(LoginModel loginModel) {
         inputEmail(loginModel.getEmail());
-        clickOnLoginButton();
-
-        return this;
-    }
-
-    public LoginPageBL loginWithoutEmail() {
-        LoginModel loginModel = new LoginModel();
         inputPassword(loginModel.getPassword());
         clickOnLoginButton();
 
+        accountDashboard = new AccountDashboard();
         return this;
     }
 
-    public LoginPageBL loginWithWrongData() {
-        LoginModel LoginModel = new LoginModel();
-        inputEmail(LoginModel.getWrongEmail());
-        inputPassword(LoginModel.getWrongPassword());
-        clickOnLoginButton();
-
-        return this;
-    }
-
-    public LoginPageBL loginWithEmptyFields() {
-        clickOnLoginButton();
-        return this;
-    }
 
     public ForgottenPasswordPageBL clickOnForgottenPassword() {
         clickOnForgottenPasswordButton();

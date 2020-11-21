@@ -24,67 +24,20 @@ public class RegisterPageBL {
         inputPassword(registerModel.getPassword());
         inputConfirmPassword(registerModel.getPasswordConfirm());
         chooseSubscribe(1);
-        clickPolicyCheckbox();
-        clickOnContinueButton();
 
         successRegisterPage = new SuccessRegisterPage();
-
         return this;
     }
 
-    public RegisterPageBL userRegisterWithoutPrivacy(RegisterModel registerModel) {
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
-        inputConfirmPassword(registerModel.getPasswordConfirm());
-        clickOnContinueButton();
 
-        return this;
-    }
-
-    private void clickPolicyCheckbox() {
-        new DriverUtils().clickOnElementJS(registerPage.getPolicy());
-    }
-
-    private void inputFirstName(String firstName) {
-        registerPage.getFirstNameInput().clear();
-        registerPage.getFirstNameInput().sendKeys(firstName);
-    }
-
-    private void inputLastName(String lastName) {
-        registerPage.getLastNameInput().clear();
-        registerPage.getLastNameInput().sendKeys(lastName);
-    }
-
-    private void inputEmail(String email) {
-        registerPage.getEmailInput().clear();
-        registerPage.getEmailInput().sendKeys(email);
-    }
-
-    private void inputTelephone(String telephone) {
-        registerPage.getTelephoneInput().clear();
-        registerPage.getTelephoneInput().sendKeys(telephone);
-    }
-
-
-    private void inputPassword(String password) {
-        registerPage.getPasswordInput().clear();
-        registerPage.getPasswordInput().sendKeys(password);
-    }
-
-    private void inputConfirmPassword(String confirmPassword) {
-        registerPage.getPasswordConfirmInput().clear();
-        registerPage.getPasswordConfirmInput().sendKeys(confirmPassword);
-    }
-
-    private void chooseSubscribe(int value) {
-        new DriverUtils().clickOnElementJS(registerPage.getSubscribeRadioButton(value));
-    }
-
-    private void clickOnContinueButton() {
+    public RegisterPageBL clickOnContinueButton() {
         registerPage.getContinueButton().click();
+        return this;
+    }
+
+    public RegisterPageBL clickPolicyCheckbox() {
+        new DriverUtils().clickOnElementJS(registerPage.getPolicy());
+        return this;
     }
 
     public void verifyUserRegistration() {
@@ -170,4 +123,40 @@ public class RegisterPageBL {
                 + registerPage.getPasswordErrorText().getText();
         Assert.assertEquals(actualMessage, expectedMessage, "All data is valid!");
     }
+
+    private void inputFirstName(String firstName) {
+        registerPage.getFirstNameInput().clear();
+        registerPage.getFirstNameInput().sendKeys(firstName);
+    }
+
+    private void inputLastName(String lastName) {
+        registerPage.getLastNameInput().clear();
+        registerPage.getLastNameInput().sendKeys(lastName);
+    }
+
+    private void inputEmail(String email) {
+        registerPage.getEmailInput().clear();
+        registerPage.getEmailInput().sendKeys(email);
+    }
+
+    private void inputTelephone(String telephone) {
+        registerPage.getTelephoneInput().clear();
+        registerPage.getTelephoneInput().sendKeys(telephone);
+    }
+
+
+    private void inputPassword(String password) {
+        registerPage.getPasswordInput().clear();
+        registerPage.getPasswordInput().sendKeys(password);
+    }
+
+    private void inputConfirmPassword(String confirmPassword) {
+        registerPage.getPasswordConfirmInput().clear();
+        registerPage.getPasswordConfirmInput().sendKeys(confirmPassword);
+    }
+
+    private void chooseSubscribe(int value) {
+        new DriverUtils().clickOnElementJS(registerPage.getSubscribeRadioButton(value));
+    }
+
 }

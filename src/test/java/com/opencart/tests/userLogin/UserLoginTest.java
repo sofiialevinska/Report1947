@@ -1,6 +1,8 @@
 package com.opencart.tests.userLogin;
 
+import com.opencart.datamodel.LoginModel;
 import com.opencart.navigation.Navigation;
+import com.opencart.repository.LoginModelRepository;
 import com.opencart.steps.LoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
@@ -14,10 +16,11 @@ public class UserLoginTest extends BaseTest {
     public void userLoginTestWithValidInput() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getValidLoginModel();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .login();
+                .userLogin(loginModel);
         loginPageBL.verifyLogin();
     }
 
@@ -25,10 +28,11 @@ public class UserLoginTest extends BaseTest {
     public void userLoginWithoutPassword() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getLoginWithoutPassword();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginWithoutPassword();
+                .userLogin(loginModel);
         loginPageBL.verifyLoginWithoutPassword();
     }
 
@@ -36,10 +40,11 @@ public class UserLoginTest extends BaseTest {
     public void userLoginWithoutEmail() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getLoginModelWithoutEmail();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginWithoutEmail();
+                .userLogin(loginModel);
         loginPageBL.verifyLoginWithoutEmail();
     }
 
@@ -47,10 +52,11 @@ public class UserLoginTest extends BaseTest {
     public void userLoginWithInvalidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getLoginWithInvalidData();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginWithWrongData();
+                .userLogin(loginModel);
         loginPageBL.verifyLoginWithInvalidData();
     }
 
@@ -58,10 +64,11 @@ public class UserLoginTest extends BaseTest {
     public void userLoginWithEmptyFields() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getLoginWithoutData();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginWithEmptyFields();
+                .userLogin(loginModel);
         loginPageBL.verifyLoginWithEmptyFields();
     }
 }
