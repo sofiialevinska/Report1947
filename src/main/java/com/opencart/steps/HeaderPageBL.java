@@ -139,4 +139,17 @@ public class HeaderPageBL {
     public ShoppingCartPageBL getShoppingCartPageBL() {
         return new ShoppingCartPageBL();
     }
+
+    public void verifyIfShoppingCartDropDownInfoIsEmpty() {
+        String expectedMessage = "0 item(s) - $0.00";
+
+        Assert.assertEquals(headerPage.getShoppingCartDropDownInfo().getText(), expectedMessage);
+    }
+
+    public void verifyShoppingCartDropDownMessage() {
+        String expectedMessage = "Your shopping cart is empty!";
+
+        headerPage.getShoppingCartDropDownButton().click();
+        Assert.assertEquals(headerPage.getShoppingCartDropDownMessage().getText(), expectedMessage);
+    }
 }

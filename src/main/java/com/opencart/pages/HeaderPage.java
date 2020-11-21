@@ -51,6 +51,15 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "a[title = 'Shopping Cart'] span")
     private WebElement shoppingCartSpan;
 
+    @FindBy(css = "span#cart-total")
+    private WebElement shoppingCartDropDownInfo;
+
+    @FindBy(css = "p.text-center")
+    private WebElement shoppingCartDropDownMessage;
+
+    @FindBy(css = "button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle")
+    private WebElement shoppingCartDropDownButton;
+
 
     /**
      * Method gets My Account Button that is located in the website's header
@@ -145,5 +154,17 @@ public class HeaderPage extends BasePage {
 
     public WebElement getShoppingCartSpan() {
         return shoppingCartSpan;
+    }
+
+    public WebElement getShoppingCartDropDownInfo() {
+        return shoppingCartDropDownInfo;
+    }
+
+    public WebElement getShoppingCartDropDownMessage() {
+        return shoppingCartDropDownMessage;
+    }
+
+    public WebElement getShoppingCartDropDownButton() {
+        return shoppingCartDropDownButton;
     }
 }
