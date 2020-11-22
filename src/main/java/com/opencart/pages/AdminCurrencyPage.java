@@ -9,28 +9,31 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AdminDashboard extends BasePage {
+public class AdminCurrencyPage extends BasePage {
 
-    @FindBy (css = "[data-original-title='Add New']")
+    @FindBy(css = "[data-original-title='Add New']")
     WebElement addNewCurrencyButton;
 
-    @FindBy (css = "[type='submit']")
+    @FindBy(css = "[type='submit']")
     WebElement saveNewCurrency;
 
-    @FindBy (id = "input-title")
+    @FindBy(id = "input-title")
     WebElement inputCurrencyTitle;
 
-    @FindBy (id = "input-code")
+    @FindBy(id = "input-code")
     WebElement inputCurrencyCode;
 
-    @FindBy (id = "input-symbol-right")
+    @FindBy(id = "input-symbol-right")
     WebElement inputCurrencySymbolRight;
 
-    @FindBy (id = "input-value")
+    @FindBy(id = "input-value")
     WebElement inputValue;
-//
-//    @FindBy (xpath = ".//*[contains(text(), '"+20/11/2020+"')]")
-//    WebElement edit
+
+    @FindBy(css = "[data-original-title='Delete']")
+    WebElement deleteCurrencyButton;
+
+    @FindBy(css = ".alert.alert-success")
+    WebElement successCurrencyEditMessage;
 
     @FindBy(css = "tr")
     private List<WebElement> currencyContainersAdmin;
@@ -40,12 +43,6 @@ public class AdminDashboard extends BasePage {
         return currencyContainersAdmin.stream()
                 .map(CurrencyContainerAdmin::new)
                 .collect(Collectors.toList());
-    }
-
-    public WebElement getButton (String buttonName) {
-        wait.until(ExpectedConditions.visibilityOf
-                (driver.findElement(By.xpath(".//*[contains(text(), '"+ buttonName + "')]"))));
-        return driver.findElement(By.xpath(".//*[contains(text(), '"+ buttonName + "')]"));
     }
 
     public WebElement getAddNewCurrencyButton() {
@@ -70,7 +67,19 @@ public class AdminDashboard extends BasePage {
         return inputValue;
     }
 
+    public WebElement getStatusEnabled(int yesNo) {
+        return driver.findElement(By.cssSelector("#input-status [value = '" + yesNo + "']"));
+    }
+
     public WebElement getSaveNewCurrency() {
         return saveNewCurrency;
+    }
+
+    public WebElement getDeleteCurrencyButton() {
+        return deleteCurrencyButton;
+    }
+
+    public WebElement getSuccessCurrencyEditMessage() {
+        return successCurrencyEditMessage;
     }
 }

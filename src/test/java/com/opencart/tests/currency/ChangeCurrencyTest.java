@@ -3,11 +3,15 @@ package com.opencart.tests.currency;
 import com.opencart.driver.DriverRepository;
 import com.opencart.enums.CurrencyName;
 import com.opencart.navigation.Navigation;
+import com.opencart.steps.AdminCurrencyPageBL;
 import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
@@ -22,16 +26,17 @@ public class ChangeCurrencyTest extends BaseTest {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
         new AdminDashboardBL()
-                .clickOnSidebarButton("System")
-                .clickOnSidebarButton("Localisation")
-                .clickOnSidebarButton("Currencies")
-                .getCurrencyValues ();
+                .getAdminLeftNavigationPanelPageBL()
+                .clickOnLeftNavigationPanelButton("System")
+                .clickOnLeftNavigationPanelButton("Localisation")
+                .clickOnLeftNavigationPanelButton("Currencies");
+        new AdminCurrencyPageBL().getCurrencyValues();
     }
 
     @DataProvider(name = "data-provider-currency")
     public Object[][] dataProviderMethod() {
         return new Object[][]{{CurrencyName.EUR.getValue()}, {CurrencyName.USD.getValue()},
-                {CurrencyName.GBP.getValue()}, {CurrencyName.UAH.getValue()}};
+                {CurrencyName.GBP.getValue()}};
     }
 
     @Test(dataProvider = "data-provider-currency")
@@ -46,7 +51,7 @@ public class ChangeCurrencyTest extends BaseTest {
     }
 
     @AfterClass
-    public void closeBrowser () {
-        DriverRepository.closeBrowser ();
+    public void closeAdminBrowser() {
+        DriverRepository.closeBrowser();
     }
 }

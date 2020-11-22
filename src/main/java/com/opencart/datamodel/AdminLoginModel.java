@@ -2,11 +2,8 @@ package com.opencart.datamodel;
 
 public class AdminLoginModel {
 
-    private String username = "admin";
-    private String password = "admin";
-
-    private String currencyName = "UAH";
-    private String currencyValue = "28.22";
+    private final String username = "admin";
+    private final String password = "admin";
 
     public String getUsername() {
         return username;
@@ -14,13 +11,5 @@ public class AdminLoginModel {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getCurrencyName() {
-        return currencyName;
-    }
-
-    public String getCurrencyValue() {
-        return currencyValue;
     }
 }
