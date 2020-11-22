@@ -53,7 +53,6 @@ public class LoginPageBL {
         return this;
     }
 
-
     public ForgottenPasswordPageBL clickOnForgottenPassword() {
         clickOnForgottenPasswordButton();
         return new ForgottenPasswordPageBL();

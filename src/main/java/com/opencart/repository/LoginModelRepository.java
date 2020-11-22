@@ -4,11 +4,12 @@ import com.opencart.datamodel.LoginModel;
 
 public class LoginModelRepository {
 
+    private static LoginModel loginModel = new LoginModel();
+
     private LoginModelRepository() {
     }
 
     public static LoginModel getValidLoginModel() {
-        LoginModel loginModel = new LoginModel();
         return LoginModel.getBuilder()
                 .email(loginModel.getEmail())
                 .password(loginModel.getPassword())
@@ -16,7 +17,6 @@ public class LoginModelRepository {
     }
 
     public static LoginModel getLoginModelWithoutEmail() {
-        LoginModel loginModel = new LoginModel();
         return LoginModel.getBuilder()
                 .email("")
                 .password(loginModel.getPassword())
@@ -24,7 +24,6 @@ public class LoginModelRepository {
     }
 
     public static LoginModel getLoginWithoutPassword() {
-        LoginModel loginModel = new LoginModel();
         return LoginModel.getBuilder()
                 .email(loginModel.getEmail())
                 .password("")
@@ -32,10 +31,9 @@ public class LoginModelRepository {
     }
 
     public static LoginModel getLoginWithInvalidData() {
-        LoginModel loginModel = new LoginModel();
         return LoginModel.getBuilder()
-                .email(loginModel.getWrongEmail())
-                .password(loginModel.getWrongPassword())
+                .email("uiu1@k.o")
+                .password("12345678")
                 .build();
     }
 
