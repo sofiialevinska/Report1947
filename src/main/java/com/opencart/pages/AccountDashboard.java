@@ -29,6 +29,9 @@ public class AccountDashboard extends BasePage {
     @FindBy(css = ".alert")
     private WebElement successMessage;
 
+    @FindBy(css = "#content > h2:first-child")
+    private WebElement myAccount;
+
     public WebElement getEditAccountButton() {
         return editAccountButton;
     }
@@ -57,5 +60,9 @@ public class AccountDashboard extends BasePage {
 
     public WebElement getPasswordConfirmInput() {
         return passwordConfirmInput;
+    }
+
+    public WebElement getMyAccount() {
+        return myAccount;
     }
 }

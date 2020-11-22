@@ -2,6 +2,7 @@ package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
 //import jdk.javadoc.internal.doclets.formats.html.markup.Head;
+import com.opencart.pages.LoginPage;
 import org.testng.Assert;
 
 public class HeaderPageBL {
@@ -45,9 +46,9 @@ public class HeaderPageBL {
      *
      * @return HeaderPageBL
      */
-    public HeaderPageBL clickOnLoginButton() {
+    public LoginPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
-        return this;
+        return new LoginPageBL();
     }
 
     public RegisterPageBL clickOnRegisterButton() {
