@@ -11,21 +11,21 @@ public class LoginModelRepository {
 
     public static LoginModel getValidLoginModel() {
         return LoginModel.getBuilder()
-                .email(loginModel.getEmail())
-                .password(loginModel.getPassword())
+                .email("dfghszdfgh@gmail.com")
+                .password("dfghszdfgh")
                 .build();
     }
 
     public static LoginModel getLoginModelWithoutEmail() {
         return LoginModel.getBuilder()
                 .email("")
-                .password(loginModel.getPassword())
+                .password("dfghszdfgh")
                 .build();
     }
 
     public static LoginModel getLoginWithoutPassword() {
         return LoginModel.getBuilder()
-                .email(loginModel.getEmail())
+                .email("dfghszdfgh@gmail.com")
                 .password("")
                 .build();
     }
@@ -47,7 +47,7 @@ public class LoginModelRepository {
     public static LoginModel getLoginWithNewEmail() {
         return LoginModel.getBuilder()
                 .email("newEmail@gmail.com")
-                .password(loginModel.getPassword())
+                .password("dfghszdfgh")
                 .build();
     }
 }

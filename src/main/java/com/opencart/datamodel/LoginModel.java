@@ -3,13 +3,15 @@ package com.opencart.datamodel;
 
 public class LoginModel {
 
-    private String email = "dfghszdfgh@gmail.com";
-    private String password = "dfghszdfgh";
+    private String email;
+    private String password;
 
     public LoginModel() {
     }
 
-    public static LoginModel.Builder getBuilder() { return new LoginModel().new Builder(); }
+    public static LoginModel.Builder getBuilder() {
+        return new LoginModel().new Builder();
+    }
 
     public class Builder {
         public LoginModel.Builder email(String value) {
