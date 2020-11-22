@@ -1,12 +1,12 @@
 package com.opencart.steps;
 
 import com.opencart.containers.ProductContainer;
-import com.opencart.datamodel.CurrencyModel;
 import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.SearchResultPage;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class MainPageBL {
 
@@ -21,11 +21,11 @@ public class MainPageBL {
      * @param currencyName is name of Currency that needs to be checked.
      */
 
-    public void verifyAllProductsPrices(String currencyName) {
+    public void verifyAllProductsPrices(Map<String, String> currencies, String currencyName) {
         List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
         for (ProductContainer container
                 : productContainers) {
-            verifyProductPrice(container, currencyName);
+            verifyProductPrice(container, currencies, currencyName);
         }
     }
 
@@ -35,10 +35,9 @@ public class MainPageBL {
      * @param container    is Container for Products where price needs to be checked;
      * @param currencyName is name of Currency that needs to be checked.
      */
-    private void verifyProductPrice(ProductContainer container, String currencyName) {
+    private void verifyProductPrice(ProductContainer container, Map<String, String> currencies, String currencyName) {
         new ProductModel();
-//        new CurrencyModel();
-        Double expectedPrice = getExpectedPrice(container, currencyName);
+        Double expectedPrice = getExpectedPrice(container, currencies, currencyName);
         String expectedPriceString;
         if (expectedPrice > 1000) {
             expectedPriceString = String.format("%,3.0f", expectedPrice);
@@ -57,12 +56,11 @@ public class MainPageBL {
      *
      * @param container    is Container for Products where price needs to be checked;
      * @param currencyName is name of Currency that needs to be checked.
-     *
      * @return double expected price for Product in Container.
      */
-    private double getExpectedPrice(ProductContainer container, String currencyName) {
+    private double getExpectedPrice(ProductContainer container, Map<String, String> currencies, String currencyName) {
         return ProductModel.getProductPriceInUSD(container.getName()) *
-                Double.parseDouble(CurrencyModel.getCurrencyValue(currencyName));
+                Double.parseDouble(new AdminCurrencyPageBL().getCurrencyValue(currencies, currencyName));
     }
 }
 

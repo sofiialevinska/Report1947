@@ -7,8 +7,8 @@ import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -16,14 +16,11 @@ import java.util.Map;
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
 
-/**
- * Test checks if the cost in EUR, USD, GBP, UAH of all products on the website's main page is correct"
- */
-public class ChangeCurrencyTest extends BaseTest {
+public class CheckNewCurrencyTest extends BaseTest {
     private Map<String, String> currencies;
 
     @BeforeClass
-    public void getCurrenciesValuesFromAdminPage() {
+    public void setNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
         new AdminDashboardBL()
@@ -31,23 +28,34 @@ public class ChangeCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("System")
                 .clickOnLeftNavigationPanelButton("Localisation")
                 .clickOnLeftNavigationPanelButton("Currencies");
-        currencies = new AdminCurrencyPageBL().getCurrencyValues();
+        AdminCurrencyPageBL adminCurrencyPageBL = new AdminCurrencyPageBL()
+                .clickOnAddNewCurrencyButton()
+                .addNewCurrency("UAH", "28.22");
+        currencies = adminCurrencyPageBL.getCurrencyValues();
     }
 
-    @DataProvider(name = "data-provider-currency")
-    public Object[][] dataProviderMethod() {
-        return new Object[][]{{CurrencyName.EUR.getValue()}, {CurrencyName.USD.getValue()},
-                {CurrencyName.GBP.getValue()}};
-    }
-
-    @Test(dataProvider = "data-provider-currency")
-    public void ChangeCurrencyTest(String data) {
+    @Test
+    public void checkNewCurrencyTest() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         MainPageBL mainPageBL = new MainPageBL();
         mainPageBL
                 .getHeaderPageBL()
                 .clickOnChangeCurrencyButton()
-                .clickOnCurrencyButton(data);
-        mainPageBL.verifyAllProductsPrices(currencies, data);
+                .clickOnCurrencyButton(CurrencyName.UAH.getValue());
+        mainPageBL.verifyAllProductsPrices(currencies, CurrencyName.UAH.getValue());
+    }
+
+    @AfterClass
+    public void deleteNewCurrencyTest() {
+        new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
+        new AdminLoginPageBL().adminLogin();
+        new AdminDashboardBL()
+                .getAdminLeftNavigationPanelPageBL()
+                .clickOnLeftNavigationPanelButton("System")
+                .clickOnLeftNavigationPanelButton("Localisation")
+                .clickOnLeftNavigationPanelButton("Currencies");
+        new AdminCurrencyPageBL()
+                .deleteCurrency("UAH")
+                .verifySuccessCurrencyEdit();
     }
 }

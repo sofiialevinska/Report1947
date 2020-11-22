@@ -21,8 +21,8 @@ public class SetNewCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Currencies");
         new AdminCurrencyPageBL()
                 .clickOnAddNewCurrencyButton()
-                .addNewCurrency()
-                .deleteNewCurrency()
+                .addNewCurrency("UAH", "28.22")
+                .deleteCurrency("UAH")
                 .verifySuccessCurrencyEdit();
     }
 }

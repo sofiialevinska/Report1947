@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,8 +68,8 @@ public class AdminCurrencyPage extends BasePage {
         return inputValue;
     }
 
-    public WebElement getStatusEnabled(int yesNo) {
-        return driver.findElement(By.cssSelector("#input-status [value = '" + yesNo + "']"));
+    public Select getStatusEnabled(int yesNo) {
+        return new Select(driver.findElement(By.id("input-status")));
     }
 
     public WebElement getSaveNewCurrency() {
