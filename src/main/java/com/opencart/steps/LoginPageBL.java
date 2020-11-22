@@ -36,7 +36,7 @@ public class LoginPageBL {
      */
     public LoginPageBL loginWithNewEmail() {
         LoginModel loginModel = new LoginModel();
-        inputEmail(loginModel.getNewEmail());
+        inputEmail("newEmail@gmail.com");
         inputPassword(loginModel.getPassword());
         clickOnLoginButton();
 
