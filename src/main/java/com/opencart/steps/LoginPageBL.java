@@ -34,15 +34,6 @@ public class LoginPageBL {
      *
      * @return LoginPageBL
      */
-    public LoginPageBL loginWithNewEmail() {
-        LoginModel loginModel = new LoginModel();
-        inputEmail("newEmail@gmail.com");
-        inputPassword(loginModel.getPassword());
-        clickOnLoginButton();
-
-        accountDashboard = new AccountDashboard();
-        return this;
-    }
 
     public LoginPageBL userLogin(LoginModel loginModel) {
         inputEmail(loginModel.getEmail());

@@ -43,4 +43,11 @@ public class LoginModelRepository {
                 .password("")
                 .build();
     }
+
+    public static LoginModel getLoginWithNewEmail() {
+        return LoginModel.getBuilder()
+                .email("newEmail@gmail.com")
+                .password(loginModel.getPassword())
+                .build();
+    }
 }
