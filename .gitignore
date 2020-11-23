@@ -11,3 +11,5 @@ work/
 .allure
 .classpath
 .project
+!**/driver/
+!**/navigation/
