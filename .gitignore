@@ -1,4 +1,4 @@
-/src/
+/src/test/java/
 *.iml
 *.xml
 *.log
@@ -13,5 +13,4 @@ work/
 .allure
 .classpath
 .project
-!**/driver/
-!**/navigation/
+
