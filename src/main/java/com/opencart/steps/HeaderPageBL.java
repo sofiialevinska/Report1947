@@ -1,12 +1,6 @@
 package com.opencart.steps;
 
-import com.opencart.containers.ProductContainer;
-import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.HeaderPage;
-import com.opencart.pages.SearchResultPage;
-import org.testng.Assert;
-
-import java.util.List;
 
 public class HeaderPageBL {
     private final HeaderPage headerPage;
@@ -42,11 +36,6 @@ public class HeaderPageBL {
     public HeaderPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
         return this;
-    }
-
-    public RegisterPageBL clickOnRegisterButton() {
-        headerPage.getRegisterButton().click();
-        return new RegisterPageBL();
     }
 
     public HeaderPageBL clickOnChangeCurrencyButton() {

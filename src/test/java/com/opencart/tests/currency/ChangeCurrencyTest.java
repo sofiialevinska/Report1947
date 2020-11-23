@@ -33,13 +33,6 @@ public class ChangeCurrencyTest extends BaseTest {
             "for currencies that are presented on admin page")
     public void ChangeCurrencyTest() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
-        currencies.forEach((name, value) -> {
-            mainPageBL
-                    .getHeaderPageBL()
-                    .clickOnChangeCurrencyButton()
-                    .clickOnCurrencyButton(name);
-            mainPageBL.verifyAllProductsPrices(name, value);
-        });
+        new MainPageBL().verifyAllProductsPrices(currencies);
     }
 }
