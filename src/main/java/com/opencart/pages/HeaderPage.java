@@ -42,28 +42,25 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
-    @FindBy(css = "i[class=\"fa fa-heart\"] + .hidden-xs.hidden-sm.hidden-md")
+    @FindBy(css = "i[class='fa fa-heart'] + .hidden-xs.hidden-sm.hidden-md")
     private WebElement wishListButton;
 
     @FindBy(css = "button[onclick=\"wishlist.add('43');\"]")
     private WebElement macbookWishListButton;
 
-    /**
-     * Method gets My Account Button that is located in the website's header
-     *
-     * @return WebElement My Account Button that is located in the website's header
-     */
+    @FindBy(css = "div.alert.alert-success.alert-dismissible")
+    private WebElement successMessage;
+
 
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
     }
 
-    /**
-     * Method gets Login Button that is located in the website's header
-     *
-     * @return WebElement Login Button that is located in the website's header
-     */
+    public WebElement getSuccessMessage() {
+        wait.until(ExpectedConditions.visibilityOf(successMessage));
+        return successMessage;
+    }
 
     public WebElement getLoginButton() {
         wait.until(ExpectedConditions.visibilityOf(loginButton));
@@ -83,13 +80,6 @@ public class HeaderPage extends BasePage {
     public WebElement getWishListButton() {
         return wishListButton;
     }
-
-    /**
-     * Method gets specified Currency Button from the Website's header
-     *
-     * @param currencyName is a name Currency Button method needs to find
-     * @return WebElement Currency Button of specified currency
-     */
 
     public WebElement getCurrencyButton(String currencyName) {
         switch (currencyName.toLowerCase()) {
@@ -111,12 +101,6 @@ public class HeaderPage extends BasePage {
             }
         }
     }
-
-    /**
-     * Method gets MacBook Cost
-     *
-     * @return WebElement text that contains MacBook Cost
-     */
 
     public WebElement getMacBookCost() {
         wait.until(ExpectedConditions.visibilityOf(macBookCost));

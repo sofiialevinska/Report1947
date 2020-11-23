@@ -23,6 +23,13 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#input-password + a")
     private WebElement forgottenButton;
 
+    @FindBy(css = "#logo a")
+    private WebElement yourStoreButton;
+
+    public WebElement getYourStoreButton() {
+        return yourStoreButton;
+    }
+
     public WebElement getEmailInput() {
         return emailInput;
     }

@@ -1,7 +1,6 @@
 package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
-//import jdk.javadoc.internal.doclets.formats.html.markup.Head;
 import com.opencart.pages.LoginPage;
 import org.testng.Assert;
 
@@ -31,21 +30,11 @@ public class HeaderPageBL {
         headerPage.getSearchInput().sendKeys(search);
     }
 
-    /**
-     * Method clicks on My Account button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnMyAccountButton() {
         headerPage.getMyAccountButton().click();
         return this;
     }
 
-    /**
-     * Method clicks on Login button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public LoginPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
         return new LoginPageBL();
@@ -56,34 +45,16 @@ public class HeaderPageBL {
         return new RegisterPageBL();
     }
 
-
-    /**
-     * Method clicks on Change Currency button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
     }
 
-    /**
-     * Method clicks on specified currency button that is located in website's header.
-     *
-     * @param currencyName is a name of Currency, which button needs to be clicked.
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnCurrencyButton(String currencyName) {
         headerPage.getCurrencyButton(currencyName).click();
         return this;
     }
 
-    /**
-     * Method checks if MacBook Cost in specified currency is correct.
-     *
-     * @param currencyName is a name of Currency that needs to be checked.
-     * @return HeaderPageBL
-     */
     public HeaderPageBL verifyMacBookCost(String currencyName) {
         String expectedCost = null;
         switch (currencyName.toLowerCase()) {
@@ -104,19 +75,14 @@ public class HeaderPageBL {
         return this;
     }
 
-    /**
-     * Method clicks on Logout button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
         return this;
     }
 
-    public HeaderPageBL clickOnWishListButton() {
+    public WishListPageBL clickOnWishListButton() {
         headerPage.getWishListButton().click();
-        return this;
+        return new WishListPageBL();
     }
 
     public HeaderPageBL clickOnMacbookWishListButton() {
@@ -124,9 +90,16 @@ public class HeaderPageBL {
         return this;
     }
 
-    public void verifyAddingMacbookToWishList() {
-        String expected = "Wish List (1)";
-        Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
+    public void verifyAddingMacbookToWishListWithoutLogin() {
+        String expected = "You must login or create an account to save MacBook to your wish list!";
+        String actual = headerPage.getSuccessMessage().getText().replaceAll("×", " ").trim();
+        Assert.assertEquals(actual, expected, "You are logged In!");
+    }
+
+    public void verifyAddingMacbookInWishListWithLogin() {
+        String expected = "Success: You have added MacBook to your wish list!";
+        String actual = headerPage.getSuccessMessage().getText().replaceAll("×", " ").trim();
+        Assert.assertEquals(actual, expected, "You are not logged in!");
     }
 
     public SearchResultPageBL getSearchResultPageBL() {
