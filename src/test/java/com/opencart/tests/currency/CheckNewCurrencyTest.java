@@ -1,6 +1,5 @@
 package com.opencart.tests.currency;
 
-import com.opencart.enums.CurrencyName;
 import com.opencart.navigation.Navigation;
 import com.opencart.steps.AdminCurrencyPageBL;
 import com.opencart.steps.AdminDashboardBL;
@@ -11,13 +10,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Map;
-
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
 
 public class CheckNewCurrencyTest extends BaseTest {
-    private Map<String, String> currencies;
+    private final String newCurrencyName = "UAH";
+    private final String newCurrencyValue = "28.22";
 
     @BeforeClass
     public void setNewCurrencyTest() {
@@ -28,10 +26,9 @@ public class CheckNewCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("System")
                 .clickOnLeftNavigationPanelButton("Localisation")
                 .clickOnLeftNavigationPanelButton("Currencies");
-        AdminCurrencyPageBL adminCurrencyPageBL = new AdminCurrencyPageBL()
+        new AdminCurrencyPageBL()
                 .clickOnAddNewCurrencyButton()
-                .addNewCurrency("UAH", "28.22");
-        currencies = adminCurrencyPageBL.getCurrencyValues();
+                .addNewCurrency(newCurrencyName, newCurrencyValue);
     }
 
     @Test
@@ -41,8 +38,8 @@ public class CheckNewCurrencyTest extends BaseTest {
         mainPageBL
                 .getHeaderPageBL()
                 .clickOnChangeCurrencyButton()
-                .clickOnCurrencyButton(CurrencyName.UAH.getValue());
-        mainPageBL.verifyAllProductsPrices(currencies, CurrencyName.UAH.getValue());
+                .clickOnCurrencyButton(newCurrencyName);
+        mainPageBL.verifyAllProductsPrices(newCurrencyName, newCurrencyValue);
     }
 
     @AfterClass
@@ -55,7 +52,7 @@ public class CheckNewCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Localisation")
                 .clickOnLeftNavigationPanelButton("Currencies");
         new AdminCurrencyPageBL()
-                .deleteCurrency("UAH")
+                .deleteCurrency(newCurrencyName)
                 .verifySuccessCurrencyEdit();
     }
 }

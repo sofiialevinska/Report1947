@@ -10,6 +10,9 @@ import org.testng.annotations.Test;
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 
 public class SetNewCurrencyTest extends BaseTest {
+    private final String newCurrencyName = "UAH";
+    private final String newCurrencyValue = "28.22";
+
     @Test
     public void setNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
@@ -21,8 +24,8 @@ public class SetNewCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Currencies");
         new AdminCurrencyPageBL()
                 .clickOnAddNewCurrencyButton()
-                .addNewCurrency("UAH", "28.22")
-                .deleteCurrency("UAH")
+                .addNewCurrency(newCurrencyName, newCurrencyValue)
+                .deleteCurrency(newCurrencyName)
                 .verifySuccessCurrencyEdit();
     }
 }

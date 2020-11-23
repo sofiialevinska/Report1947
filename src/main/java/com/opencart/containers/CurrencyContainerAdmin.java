@@ -11,7 +11,7 @@ public class CurrencyContainerAdmin {
     }
 
     public String getCurrencyCode() {
-        return this.webElement.findElement(By.cssSelector("tr td:nth-child(3)")).getText().toLowerCase();
+        return this.webElement.findElement(By.cssSelector("tr td:nth-child(3)")).getText();
     }
 
     public String getCurrencyValue() {

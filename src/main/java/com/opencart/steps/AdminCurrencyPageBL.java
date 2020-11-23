@@ -11,24 +11,21 @@ import java.util.Map;
 
 public class AdminCurrencyPageBL {
     private final AdminCurrencyPage adminCurrencyPage;
-    private Map<String, String> currencyValuesMap;
 
     public AdminCurrencyPageBL() {
         adminCurrencyPage = new AdminCurrencyPage();
     }
 
     public Map<String, String> getCurrencyValues() {
-        currencyValuesMap = new HashMap<String, String>();
+        Map<String, String> currencyValuesMap = new HashMap<>();
         List<CurrencyContainerAdmin> currencyContainersAdmin = new AdminCurrencyPage().getCurrencyContainersAdmin();
         for (CurrencyContainerAdmin container
                 : currencyContainersAdmin) {
-            currencyValuesMap.put(container.getCurrencyCode(), container.getCurrencyValue());
+            if (container.getCurrencyCode().length() == 3) {
+                currencyValuesMap.put(container.getCurrencyCode(), container.getCurrencyValue());
+            }
         }
         return currencyValuesMap;
-    }
-
-    public String getCurrencyValue(Map<String, String> currencies, String currencyCode) {
-        return currencies.get(currencyCode.toLowerCase());
     }
 
     public AdminCurrencyPageBL clickOnAddNewCurrencyButton() {
@@ -86,7 +83,7 @@ public class AdminCurrencyPageBL {
         List<CurrencyContainerAdmin> currencyContainersAdmin = new AdminCurrencyPage().getCurrencyContainersAdmin();
         for (CurrencyContainerAdmin container
                 : currencyContainersAdmin) {
-            if (container.getCurrencyCode().equals(currencyName.toLowerCase())) {
+            if (container.getCurrencyCode().equals(currencyName)) {
                 new DriverUtils().clickOnElementJS(container.getCurrencyCheckbox());
                 break;
             }
