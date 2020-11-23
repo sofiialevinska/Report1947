@@ -1,6 +1,4 @@
-/src/test/java/
 *.iml
-*.xml
 *.log
 .idea
 **/target/
@@ -13,4 +11,3 @@ work/
 .allure
 .classpath
 .project
-
