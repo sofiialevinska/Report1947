@@ -1,14 +1,13 @@
 *.iml
-*.xml
 *.log
 .idea
 **/target/
 **/out/
-_mac/
-.settings/
 .gradle
+**/build/
 derby.log
+work/
+.settings/
 .allure
 .classpath
 .project
-
