@@ -28,14 +28,15 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
+    @FindBy(css = "i[class=\"fa fa-heart\"] + .hidden-xs.hidden-sm.hidden-md")
+    private WebElement wishListButton;
+
+    @FindBy(css = "button[onclick=\"wishlist.add('43');\"]")
+    private WebElement macbookWishListButton;
+
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
-    }
-
-    public WebElement getRegisterButton() {
-        wait.until(ExpectedConditions.visibilityOf(registerButton));
-        return registerButton;
     }
 
     public WebElement getLoginButton() {
@@ -56,11 +57,24 @@ public class HeaderPage extends BasePage {
         return driver.findElement(By.xpath(".//*[@name='" + currencyName + "']"));
     }
 
+    public WebElement getRegisterButton() {
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        return registerButton;
+    }
+
+    public WebElement getWishListButton() {
+        return wishListButton;
+    }
+
     public WebElement getSearchButton() {
         return searchButton;
     }
 
     public WebElement getSearchInput() {
         return searchInput;
+    }
+
+    public WebElement getMacbookWishListButton() {
+        return macbookWishListButton;
     }
 }

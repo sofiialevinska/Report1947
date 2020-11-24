@@ -33,9 +33,9 @@ public class HeaderPageBL {
         return this;
     }
 
-    public HeaderPageBL clickOnLoginButton() {
+    public LoginPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
-        return this;
+        return new LoginPageBL();
     }
 
     public HeaderPageBL clickOnChangeCurrencyButton() {
@@ -57,5 +57,20 @@ public class HeaderPageBL {
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
         return this;
+    }
+
+    public HeaderPageBL clickOnWishListButton() {
+        headerPage.getWishListButton().click();
+        return this;
+    }
+
+    public HeaderPageBL clickOnMacbookWishListButton() {
+        headerPage.getMacbookWishListButton().click();
+        return this;
+    }
+
+    public void verifyAddingMacbookToWishList() {
+        String expected = "Wish List (1)";
+        Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
     }
 }

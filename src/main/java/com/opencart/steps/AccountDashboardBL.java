@@ -18,7 +18,7 @@ public class AccountDashboardBL {
      */
     public AccountDashboardBL setNewName() {
         LoginModel loginModel = new LoginModel();
-        inputNewFirstName(loginModel.getNewFirstName());
+        inputNewFirstName("NewFirstName");
         clickOnContinueButton();
         return this;
     }
@@ -30,7 +30,7 @@ public class AccountDashboardBL {
      */
     public AccountDashboardBL setNewEmail() {
         LoginModel loginModel = new LoginModel();
-        inputEmail(loginModel.getNewEmail());
+        inputEmail("newEmail@gmail.com");
         clickOnContinueButton();
         return this;
     }
@@ -54,7 +54,7 @@ public class AccountDashboardBL {
      */
     public AccountDashboardBL setNewPassword() {
         LoginModel loginModel = new LoginModel();
-        inputPassword(loginModel.getNewPassword());
+        inputPassword("newPassword");
         clickOnContinueButton();
         return this;
     }

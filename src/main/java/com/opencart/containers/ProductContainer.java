@@ -3,9 +3,11 @@ package com.opencart.containers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import javax.print.DocFlavor;
+
 public class ProductContainer {
 
-    private final WebElement webElement;
+    private WebElement webElement;
 
     public ProductContainer(WebElement webElement) {
         this.webElement = webElement;
@@ -28,14 +30,14 @@ public class ProductContainer {
     }
 
     public WebElement getShoppingCartButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-shopping-cart"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-shopping-cart"));
     }
 
     public WebElement getWishListButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-heart"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-heart"));
     }
 
     public WebElement getCompareButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-exchange"));
+        return this.webElement.findElement(By.cssSelector("button > i.fa.fa-exchange"));
     }
 }
