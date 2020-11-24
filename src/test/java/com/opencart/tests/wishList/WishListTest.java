@@ -38,4 +38,37 @@ public class WishListTest extends BaseTest {
         headerPageBL.clickOnMacbookWishListButton()
                 .verifyAddingMacbookInWishListWithLogin();
     }
+
+    @Test
+    public void deleteProductFromWishList() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getValidLoginModel();
+        mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnLoginButton()
+                .userLogin(loginModel)
+                .clickOnYourStoreButton()
+                .clickOnMacbookWishListButton()
+                .clickOnWishListButton()
+                .clickOnRemoveButton()
+                .verifyDeletingFromWishList();
+    }
+
+    @Test
+    public void addProductToShoppingCart() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        LoginModel loginModel = LoginModelRepository.getValidLoginModel();
+        mainPageBL.getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnLoginButton()
+                .userLogin(loginModel)
+                .clickOnYourStoreButton()
+                .clickOnMacbookWishListButton()
+                .clickOnWishListButton()
+                .clickOnAddToCartButton()
+                .verifyAddingToShoppingCart();
+    }
+
 }
