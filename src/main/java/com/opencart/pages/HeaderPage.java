@@ -51,7 +51,6 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "div.alert.alert-success.alert-dismissible")
     private WebElement successMessage;
 
-
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
@@ -78,6 +77,7 @@ public class HeaderPage extends BasePage {
     }
 
     public WebElement getWishListButton() {
+        wait.until(ExpectedConditions.visibilityOf(wishListButton));
         return wishListButton;
     }
 
@@ -120,6 +120,7 @@ public class HeaderPage extends BasePage {
     }
 
     public WebElement getMacbookWishListButton() {
+        wait.until(ExpectedConditions.visibilityOf(macbookWishListButton));
         return macbookWishListButton;
     }
 }

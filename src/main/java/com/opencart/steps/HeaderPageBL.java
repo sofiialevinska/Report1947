@@ -2,9 +2,11 @@ package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
 import com.opencart.pages.LoginPage;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class HeaderPageBL {
+
     private HeaderPage headerPage;
 
     public HeaderPageBL() {
@@ -100,6 +102,13 @@ public class HeaderPageBL {
         String expected = "Success: You have added MacBook to your wish list!";
         String actual = headerPage.getSuccessMessage().getText().replaceAll("×", " ").trim();
         Assert.assertEquals(actual, expected, "You are not logged in!");
+    }
+
+    public void verifyChangingOfValueInWishList() {
+        String expected = "Wish List (1)";
+        String actual = headerPage.getWishListButton().getText()
+                .replaceAll("×", " ").trim();
+        Assert.assertEquals(actual, expected, "You didn't add anything in wish list");
     }
 
     public SearchResultPageBL getSearchResultPageBL() {

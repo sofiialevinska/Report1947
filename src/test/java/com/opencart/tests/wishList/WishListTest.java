@@ -69,6 +69,23 @@ public class WishListTest extends BaseTest {
                 .clickOnWishListButton()
                 .clickOnAddToCartButton()
                 .verifyAddingToShoppingCart();
+        new WishListPageBL().clickOnRemoveButton();
     }
 
+    @Test
+    public void checkWishListValueAfterAddingInWishList() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        HeaderPageBL headerPageBL = new HeaderPageBL();
+        mainPageBL.getHeaderPageBL()
+                .clickOnMacbookWishListButton();
+        headerPageBL.verifyChangingOfValueInWishList();
+    }
+
+    @Test
+    public void addAllProductsFromMainPageToWishList() {
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        MainPageBL mainPageBL = new MainPageBL();
+        HeaderPageBL headerPageBL = new HeaderPageBL();
+    }
 }
