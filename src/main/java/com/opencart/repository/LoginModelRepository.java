@@ -50,4 +50,11 @@ public class LoginModelRepository {
                 .password("dfghszdfgh")
                 .build();
     }
+
+    public static LoginModel getLoginWithNewPassword() {
+        return LoginModel.getBuilder()
+                .email("dfghszdfgh@gmail.com")
+                .password("newPassword")
+                .build();
+    }
 }
