@@ -22,10 +22,8 @@ public class MainPageBL {
      *                   from the Admin Page.
      */
     public void verifyAllProductsPrices(Map<String, String> currencies) {
-        MainPageBL mainPageBL = new MainPageBL();
         currencies.forEach((currencyName, currencyValue) -> {
-            mainPageBL
-                    .getHeaderPageBL()
+            getHeaderPageBL()
                     .clickOnChangeCurrencyButton()
                     .clickOnCurrencyButton(currencyName);
             List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
