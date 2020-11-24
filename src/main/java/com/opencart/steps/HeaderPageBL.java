@@ -1,23 +1,18 @@
 package com.opencart.steps;
 
+import com.opencart.containers.ProductContainer;
+import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.HeaderPage;
-//import jdk.javadoc.internal.doclets.formats.html.markup.Head;
-import com.opencart.pages.LoginPage;
+import com.opencart.pages.SearchResultPage;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class HeaderPageBL {
-    private HeaderPage headerPage;
+    private final HeaderPage headerPage;
 
     public HeaderPageBL() {
         headerPage = new HeaderPage();
-    }
-
-    private void clickOnSearchInput() {
-        headerPage.getSearchInput().click();
-    }
-
-    private void clickOnSearchButton() {
-        headerPage.getSearchButton().click();
     }
 
     public void searchProduct(String product) {
@@ -26,26 +21,24 @@ public class HeaderPageBL {
         clickOnSearchButton();
     }
 
+    private void clickOnSearchInput() {
+        headerPage.getSearchInput().click();
+    }
+
     private void inputSearch(String search) {
         headerPage.getSearchInput().clear();
         headerPage.getSearchInput().sendKeys(search);
     }
 
-    /**
-     * Method clicks on My Account button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
+    private void clickOnSearchButton() {
+        headerPage.getSearchButton().click();
+    }
+
     public HeaderPageBL clickOnMyAccountButton() {
         headerPage.getMyAccountButton().click();
         return this;
     }
 
-    /**
-     * Method clicks on Login button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public LoginPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
         return new LoginPageBL();
@@ -56,12 +49,6 @@ public class HeaderPageBL {
         return new RegisterPageBL();
     }
 
-
-    /**
-     * Method clicks on Change Currency button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
@@ -78,37 +65,6 @@ public class HeaderPageBL {
         return this;
     }
 
-    /**
-     * Method checks if MacBook Cost in specified currency is correct.
-     *
-     * @param currencyName is a name of Currency that needs to be checked.
-     * @return HeaderPageBL
-     */
-    public HeaderPageBL verifyMacBookCost(String currencyName) {
-        String expectedCost = null;
-        switch (currencyName.toLowerCase()) {
-            case "eur":
-                expectedCost = "392.30€";
-                break;
-            case "usd":
-                expectedCost = "$500.00";
-                break;
-            case "gbp":
-                expectedCost = "£306.25";
-                break;
-            case "uah":
-                expectedCost = "14,110UAH";
-                break;
-        }
-        Assert.assertTrue(headerPage.getMacBookCost().getText().contains(expectedCost), "\nIncorrect MacBook cost in " + currencyName + ". Please try again.");
-        return this;
-    }
-
-    /**
-     * Method clicks on Logout button that is located in website's header.
-     *
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
         return this;
@@ -128,6 +84,4 @@ public class HeaderPageBL {
         String expected = "Wish List (1)";
         Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
     }
-
-
 }

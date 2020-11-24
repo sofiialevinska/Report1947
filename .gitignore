@@ -1,0 +1,15 @@
+*.iml
+*.log
+.idea
+**/target/
+**/out/
+.gradle
+**/build/
+derby.log
+work/
+.settings/
+.allure
+.classpath
+.project
+!**/driver/
+!**/navigation/

@@ -7,14 +7,18 @@ import org.openqa.selenium.WebElement;
 
 public class DriverUtils {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public DriverUtils() {
         driver = DriverRepository.DRIVERS.get();
     }
 
-    public void clickOnElementJS(WebElement webElement){
+    public void clickOnElementJS(WebElement webElement) {
         getJSExecutor().executeScript("arguments[0].click();", webElement);
+    }
+
+    public void acceptAlert() {
+        driver.switchTo().alert().accept();
     }
 
     private JavascriptExecutor getJSExecutor() {

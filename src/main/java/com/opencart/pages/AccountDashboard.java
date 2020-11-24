@@ -40,7 +40,9 @@ public class AccountDashboard extends BasePage {
         return firstNameInput;
     }
 
-    public WebElement getEmailInput() { return email; }
+    public WebElement getEmailInput() {
+        return email;
+    }
 
     public WebElement getContinueButton() {
         return continueButton;

@@ -24,5 +24,4 @@ public class DriverRepository {
     public static void closeBrowser() {
         webDriver.quit();
     }
-
 }

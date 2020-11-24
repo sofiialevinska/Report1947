@@ -27,8 +27,4 @@ public class ForgottenPasswordPageBL {
     private void clickOnContinueButton() {
         forgottenPasswordPage.getContinueButton().click();
     }
-
-    public LoginPageBL getLoginPageBL() {
-        return new LoginPageBL();
-    }
 }
