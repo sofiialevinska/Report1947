@@ -6,11 +6,32 @@ import com.opencart.pages.SearchResultPage;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class MainPageBL {
 
     public HeaderPageBL getHeaderPageBL() {
         return new HeaderPageBL();
+    }
+
+    /**
+     * Method finds all ProductContainers on the Page and checks
+     * if their Product Cost in specified currency is correct.
+     *
+     * @param currencies is a Map<String, String> with currencies Codes and Values that was read
+     *                   from the Admin Page.
+     */
+    public void verifyAllProductsPrices(Map<String, String> currencies) {
+        currencies.forEach((currencyName, currencyValue) -> {
+            getHeaderPageBL()
+                    .clickOnChangeCurrencyButton()
+                    .clickOnCurrencyButton(currencyName);
+            List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
+            for (ProductContainer container
+                    : productContainers) {
+                verifyProductPrice(container, currencyName, currencyValue);
+            }
+        });
     }
 
     /**
