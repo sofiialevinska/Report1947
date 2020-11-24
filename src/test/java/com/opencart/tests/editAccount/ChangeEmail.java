@@ -1,5 +1,7 @@
 package com.opencart.tests.editAccount;
 
+import com.opencart.datamodel.LoginModel;
+import com.opencart.repository.LoginModelRepository;
 import org.testng.annotations.Test;
 
 public class ChangeEmail extends LoginUsingValidData_Logout {
@@ -31,7 +33,8 @@ public class ChangeEmail extends LoginUsingValidData_Logout {
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton();
-        loginPageBL.loginWithNewEmail();
+        LoginModel loginModel = LoginModelRepository.getLoginWithNewEmail();
+        loginPageBL.userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditAccountButton()
                 .returnOldEmail()
