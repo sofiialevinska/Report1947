@@ -111,6 +111,14 @@ public class EditAccountTest extends BaseTest {
                 .verifyPasswordEdit();
     }
 
+    @Test (description = "Test changes subscription settings to opposite and verify the change")
+    public void changeSubscription () {
+        accountDashboardBL
+                .clickOnEditSubscriptionButton()
+                .chooseOtherSubscription()
+                .verifySubscriptionEdit();
+    }
+
     /**
      * Method @AfterMethod logout from user account.
      */

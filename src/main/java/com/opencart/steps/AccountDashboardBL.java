@@ -1,7 +1,8 @@
 package com.opencart.steps;
 
-import com.opencart.datamodel.LoginModel;
 import com.opencart.pages.AccountDashboard;
+import com.opencart.pages.RegisterPage;
+import com.opencart.util.DriverUtils;
 import org.testng.Assert;
 
 public class AccountDashboardBL {
@@ -146,5 +147,34 @@ public class AccountDashboardBL {
         String expectedMessage = "Success: Your password has been successfully updated.";
         Assert.assertEquals(accountDashboard.getSuccessMessage().getText(), expectedMessage, "\nSuccess message after editing Account information did not appear.");
         return this;
+    }
+
+    public AccountDashboardBL clickOnEditSubscriptionButton() {
+        accountDashboard.getEditNewsletterSubscriptionButton().click();
+        return this;
+    }
+
+    public AccountDashboardBL chooseOtherSubscription() {
+        int currentSubscriptionValue = findCurrentSubscription();
+        if (currentSubscriptionValue == 0) {
+            chooseSubscription(1);
+        } else if (currentSubscriptionValue == 1) {
+            chooseSubscription(0);
+        }
+        clickOnContinueButton();
+        return this;
+    }
+
+    private void chooseSubscription(int value) {
+        new DriverUtils().clickOnElementJS(new RegisterPage().getSubscribeRadioButton(value));
+    }
+
+    private int findCurrentSubscription() {
+        return Integer.parseInt(accountDashboard.getSubscribeOption().getAttribute("value"));
+    }
+
+    public void verifySubscriptionEdit() {
+        String expectedMessage = "Success: Your newsletter subscription has been successfully updated!";
+        Assert.assertEquals(accountDashboard.getSuccessMessage().getText(), expectedMessage, "\nSuccess message after editing Subscription settings did not appear.");
     }
 }

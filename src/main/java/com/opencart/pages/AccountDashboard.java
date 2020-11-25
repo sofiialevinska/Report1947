@@ -1,7 +1,9 @@
 package com.opencart.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountDashboard extends BasePage {
 
@@ -10,6 +12,9 @@ public class AccountDashboard extends BasePage {
 
     @FindBy(xpath = ".//*[contains (@href, 'account/password')]")
     private WebElement editPasswordButton;
+
+    @FindBy(xpath = ".//*[contains (@href, 'account/newsletter')]")
+    private WebElement editNewsletterSubscriptionButton;
 
     @FindBy(id = "input-password")
     private WebElement passwordChangeInput;
@@ -49,6 +54,7 @@ public class AccountDashboard extends BasePage {
     }
 
     public WebElement getSuccessMessage() {
+        wait.until(ExpectedConditions.visibilityOf(successMessage));
         return successMessage;
     }
 
@@ -66,5 +72,13 @@ public class AccountDashboard extends BasePage {
 
     public WebElement getMyAccount() {
         return myAccount;
+    }
+
+    public WebElement getEditNewsletterSubscriptionButton() {
+        return editNewsletterSubscriptionButton;
+    }
+
+    public WebElement getSubscribeOption () {
+        return driver.findElement(By.cssSelector("[checked='checked'"));
     }
 }
