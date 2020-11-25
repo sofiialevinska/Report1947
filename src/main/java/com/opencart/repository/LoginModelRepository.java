@@ -44,17 +44,17 @@ public class LoginModelRepository {
                 .build();
     }
 
-    public static LoginModel getLoginWithNewEmail() {
+    public static LoginModel getLoginWithNewEmail(String newEmail) {
         return LoginModel.getBuilder()
-                .email("newEmail@gmail.com")
+                .email(newEmail)
                 .password("dfghszdfgh")
                 .build();
     }
 
-    public static LoginModel getLoginWithNewPassword() {
+    public static LoginModel getLoginWithNewPassword(String newPassword) {
         return LoginModel.getBuilder()
                 .email("dfghszdfgh@gmail.com")
-                .password("newPassword")
+                .password(newPassword)
                 .build();
     }
 }

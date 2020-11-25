@@ -20,7 +20,9 @@ public class EditAccountTest extends BaseTest {
     private HeaderPageBL headerPageBL;
     private LoginPageBL loginPageBL;
     private AccountDashboardBL accountDashboardBL;
-    private LoginModel loginModel = LoginModelRepository.getValidLoginModel();
+    private LoginModel loginModel;
+    private final String newPassword = "newPassword";
+    private final String newEmail = "newemail@gmail.com";
 
     /**
      * Method @BeforeMethod login to user account using valid data.
@@ -31,6 +33,7 @@ public class EditAccountTest extends BaseTest {
         mainPageBL = new MainPageBL();
         headerPageBL = mainPageBL.getHeaderPageBL();
         accountDashboardBL = new AccountDashboardBL();
+        loginModel = LoginModelRepository.getValidLoginModel();
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
@@ -42,7 +45,7 @@ public class EditAccountTest extends BaseTest {
     public void changeUserEmailToNewToOld() {
         accountDashboardBL
                 .clickOnEditAccountButton()
-                .setNewEmail()
+                .setNewEmail(newEmail)
                 .verifyAccountEdit()
                 .clickOnEditAccountButton()
                 .returnOldEmail();
@@ -53,8 +56,9 @@ public class EditAccountTest extends BaseTest {
     public void changeUserEmailToNewLogoutLoginChangeUserEmailToOld() {
         accountDashboardBL
                 .clickOnEditAccountButton()
-                .setNewEmail()
+                .setNewEmail(newEmail)
                 .verifyAccountEdit();
+        loginModel = LoginModelRepository.getLoginWithNewEmail(newEmail);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
@@ -80,7 +84,7 @@ public class EditAccountTest extends BaseTest {
     public void changePassword() {
         accountDashboardBL
                 .clickOnEditPasswordButton()
-                .setNewPassword()
+                .setNewPassword(newPassword)
                 .verifyPasswordEdit()
                 .clickOnEditPasswordButton()
                 .returnOldPassword()
@@ -92,8 +96,9 @@ public class EditAccountTest extends BaseTest {
     public void changePasswordVerifyLogin() {
         accountDashboardBL
                 .clickOnEditPasswordButton()
-                .setNewPassword()
+                .setNewPassword(newPassword)
                 .verifyPasswordEdit();
+        loginModel = LoginModelRepository.getLoginWithNewPassword(newPassword);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
