@@ -4,8 +4,6 @@ import com.opencart.datamodel.LoginModel;
 
 public class LoginModelRepository {
 
-    private static LoginModel loginModel = new LoginModel();
-
     private LoginModelRepository() {
     }
 
@@ -41,20 +39,6 @@ public class LoginModelRepository {
         return LoginModel.getBuilder()
                 .email("")
                 .password("")
-                .build();
-    }
-
-    public static LoginModel getLoginWithNewEmail(String newEmail) {
-        return LoginModel.getBuilder()
-                .email(newEmail)
-                .password("dfghszdfgh")
-                .build();
-    }
-
-    public static LoginModel getLoginWithNewPassword(String newPassword) {
-        return LoginModel.getBuilder()
-                .email("dfghszdfgh@gmail.com")
-                .password(newPassword)
                 .build();
     }
 }

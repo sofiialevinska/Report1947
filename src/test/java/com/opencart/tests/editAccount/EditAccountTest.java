@@ -40,25 +40,15 @@ public class EditAccountTest extends BaseTest {
                 .userLogin(loginModel);
     }
 
-    @Test(description = "Test checks if customer can change email to newEmail, " +
-            "safe changes and change email to oldEmail")
-    public void changeUserEmailToNewToOld() {
-        accountDashboardBL
-                .clickOnEditAccountButton()
-                .setNewEmail(newEmail)
-                .verifyAccountEdit()
-                .clickOnEditAccountButton()
-                .returnOldEmail();
-    }
-
     @Test(description = "Test checks if customer can change email to newEmail, logout and login\n" +
             "with newEmail and change email to previousEmail")
-    public void changeUserEmailToNewLogoutLoginChangeUserEmailToOld() {
+    public void changeUserEmailVerifyLogin() {
         accountDashboardBL
                 .clickOnEditAccountButton()
                 .setNewEmail(newEmail)
                 .verifyAccountEdit();
-        loginModel = LoginModelRepository.getLoginWithNewEmail(newEmail);
+        loginModel = LoginModelRepository.getValidLoginModel ();
+        loginModel.setEmail(newEmail);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
@@ -71,26 +61,6 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
-    @Test(description = "Test checks if customer can change First Name to new First Name")
-    public void changeUserName() {
-        accountDashboardBL
-                .clickOnEditAccountButton()
-                .setNewName()
-                .verifyAccountEdit();
-    }
-
-    @Test(description = "Test checks if customer can change Password to new Password " +
-            "and change it back to previous Password")
-    public void changePassword() {
-        accountDashboardBL
-                .clickOnEditPasswordButton()
-                .setNewPassword(newPassword)
-                .verifyPasswordEdit()
-                .clickOnEditPasswordButton()
-                .returnOldPassword()
-                .verifyPasswordEdit();
-    }
-
     @Test(description = "Test checks if customer can change Password to newPassword, logout and\n" +
             "login with newPassword and change Password to previousPassword")
     public void changePasswordVerifyLogin() {
@@ -98,7 +68,8 @@ public class EditAccountTest extends BaseTest {
                 .clickOnEditPasswordButton()
                 .setNewPassword(newPassword)
                 .verifyPasswordEdit();
-        loginModel = LoginModelRepository.getLoginWithNewPassword(newPassword);
+        loginModel = LoginModelRepository.getValidLoginModel ();
+        loginModel.setPassword(newPassword);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
@@ -109,6 +80,14 @@ public class EditAccountTest extends BaseTest {
                 .clickOnEditPasswordButton()
                 .returnOldPassword()
                 .verifyPasswordEdit();
+    }
+
+    @Test(description = "Test checks if customer can change First Name to new First Name")
+    public void changeUserName() {
+        accountDashboardBL
+                .clickOnEditAccountButton()
+                .setNewName()
+                .verifyAccountEdit();
     }
 
     @Test (description = "Test changes subscription settings to opposite and verify the change")
