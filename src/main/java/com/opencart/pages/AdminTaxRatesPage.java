@@ -1,20 +1,14 @@
 package com.opencart.pages;
 
-import com.opencart.containers.CurrencyContainerAdmin;
 import com.opencart.containers.TaxRatesContainerAdmin;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class AdminTaxRatesPage extends BasePage{
-
-    @FindBy(css = "[data-original-title='Add New']")
-    WebElement addTaxRateButton;
 
     @FindBy(css = "[type='submit']")
     WebElement saveTaxRateChangesButton;
@@ -24,9 +18,6 @@ public class AdminTaxRatesPage extends BasePage{
 
     @FindBy(id = "input-rate")
     WebElement inputTaxRateValue;
-
-    @FindBy(css = "[data-original-title='Delete']")
-    WebElement deleteTaxRateButton;
 
     @FindBy(css = ".alert.alert-success")
     WebElement successTaxRateEditMessage;
@@ -46,11 +37,6 @@ public class AdminTaxRatesPage extends BasePage{
         return inputTaxRateName;
     }
 
-    public WebElement getAddTaxRateButton() {
-        wait.until(ExpectedConditions.visibilityOf(addTaxRateButton));
-        return addTaxRateButton;
-    }
-
     public WebElement getSaveTaxRateChangesButton() {
         return saveTaxRateChangesButton;
     }
@@ -58,10 +44,6 @@ public class AdminTaxRatesPage extends BasePage{
     public WebElement getInputTaxRateValue() {
         wait.until(ExpectedConditions.visibilityOf(inputTaxRateValue));
         return inputTaxRateValue;
-    }
-
-    public WebElement getDeleteTaxRateButton() {
-        return deleteTaxRateButton;
     }
 
     public WebElement getSuccessTaxRateEditMessage() {

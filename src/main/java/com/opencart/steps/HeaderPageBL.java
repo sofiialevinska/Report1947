@@ -1,6 +1,7 @@
 package com.opencart.steps;
 
 import com.opencart.pages.HeaderPage;
+import org.testng.Assert;
 
 public class HeaderPageBL {
     private final HeaderPage headerPage;
@@ -43,12 +44,6 @@ public class HeaderPageBL {
         return this;
     }
 
-    /**
-     * Method clicks on specified currency button that is located in website's header.
-     *
-     * @param currencyName is a name of Currency, which button needs to be clicked.
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnCurrencyButton(String currencyName) {
         headerPage.getCurrencyButton(currencyName).click();
         return this;
@@ -56,6 +51,44 @@ public class HeaderPageBL {
 
     public HeaderPageBL clickOnLogoutButton() {
         headerPage.getLogoutButton().click();
+        return this;
+    }
+
+    public HeaderPageBL clickOnMacbookAddToCartButton() {
+        headerPage.getMacbookAddToCartButton().click();
+        return this;
+    }
+
+    public HeaderPageBL clickOnShoppingCartButton() {
+        headerPage.getShoppingCartButton().click();
+        return this;
+    }
+
+    public HeaderPageBL verifyMacBookVatTaxRateName(String newVatTaxRateName, String newVatTaxRateValue) {
+        String expectedResult = String.valueOf(Double.parseDouble(headerPage.getProductPrice().getText().
+                replaceAll("\\D+", "")) * (Double.parseDouble(newVatTaxRateValue)) / 10000);
+        Assert.assertTrue(headerPage.getProductVatTaxRate().getText().contains(expectedResult),
+                "Vat Tax Rate Value of MacBook product in the shopping cart is incorrect");
+        Assert.assertEquals(headerPage.getProductVatTaxName().getText(), newVatTaxRateName,
+                "Vat Tax Rate Name in the shopping cart is incorrect");
+        return this;
+    }
+
+    public HeaderPageBL verifyMacBookEcoTaxRateName(String newEcoTaxRateName, String newEcoTaxRateValue) {
+        Assert.assertTrue(headerPage.getProductEcoTaxRate().getText().contains(newEcoTaxRateValue),
+                "Eco Tax Rate Value of MacBook product in the shopping cart is incorrect");
+        Assert.assertEquals(headerPage.getProductEcoTaxName().getText(), newEcoTaxRateName,
+                "Eco Tax Rate Name in the shopping cart is incorrect");
+        return this;
+    }
+
+    public HeaderPageBL verifyMacBookTotalPrice(String newVatTaxRateValue, String newEcoTaxRateValue) {
+        String expectedResult = String.valueOf(((Double.parseDouble(headerPage.getProductPrice().getText().
+                replaceAll("\\D+", "")) * Double.parseDouble(newVatTaxRateValue)) / 10000 +
+                Double.parseDouble(headerPage.getProductPrice().getText().replaceAll("\\D+", "")) / 100) +
+                Double.parseDouble(newEcoTaxRateValue));
+        Assert.assertTrue(headerPage.getProductTotalPrice().getText().contains(expectedResult),
+                "Total Price Value of MacBook product in the shopping cart is incorrect");
         return this;
     }
 }

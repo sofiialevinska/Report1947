@@ -28,6 +28,30 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
+    @FindBy(css = "button[onclick=\"cart.add('43');\"]")
+    private WebElement macbookAddToCartButton;
+
+    @FindBy (id = "cart-total")
+    private WebElement shoppingCartButton;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(3) .text-right:last-child")
+    private WebElement productVatTaxRate;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(3) .text-right:first-child strong")
+    private WebElement productVatTaxName;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(2) .text-right:last-child")
+    private WebElement productEcoTaxRate;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(2) .text-right:first-child strong")
+    private WebElement productEcoTaxName;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(1) .text-right:last-child")
+    private WebElement productPrice;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(4) .text-right:last-child")
+    private WebElement productTotalPrice;
+
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
@@ -62,5 +86,39 @@ public class HeaderPage extends BasePage {
 
     public WebElement getSearchInput() {
         return searchInput;
+    }
+
+    public WebElement getMacbookAddToCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(macbookAddToCartButton));
+        return macbookAddToCartButton;
+    }
+
+    public WebElement getShoppingCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
+        return shoppingCartButton;
+    }
+
+    public WebElement getProductVatTaxRate() {
+        return productVatTaxRate;
+    }
+
+    public WebElement getProductPrice() {
+        return productPrice;
+    }
+
+    public WebElement getProductVatTaxName() {
+        return productVatTaxName;
+    }
+
+    public WebElement getProductEcoTaxName() {
+        return productEcoTaxName;
+    }
+
+    public WebElement getProductEcoTaxRate() {
+        return productEcoTaxRate;
+    }
+
+    public WebElement getProductTotalPrice() {
+        return productTotalPrice;
     }
 }

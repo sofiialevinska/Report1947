@@ -21,8 +21,4 @@ public class TaxRatesContainerAdmin {
     public WebElement getEditTaxRateButton() {
         return this.webElement.findElement(By.cssSelector("tr td:nth-child(8)"));
     }
-
-    public WebElement getTaxRateCheckbox() {
-        return this.webElement.findElement(By.cssSelector("tr td:nth-child(1) input"));
-    }
 }

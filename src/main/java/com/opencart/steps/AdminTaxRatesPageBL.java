@@ -28,14 +28,15 @@ public class AdminTaxRatesPageBL {
         return taxRatesMap;
     }
 
-    public AdminTaxRatesPageBL editVatTaxRate (String newTaxRateName, String newTaxRate) {
-        clickOnEditTaxRateButton(newTaxRateName);
+    public AdminTaxRatesPageBL editVatTaxRate(String editVatTaxRateName, String newTaxRateName, String newTaxRate) {
+        clickOnEditTaxRateButton(editVatTaxRateName);
         inputTaxName(newTaxRateName);
         inputTaxRate(newTaxRate);
         clickOnSaveTaxRateButton();
+        return this;
     }
 
-    private void clickOnEditTaxRateButton (String taxRateName) {
+    private void clickOnEditTaxRateButton(String taxRateName) {
         List<TaxRatesContainerAdmin> taxRatesContainerAdmin = new AdminTaxRatesPage().getTaxRatesContainersAdmin();
         for (TaxRatesContainerAdmin container
                 : taxRatesContainerAdmin) {
@@ -46,41 +47,18 @@ public class AdminTaxRatesPageBL {
         }
     }
 
-    private void inputTaxName (String taxRateName){
+    private void inputTaxName(String taxRateName) {
         adminTaxRatesPage.getInputTaxRateName().clear();
         adminTaxRatesPage.getInputTaxRateName().sendKeys(taxRateName);
     }
 
-    private void inputTaxRate (String taxRateValue) {
+    private void inputTaxRate(String taxRateValue) {
         adminTaxRatesPage.getInputTaxRateValue().clear();
         adminTaxRatesPage.getInputTaxRateValue().sendKeys(taxRateValue);
     }
 
     private void clickOnSaveTaxRateButton() {
         adminTaxRatesPage.getSaveTaxRateChangesButton().click();
-    }
-
-    public AdminTaxRatesPageBL deleteTaxRate(String taxName) {
-        clickOnTaxRateCheckbox(taxName);
-        clickOnDeleteTaxRateButton();
-        verifySuccessTaxRateEdit();
-        return this;
-    }
-
-    private void clickOnTaxRateCheckbox(String taxName) {
-        List<TaxRatesContainerAdmin> taxRatesContainerAdmin = new AdminTaxRatesPage().getTaxRatesContainersAdmin();
-        for (TaxRatesContainerAdmin container
-                : taxRatesContainerAdmin) {
-            if (container.getTaxName().equals(taxName)) {
-                new DriverUtils().clickOnElementJS(container.getTaxRateCheckbox());
-                break;
-            }
-        }
-    }
-
-    private void clickOnDeleteTaxRateButton() {
-        adminTaxRatesPage.getDeleteTaxRateButton().click();
-        new DriverUtils().acceptAlert();
     }
 
     public AdminTaxRatesPageBL verifySuccessTaxRateEdit() {
