@@ -82,5 +82,37 @@ public class MainPageBL {
         return ProductModel.getProductPriceInUSD(container.getName()) *
                 Double.parseDouble(currencyValue);
     }
-}
 
+    /**
+     * Method verifies if TaxRates that are shown in the shopping cart
+     * for first two products on the Main page are correct.
+     *
+     * @param taxRates is a map with tax rate name and tax rate value.
+     */
+    public void verifyAllProductsTaxRates(Map<String, String> taxRates) {
+        List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
+        for (ProductContainer container
+                : productContainers) {
+            clickOnAddToCartButton(container);
+            getHeaderPageBL().clickOnShoppingCartButton();
+            taxRates.forEach((taxRateName, taxRateValue) -> {
+                getHeaderPageBL().verifyProductTaxRate(container, taxRateName, taxRateValue);
+            });
+            getHeaderPageBL()
+                    .verifyProductTotalPrice(taxRates)
+                    .clickOnDeleteFromShoppingCartButton();
+            if (container.getName().contains("iPhone")) {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Method clicks on Button that Adds Product in ProductContainer to the cart.
+     *
+     * @param container is Container for Products where price needs to be checked;
+     */
+    private void clickOnAddToCartButton(ProductContainer container) {
+        container.getShoppingCartButton().click();
+    }
+}

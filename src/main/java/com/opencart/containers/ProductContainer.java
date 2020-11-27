@@ -28,7 +28,7 @@ public class ProductContainer {
     }
 
     public WebElement getShoppingCartButton() {
-        return this.webElement.findElement(By.cssSelector("button > i.fa fa-shopping-cart"));
+        return this.webElement.findElement(By.cssSelector("[type='button'] .fa.fa-shopping-cart"));
     }
 
     public WebElement getWishListButton() {

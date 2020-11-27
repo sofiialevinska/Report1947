@@ -6,25 +6,19 @@ import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.AdminTaxRatesPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
 
 public class TaxRateTests extends BaseTest {
-    private final String newVatTaxRateValue = "30";
-    private final String newVatTaxRateName = "VAT (30%)";
-    private final String originalVatTaxRateValue = "20";
-    private final String originalVatTaxRateName = "VAT (20%)";
-    private final String newEcoTaxRateValue = "4";
-    private final String newEcoTaxRateName = "Eco Tax (-4.00)";
-    private final String originalEcoTaxRateValue = "2";
-    private final String originalEcoTaxRateName = "Eco Tax (-2.00)";
 
-    @BeforeClass
-    public void editTaxRates() {
+    @Test(description = "Test checks if the taxRates of all products on the website's main page " +
+            "equals Tax Rates that are set on the Admin Page")
+    public void checkAdminTaxRates() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
         new AdminDashboardBL()
@@ -33,29 +27,35 @@ public class TaxRateTests extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Localisation")
                 .clickOnLeftNavigationPanelButton("Taxes")
                 .clickOnLeftNavigationPanelButton("Tax Rates");
-        new AdminTaxRatesPageBL()
-                .editVatTaxRate(originalVatTaxRateName, newVatTaxRateName, newVatTaxRateValue)
-                .verifySuccessTaxRateEdit()
-                .editVatTaxRate(originalEcoTaxRateName, newEcoTaxRateName, newEcoTaxRateValue)
-                .verifySuccessTaxRateEdit();
-    }
-
-    @Test(description = "Test checks if the cost of all products on the website's main page is correct " +
-            "for new currencies that was set through admin page")
-    public void checkProductTaxRateTest() {
+        Map<String, String> taxRates = new AdminTaxRatesPageBL().getTaxRatesValues();
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
-        mainPageBL
-                .getHeaderPageBL()
-                .clickOnMacbookAddToCartButton()
-                .clickOnShoppingCartButton()
-                .verifyMacBookVatTaxRateName(newVatTaxRateName, newVatTaxRateValue)
-                .verifyMacBookEcoTaxRateName(newEcoTaxRateName,newEcoTaxRateValue)
-                .verifyMacBookTotalPrice(newVatTaxRateValue,newEcoTaxRateValue);
+        new MainPageBL().verifyAllProductsTaxRates(taxRates);
     }
 
-    @AfterClass
-    public void changeVatTaxRateToOriginalValue() {
+    @Test(description = "Test edits existing TaxRates through Admin Page and " +
+            "checks if the taxRates of all products on the website's main page is correct for new Tax Rates")
+    public void editTaxRatesCheckMain() {
+        new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
+        new AdminLoginPageBL().adminLogin();
+        new AdminDashboardBL()
+                .getAdminLeftNavigationPanelPageBL()
+                .clickOnLeftNavigationPanelButton("System")
+                .clickOnLeftNavigationPanelButton("Localisation")
+                .clickOnLeftNavigationPanelButton("Taxes")
+                .clickOnLeftNavigationPanelButton("Tax Rates");
+        Map<String, String> originalTaxRates = new AdminTaxRatesPageBL().getTaxRatesValues();
+        Map<String, String> newTaxRates = new HashMap<>();
+        String newVatTaxRateValue = "30";
+        String newVatTaxRateName = "VAT (30%)";
+        String newEcoTaxRateValue = "4";
+        String newEcoTaxRateName = "Eco Tax (-4.00)";
+        newTaxRates.put(newVatTaxRateName, newVatTaxRateValue);
+        newTaxRates.put(newEcoTaxRateName, newEcoTaxRateValue);
+        new AdminTaxRatesPageBL()
+                .editVatTaxRate(originalTaxRates, newTaxRates)
+                .verifySuccessTaxRateEdit();
+        new Navigation().navigateToURrl(BASE_URL.getValue());
+        new MainPageBL().verifyAllProductsTaxRates(newTaxRates);
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
         new AdminDashboardBL()
@@ -65,9 +65,7 @@ public class TaxRateTests extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Taxes")
                 .clickOnLeftNavigationPanelButton("Tax Rates");
         new AdminTaxRatesPageBL()
-                .editVatTaxRate(newVatTaxRateName, originalVatTaxRateName, originalVatTaxRateValue)
-                .verifySuccessTaxRateEdit()
-                .editVatTaxRate(newEcoTaxRateName, originalEcoTaxRateName, originalEcoTaxRateValue)
+                .editVatTaxRate(newTaxRates, originalTaxRates)
                 .verifySuccessTaxRateEdit();
     }
 }

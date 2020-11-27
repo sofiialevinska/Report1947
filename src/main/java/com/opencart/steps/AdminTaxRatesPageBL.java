@@ -2,7 +2,6 @@ package com.opencart.steps;
 
 import com.opencart.containers.TaxRatesContainerAdmin;
 import com.opencart.pages.AdminTaxRatesPage;
-import com.opencart.util.DriverUtils;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -28,11 +27,17 @@ public class AdminTaxRatesPageBL {
         return taxRatesMap;
     }
 
-    public AdminTaxRatesPageBL editVatTaxRate(String editVatTaxRateName, String newTaxRateName, String newTaxRate) {
-        clickOnEditTaxRateButton(editVatTaxRateName);
-        inputTaxName(newTaxRateName);
-        inputTaxRate(newTaxRate);
-        clickOnSaveTaxRateButton();
+    public AdminTaxRatesPageBL editVatTaxRate(Map<String, String> originalTaxRates, Map<String, String> newTaxRates) {
+        originalTaxRates.forEach((originalTaxRateName, originalTaxRateValue) -> {
+            clickOnEditTaxRateButton(originalTaxRateName);
+            newTaxRates.forEach((newTaxRateName, newTaxRateValue) -> {
+                if (newTaxRateName.contains(originalTaxRateName.substring(0, 3))) {
+                    inputTaxName(newTaxRateName);
+                    inputTaxRate(newTaxRateValue);
+                }
+            });
+            clickOnSaveTaxRateButton();
+        });
         return this;
     }
 

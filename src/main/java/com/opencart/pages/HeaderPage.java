@@ -28,9 +28,6 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
-    @FindBy(css = "button[onclick=\"cart.add('43');\"]")
-    private WebElement macbookAddToCartButton;
-
     @FindBy (id = "cart-total")
     private WebElement shoppingCartButton;
 
@@ -51,6 +48,9 @@ public class HeaderPage extends BasePage {
 
     @FindBy (css = ".table.table-bordered tr:nth-child(4) .text-right:last-child")
     private WebElement productTotalPrice;
+
+    @FindBy (css = "[title='Remove']")
+    private WebElement deleteFromShoppingCartButton;
 
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
@@ -88,11 +88,6 @@ public class HeaderPage extends BasePage {
         return searchInput;
     }
 
-    public WebElement getMacbookAddToCartButton() {
-        wait.until(ExpectedConditions.visibilityOf(macbookAddToCartButton));
-        return macbookAddToCartButton;
-    }
-
     public WebElement getShoppingCartButton() {
         wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
         return shoppingCartButton;
@@ -120,5 +115,9 @@ public class HeaderPage extends BasePage {
 
     public WebElement getProductTotalPrice() {
         return productTotalPrice;
+    }
+
+    public WebElement getDeleteFromShoppingCartButton() {
+        return deleteFromShoppingCartButton;
     }
 }
