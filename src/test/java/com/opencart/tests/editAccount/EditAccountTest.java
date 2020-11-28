@@ -24,10 +24,7 @@ public class EditAccountTest extends BaseTest {
     private final String newPassword = "newPassword";
     private final String newEmail = "newemail@gmail.com";
 
-    /**
-     * Method @BeforeMethod login to user account using valid data.
-     */
-    @BeforeMethod
+    @BeforeMethod (description = "Method logins to valid user account")
     public void loginUsingValidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         mainPageBL = new MainPageBL();
@@ -90,7 +87,7 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
-    @Test (description = "Test changes subscription settings to opposite and verify the change")
+    @Test (description = "Test checks if customer can change subscription settings to opposite and verify the change")
     public void changeSubscription () {
         accountDashboardBL
                 .clickOnEditSubscriptionButton()
@@ -98,10 +95,7 @@ public class EditAccountTest extends BaseTest {
                 .verifySubscriptionEdit();
     }
 
-    /**
-     * Method @AfterMethod logout from user account.
-     */
-    @AfterMethod
+    @AfterMethod (description = "Method logouts from user account")
     public void logout() {
         headerPageBL
                 .clickOnMyAccountButton()
