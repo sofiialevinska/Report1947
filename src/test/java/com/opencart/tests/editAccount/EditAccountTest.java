@@ -1,6 +1,8 @@
 package com.opencart.tests.editAccount;
 
+import com.opencart.datamodel.LoginModel;
 import com.opencart.navigation.Navigation;
+import com.opencart.repository.LoginModelRepository;
 import com.opencart.steps.AccountDashboardBL;
 import com.opencart.steps.HeaderPageBL;
 import com.opencart.steps.LoginPageBL;
@@ -18,6 +20,7 @@ public class EditAccountTest extends BaseTest {
     private HeaderPageBL headerPageBL;
     private LoginPageBL loginPageBL;
     private AccountDashboardBL accountDashboardBL;
+    private LoginModel loginModel = LoginModelRepository.getValidLoginModel();
 
     /**
      * Method @BeforeMethod login to user account using valid data.
@@ -27,13 +30,11 @@ public class EditAccountTest extends BaseTest {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         mainPageBL = new MainPageBL();
         headerPageBL = mainPageBL.getHeaderPageBL();
-        loginPageBL = new LoginPageBL();
         accountDashboardBL = new AccountDashboardBL();
         headerPageBL
                 .clickOnMyAccountButton()
-                .clickOnLoginButton();
-        loginPageBL
-                .login();
+                .clickOnLoginButton()
+                .userLogin(loginModel);
     }
 
     @Test(description = "Test checks if customer can change email to newEmail, " +
@@ -54,11 +55,12 @@ public class EditAccountTest extends BaseTest {
                 .clickOnEditAccountButton()
                 .setNewEmail()
                 .verifyAccountEdit();
-        headerPageBL.clickOnMyAccountButton()
+        headerPageBL
+                .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton();
-        loginPageBL.loginWithNewEmail();
+                .clickOnLoginButton()
+                .userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditAccountButton()
                 .returnOldEmail()
@@ -85,18 +87,19 @@ public class EditAccountTest extends BaseTest {
                 .verifyPasswordEdit();
     }
 
-    @Test(description = "Test checks if customer can change Password to newPassword, logout and login\n" +
-            "with newPassword and change Password to previousPassword")
+    @Test(description = "Test checks if customer can change Password to newPassword, logout and\n" +
+            "login with newPassword and change Password to previousPassword")
     public void changePasswordVerifyLogin() {
         accountDashboardBL
                 .clickOnEditPasswordButton()
                 .setNewPassword()
                 .verifyPasswordEdit();
-        headerPageBL.clickOnMyAccountButton()
+        headerPageBL
+                .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton();
-        loginPageBL.loginWithNewPassword();
+                .clickOnLoginButton()
+                .userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditPasswordButton()
                 .returnOldPassword()

@@ -14,6 +14,15 @@ public class LoginPage extends BasePage {
     @FindBy(css = "input.btn.btn-primary")
     private WebElement loginButton;
 
+    @FindBy(css = ".alert.alert-danger.alert-dismissible")
+    private WebElement warning;
+
+    @FindBy(css = ".alert.alert-success.alert-dismissible")
+    private WebElement successSentToEmail;
+
+    @FindBy(css = "#input-password + a")
+    private WebElement forgottenButton;
+
     public WebElement getEmailInput() {
         return emailInput;
     }
@@ -24,5 +33,17 @@ public class LoginPage extends BasePage {
 
     public WebElement getLoginButton() {
         return loginButton;
+    }
+
+    public WebElement getWarning() {
+        return warning;
+    }
+
+    public WebElement getSuccessSentToEmail() {
+        return successSentToEmail;
+    }
+
+    public WebElement getForgottenButton() {
+        return forgottenButton;
     }
 }

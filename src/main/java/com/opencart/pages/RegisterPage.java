@@ -30,8 +30,36 @@ public class RegisterPage extends BasePage {
     @FindBy(xpath = ".//*[@type='submit']")
     private WebElement continueButton;
 
+    @FindBy(css = ".alert.alert-danger.alert-dismissible")
+    private WebElement privacyPolicyWarning;
+
+    @FindBy(css = "#input-firstname + .text-danger")
+    private WebElement nameErrorText;
+
+    @FindBy(css = "#input-lastname + .text-danger")
+    private WebElement lastNameErrorText;
+
+    @FindBy(css = "#input-email + .text-danger")
+    private WebElement emailErrorText;
+
+    @FindBy(css = "#input-telephone + .text-danger")
+    private WebElement telephoneErrorText;
+
+    @FindBy(css = "#input-password + .text-danger")
+    private WebElement passwordErrorText;
+
+    @FindBy(css = "#input-confirm + .text-danger")
+    private WebElement confirmPasswordErrorText;
+
+    @FindBy(css = "div .text-danger")
+    private WebElement differentPasswordErrorText;
+
     public WebElement getSubscribeRadioButton(int value) {
         return driver.findElement(By.xpath("//*[@type = 'radio' and @value = '" + value + "']"));
+    }
+
+    public WebElement getDifferentPasswordErrorText() {
+        return differentPasswordErrorText;
     }
 
     public WebElement getEmailInput() {
@@ -64,5 +92,33 @@ public class RegisterPage extends BasePage {
 
     public WebElement getTelephoneInput() {
         return telephoneInput;
+    }
+
+    public WebElement getPrivacyPolicyWarning() {
+        return privacyPolicyWarning;
+    }
+
+    public WebElement getNameErrorText() {
+        return nameErrorText;
+    }
+
+    public WebElement getLastNameErrorText() {
+        return lastNameErrorText;
+    }
+
+    public WebElement getEmailErrorText() {
+        return emailErrorText;
+    }
+
+    public WebElement getTelephoneErrorText() {
+        return telephoneErrorText;
+    }
+
+    public WebElement getPasswordErrorText() {
+        return passwordErrorText;
+    }
+
+    public WebElement getConfirmPasswordErrorText() {
+        return confirmPasswordErrorText;
     }
 }
