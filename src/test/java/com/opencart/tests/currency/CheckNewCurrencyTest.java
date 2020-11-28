@@ -17,7 +17,7 @@ public class CheckNewCurrencyTest extends BaseTest {
     private final String newCurrencyName = "UAH";
     private final String newCurrencyValue = "28.22";
 
-    @BeforeClass
+    @BeforeClass (description = "Test sets new currency with newCurrencyName, newCurrencyValue through admin page")
     public void setNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
@@ -43,7 +43,7 @@ public class CheckNewCurrencyTest extends BaseTest {
         mainPageBL.verifyAllProductsPrices(newCurrencyName, newCurrencyValue);
     }
 
-    @AfterClass
+    @AfterClass (description = "Test deletes new currency with newCurrencyName, newCurrencyValue through admin page")
     public void deleteNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
