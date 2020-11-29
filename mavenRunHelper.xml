@@ -43,6 +43,9 @@
             <Goal>
               <option name="commandLine" value="clean test site" />
             </Goal>
+            <Goal>
+              <option name="commandLine" value="clean test" />
+            </Goal>
           </list>
         </option>
       </Goals>
