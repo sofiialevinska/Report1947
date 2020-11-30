@@ -6,9 +6,7 @@ import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
@@ -17,7 +15,7 @@ public class CheckNewCurrencyTest extends BaseTest {
     private final String newCurrencyName = "UAH";
     private final String newCurrencyValue = "28.22";
 
-    @BeforeClass
+    @BeforeMethod
     public void setNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
@@ -42,7 +40,7 @@ public class CheckNewCurrencyTest extends BaseTest {
         mainPageBL.verifyAllProductsPrices(newCurrencyName, newCurrencyValue);
     }
 
-    @AfterClass
+    @AfterMethod
     public void deleteNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();

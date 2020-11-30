@@ -20,41 +20,32 @@ public class EditAccountTest extends BaseTest {
     private HeaderPageBL headerPageBL;
     private LoginPageBL loginPageBL;
     private AccountDashboardBL accountDashboardBL;
-    private LoginModel loginModel = LoginModelRepository.getValidLoginModel();
+    private LoginModel loginModel;
+    private final String newPassword = "newPassword";
+    private final String newEmail = "newemail@gmail.com";
 
-    /**
-     * Method @BeforeMethod login to user account using valid data.
-     */
-    @BeforeMethod
+    @BeforeMethod (description = "Method logins to valid user account")
     public void loginUsingValidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         mainPageBL = new MainPageBL();
         headerPageBL = mainPageBL.getHeaderPageBL();
         accountDashboardBL = new AccountDashboardBL();
+        loginModel = LoginModelRepository.getValidLoginModel();
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
                 .userLogin(loginModel);
     }
 
-    @Test(description = "Test checks if customer can change email to newEmail, " +
-            "safe changes and change email to oldEmail")
-    public void changeUserEmailToNewToOld() {
-        accountDashboardBL
-                .clickOnEditAccountButton()
-                .setNewEmail()
-                .verifyAccountEdit()
-                .clickOnEditAccountButton()
-                .returnOldEmail();
-    }
-
     @Test(description = "Test checks if customer can change email to newEmail, logout and login\n" +
             "with newEmail and change email to previousEmail")
-    public void changeUserEmailToNewLogoutLoginChangeUserEmailToOld() {
+    public void changeUserEmailVerifyLogin() {
         accountDashboardBL
                 .clickOnEditAccountButton()
-                .setNewEmail()
+                .setNewEmail(newEmail)
                 .verifyAccountEdit();
+        loginModel = LoginModelRepository.getValidLoginModel ();
+        loginModel.setEmail(newEmail);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
@@ -67,33 +58,15 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
-    @Test(description = "Test checks if customer can change First Name to new First Name")
-    public void changeUserName() {
-        accountDashboardBL
-                .clickOnEditAccountButton()
-                .setNewName()
-                .verifyAccountEdit();
-    }
-
-    @Test(description = "Test checks if customer can change Password to new Password " +
-            "and change it back to previous Password")
-    public void changePassword() {
-        accountDashboardBL
-                .clickOnEditPasswordButton()
-                .setNewPassword()
-                .verifyPasswordEdit()
-                .clickOnEditPasswordButton()
-                .returnOldPassword()
-                .verifyPasswordEdit();
-    }
-
     @Test(description = "Test checks if customer can change Password to newPassword, logout and\n" +
             "login with newPassword and change Password to previousPassword")
     public void changePasswordVerifyLogin() {
         accountDashboardBL
                 .clickOnEditPasswordButton()
-                .setNewPassword()
+                .setNewPassword(newPassword)
                 .verifyPasswordEdit();
+        loginModel = LoginModelRepository.getValidLoginModel ();
+        loginModel.setPassword(newPassword);
         headerPageBL
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
@@ -106,10 +79,23 @@ public class EditAccountTest extends BaseTest {
                 .verifyPasswordEdit();
     }
 
-    /**
-     * Method @AfterMethod logout from user account.
-     */
-    @AfterMethod
+    @Test(description = "Test checks if customer can change First Name to new First Name")
+    public void changeUserName() {
+        accountDashboardBL
+                .clickOnEditAccountButton()
+                .setNewName()
+                .verifyAccountEdit();
+    }
+
+    @Test (description = "Test checks if customer can change subscription settings to opposite and verify the change")
+    public void changeSubscription () {
+        accountDashboardBL
+                .clickOnEditSubscriptionButton()
+                .chooseOtherSubscription()
+                .verifySubscriptionEdit();
+    }
+
+    @AfterMethod (description = "Method logouts from user account")
     public void logout() {
         headerPageBL
                 .clickOnMyAccountButton()
