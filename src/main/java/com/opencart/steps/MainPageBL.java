@@ -66,7 +66,7 @@ public class MainPageBL {
             expectedPriceString = String.format("%.2f", expectedPrice);
         }
         Assert.assertTrue(container.getPrice().contains(expectedPriceString), "\nError. "
-                + container.getName() + " price in " + currencyName + "is invalid.");
+                + container.getName() + " price in " + currencyName + " is invalid.");
     }
 
     /**
