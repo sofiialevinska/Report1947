@@ -72,7 +72,6 @@ public class AdminCurrencyPageBL {
     }
 
     public AdminCurrencyPageBL deleteCurrency(String currencyName) {
-        getCurrencyValues();
         clickOnCurrencyCheckbox(currencyName);
         clickOnDeleteCurrencyButton();
         verifySuccessCurrencyEdit();

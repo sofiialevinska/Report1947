@@ -1,9 +1,14 @@
 package com.opencart.steps;
 
+import com.opencart.containers.ProductContainer;
 import com.opencart.pages.HeaderPage;
 import org.testng.Assert;
 
+import java.util.Map;
+
 public class HeaderPageBL {
+    public String newVatTaxRateValue = null;
+    public String newEcoTaxRateValue = null;
     private final HeaderPage headerPage;
 
     public HeaderPageBL() {
@@ -34,14 +39,9 @@ public class HeaderPageBL {
         return this;
     }
 
-    public LoginPageBL clickOnLoginButton() {
+    public HeaderPageBL clickOnLoginButton() {
         headerPage.getLoginButton().click();
-        return new LoginPageBL();
-    }
-
-    public RegisterPageBL clickOnRegisterButton() {
-        headerPage.getRegisterButton().click();
-        return new RegisterPageBL();
+        return this;
     }
 
     public HeaderPageBL clickOnChangeCurrencyButton() {
@@ -49,12 +49,6 @@ public class HeaderPageBL {
         return this;
     }
 
-    /**
-     * Method clicks on specified currency button that is located in website's header.
-     *
-     * @param currencyName is a name of Currency, which button needs to be clicked.
-     * @return HeaderPageBL
-     */
     public HeaderPageBL clickOnCurrencyButton(String currencyName) {
         headerPage.getCurrencyButton(currencyName).click();
         return this;
@@ -65,18 +59,50 @@ public class HeaderPageBL {
         return this;
     }
 
-    public HeaderPageBL clickOnWishListButton() {
-        headerPage.getWishListButton().click();
+    public HeaderPageBL clickOnShoppingCartButton() {
+        headerPage.getShoppingCartButton().click();
         return this;
     }
 
-    public HeaderPageBL clickOnMacbookWishListButton() {
-        headerPage.getMacbookWishListButton().click();
+    public HeaderPageBL verifyProductTaxRate(ProductContainer container, String taxRateName, String taxRateValue) {
+        if (taxRateName.contains("VAT")) {
+            String expectedResult = String.valueOf(Double.parseDouble(headerPage.getProductPrice().getText().
+                    replaceAll("\\D+", "")) * (Double.parseDouble(taxRateValue)) / 10000);
+            Assert.assertTrue(headerPage.getProductVatTaxRate().getText().contains(expectedResult),
+                    "Vat Tax Rate Value of " + container.getName() + " product in the shopping cart is incorrect");
+            Assert.assertEquals(headerPage.getProductVatTaxName().getText(), taxRateName,
+                    "Vat Tax Rate Name of " + container.getName() + " product in the shopping cart is incorrect");
+            return this;
+        } else {
+            String expectedResult = String.format("%,.2f", Double.parseDouble(taxRateValue));
+            Assert.assertTrue(headerPage.getProductEcoTaxRate().getText().contains(expectedResult),
+                    "Eco Tax Rate Value of " + container.getName() + " product the shopping cart is incorrect");
+            Assert.assertEquals(headerPage.getProductEcoTaxName().getText(), taxRateName,
+                    "Eco Tax Rate Name of " + container.getName() + " product in the shopping cart is incorrect");
+            return this;
+        }
+    }
+
+    public HeaderPageBL verifyProductTotalPrice(Map<String, String> taxRates) {
+        taxRates.forEach((taxRateName, taxRateValue) -> {
+            if (taxRateName.contains("VAT")) {
+                newVatTaxRateValue = taxRateValue;
+            }
+            if (taxRateName.contains("Eco")) {
+                newEcoTaxRateValue = taxRateValue;
+            }
+        });
+        String expectedResult = String.valueOf(((Double.parseDouble(headerPage.getProductPrice().getText().
+                replaceAll("\\D+", "")) * Double.parseDouble(newVatTaxRateValue)) / 10000 +
+                Double.parseDouble(headerPage.getProductPrice().getText().replaceAll("\\D+", "")) / 100) +
+                Double.parseDouble(newEcoTaxRateValue));
+        Assert.assertTrue(headerPage.getProductTotalPrice().getText().contains(expectedResult),
+                "Total Price Value of MacBook product in the shopping cart is incorrect");
         return this;
     }
 
-    public void verifyAddingMacbookToWishList() {
-        String expected = "Wish List (1)";
-        Assert.assertEquals(headerPage.getWishListButton().getText(), expected, "Incorrect value!");
+    public HeaderPageBL clickOnDeleteFromShoppingCartButton() {
+        headerPage.getDeleteFromShoppingCartButton().click();
+        return this;
     }
 }

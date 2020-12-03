@@ -28,15 +28,38 @@ public class HeaderPage extends BasePage {
     @FindBy(css = "* button > i.fa.fa-search")
     private WebElement searchButton;
 
-    @FindBy(css = "i[class=\"fa fa-heart\"] + .hidden-xs.hidden-sm.hidden-md")
-    private WebElement wishListButton;
+    @FindBy (id = "cart-total")
+    private WebElement shoppingCartButton;
 
-    @FindBy(css = "button[onclick=\"wishlist.add('43');\"]")
-    private WebElement macbookWishListButton;
+    @FindBy (css = ".table.table-bordered tr:nth-child(3) .text-right:last-child")
+    private WebElement productVatTaxRate;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(3) .text-right:first-child strong")
+    private WebElement productVatTaxName;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(2) .text-right:last-child")
+    private WebElement productEcoTaxRate;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(2) .text-right:first-child strong")
+    private WebElement productEcoTaxName;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(1) .text-right:last-child")
+    private WebElement productPrice;
+
+    @FindBy (css = ".table.table-bordered tr:nth-child(4) .text-right:last-child")
+    private WebElement productTotalPrice;
+
+    @FindBy (css = "[title='Remove']")
+    private WebElement deleteFromShoppingCartButton;
 
     public WebElement getMyAccountButton() {
         wait.until(ExpectedConditions.visibilityOf(myAccountButton));
         return myAccountButton;
+    }
+
+    public WebElement getRegisterButton() {
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        return registerButton;
     }
 
     public WebElement getLoginButton() {
@@ -57,15 +80,6 @@ public class HeaderPage extends BasePage {
         return driver.findElement(By.xpath(".//*[@name='" + currencyName + "']"));
     }
 
-    public WebElement getRegisterButton() {
-        wait.until(ExpectedConditions.visibilityOf(registerButton));
-        return registerButton;
-    }
-
-    public WebElement getWishListButton() {
-        return wishListButton;
-    }
-
     public WebElement getSearchButton() {
         return searchButton;
     }
@@ -74,7 +88,36 @@ public class HeaderPage extends BasePage {
         return searchInput;
     }
 
-    public WebElement getMacbookWishListButton() {
-        return macbookWishListButton;
+    public WebElement getShoppingCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
+        return shoppingCartButton;
+    }
+
+    public WebElement getProductVatTaxRate() {
+        return productVatTaxRate;
+    }
+
+    public WebElement getProductPrice() {
+        return productPrice;
+    }
+
+    public WebElement getProductVatTaxName() {
+        return productVatTaxName;
+    }
+
+    public WebElement getProductEcoTaxName() {
+        return productEcoTaxName;
+    }
+
+    public WebElement getProductEcoTaxRate() {
+        return productEcoTaxRate;
+    }
+
+    public WebElement getProductTotalPrice() {
+        return productTotalPrice;
+    }
+
+    public WebElement getDeleteFromShoppingCartButton() {
+        return deleteFromShoppingCartButton;
     }
 }
