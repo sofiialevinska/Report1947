@@ -8,6 +8,7 @@ import com.opencart.steps.HeaderPageBL;
 import com.opencart.steps.LoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import jdk.jfr.Description;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,7 +25,8 @@ public class EditAccountTest extends BaseTest {
     private final String newPassword = "newPassword";
     private final String newEmail = "newemail@gmail.com";
 
-    @BeforeMethod (description = "Method logins to valid user account")
+    @Description("Method logins to valid user account")
+    @BeforeMethod (alwaysRun = true)
     public void loginUsingValidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         mainPageBL = new MainPageBL();
@@ -95,7 +97,8 @@ public class EditAccountTest extends BaseTest {
                 .verifySubscriptionEdit();
     }
 
-    @AfterMethod (description = "Method logouts from user account")
+    @Description("Method logouts from user account")
+    @AfterMethod (alwaysRun = true)
     public void logout() {
         headerPageBL
                 .clickOnMyAccountButton()
