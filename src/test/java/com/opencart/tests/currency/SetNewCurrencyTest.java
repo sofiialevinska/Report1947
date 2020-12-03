@@ -13,7 +13,8 @@ public class SetNewCurrencyTest extends BaseTest {
     private final String newCurrencyName = "UAH";
     private final String newCurrencyValue = "28.22";
 
-    @Test
+    @Test (description = "test checks if customer can set new currency through Admin Page " +
+            "and delete it successfully")
     public void setNewCurrencyTest() {
         new Navigation().navigateToURrl(ADMIN_BASE_URL.getValue());
         new AdminLoginPageBL().adminLogin();
