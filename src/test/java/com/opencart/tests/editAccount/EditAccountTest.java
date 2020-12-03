@@ -32,11 +32,13 @@ public class EditAccountTest extends BaseTest {
         mainPageBL = new MainPageBL();
         headerPageBL = mainPageBL.getHeaderPageBL();
         accountDashboardBL = new AccountDashboardBL();
-        loginModel = LoginModelRepository.getValidLoginModel();
-        headerPageBL
+        loginPageBL = new LoginPageBL();
+        mainPageBL
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginModel = LoginModelRepository.getValidLoginModel();
+        loginPageBL.userLogin(loginModel);
     }
 
     @Test(description = "Test checks if customer can change email to newEmail, logout and login\n" +
@@ -52,8 +54,8 @@ public class EditAccountTest extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginPageBL.userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditAccountButton()
                 .returnOldEmail()
@@ -73,8 +75,8 @@ public class EditAccountTest extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginPageBL.userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditPasswordButton()
                 .returnOldPassword()

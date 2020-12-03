@@ -15,60 +15,66 @@ public class UserLoginTest extends BaseTest {
     @Test
     public void userLoginTestWithValidInput() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
         LoginModel loginModel = LoginModelRepository.getValidLoginModel();
-        LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
-        loginPageBL.verifyLogin();
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .userLogin(loginModel)
+                .verifyLogin();
     }
 
     @Test
     public void userLoginWithoutPassword() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
+
         LoginModel loginModel = LoginModelRepository.getLoginWithoutPassword();
-        LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
-        loginPageBL.verifyLoginWithoutPassword();
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .userLogin(loginModel)
+                .verifyLoginWithoutPassword();
     }
 
     @Test
     public void userLoginWithoutEmail() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
         LoginModel loginModel = LoginModelRepository.getLoginModelWithoutEmail();
-        LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
-        loginPageBL.verifyLoginWithoutEmail();
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .userLogin(loginModel)
+                .verifyLoginWithoutEmail();
     }
 
     @Test
     public void userLoginWithInvalidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
         LoginModel loginModel = LoginModelRepository.getLoginWithInvalidData();
-        LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
-        loginPageBL.verifyLoginWithInvalidData();
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .userLogin(loginModel)
+                .verifyLoginWithInvalidData();
     }
 
     @Test
     public void userLoginWithEmptyFields() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
         LoginModel loginModel = LoginModelRepository.getLoginWithoutData();
-        LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
-        loginPageBL.verifyLoginWithEmptyFields();
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .userLogin(loginModel)
+                .verifyLoginWithEmptyFields();
     }
 }

@@ -44,6 +44,11 @@ public class HeaderPageBL {
         return this;
     }
 
+    public RegisterPageBL clickOnRegisterButton() {
+        headerPage.getRegisterButton().click();
+        return new RegisterPageBL();
+    }
+
     public HeaderPageBL clickOnChangeCurrencyButton() {
         headerPage.getCurrencyButton().click();
         return this;
