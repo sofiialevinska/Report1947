@@ -5,6 +5,8 @@ import com.opencart.steps.AdminCurrencyPageBL;
 import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
@@ -13,6 +15,7 @@ public class SetNewCurrencyTest extends BaseTest {
     private final String newCurrencyName = "UAH";
     private final String newCurrencyValue = "28.22";
 
+    @Severity(value = SeverityLevel.NORMAL)
     @Test (description = "test checks if customer can set new currency through Admin Page " +
             "and delete it successfully")
     public void setNewCurrencyTest() {

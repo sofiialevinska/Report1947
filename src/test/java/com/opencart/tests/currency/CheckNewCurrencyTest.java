@@ -6,6 +6,8 @@ import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
 import org.testng.annotations.*;
 
@@ -31,6 +33,7 @@ public class CheckNewCurrencyTest extends BaseTest {
                 .addNewCurrency(newCurrencyName, newCurrencyValue);
     }
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test (description = "Test checks if the cost of all products on the website's main page is correct " +
             "for new currencies that was set through admin page")
     public void checkNewCurrencyTest() {

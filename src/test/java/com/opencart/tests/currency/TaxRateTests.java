@@ -6,6 +6,8 @@ import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.AdminTaxRatesPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -16,6 +18,7 @@ import static com.opencart.enums.URLs.BASE_URL;
 
 public class TaxRateTests extends BaseTest {
 
+    @Severity(value = SeverityLevel.NORMAL)
     @Test(description = "Test checks if the taxRates of all products on the website's main page " +
             "equals Tax Rates that are set on the Admin Page")
     public void checkAdminTaxRates() {
@@ -32,6 +35,7 @@ public class TaxRateTests extends BaseTest {
         new MainPageBL().verifyAllProductsTaxRates(taxRates);
     }
 
+    @Severity(value = SeverityLevel.MINOR)
     @Test(description = "Test edits existing TaxRates through Admin Page and " +
             "checks if the taxRates of all products on the website's main page is correct for new Tax Rates")
     public void editTaxRatesCheckMain() {

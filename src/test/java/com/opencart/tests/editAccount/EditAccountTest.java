@@ -8,6 +8,8 @@ import com.opencart.steps.HeaderPageBL;
 import com.opencart.steps.LoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -41,6 +43,7 @@ public class EditAccountTest extends BaseTest {
         loginPageBL.userLogin(loginModel);
     }
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(description = "Test checks if customer can change email to newEmail, logout and login\n" +
             "with newEmail and change email to previousEmail")
     public void changeUserEmailVerifyLogin() {
@@ -62,6 +65,7 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(description = "Test checks if customer can change Password to newPassword, logout and\n" +
             "login with newPassword and change Password to previousPassword")
     public void changePasswordVerifyLogin() {
@@ -83,6 +87,7 @@ public class EditAccountTest extends BaseTest {
                 .verifyPasswordEdit();
     }
 
+    @Severity(value = SeverityLevel.MINOR)
     @Test(description = "Test checks if customer can change First Name to new First Name")
     public void changeUserName() {
         accountDashboardBL
@@ -91,6 +96,7 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
+    @Severity(value = SeverityLevel.TRIVIAL)
     @Test (description = "Test checks if customer can change subscription settings to opposite and verify the change")
     public void changeSubscription () {
         accountDashboardBL

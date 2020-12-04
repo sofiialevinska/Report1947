@@ -6,6 +6,8 @@ import com.opencart.steps.AdminDashboardBL;
 import com.opencart.steps.AdminLoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -15,6 +17,7 @@ import static com.opencart.enums.URLs.BASE_URL;
 
 public class ChangeCurrencyTest extends BaseTest {
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(description = "Test checks if the cost of all products on the website's main page is correct " +
             "for currencies that are presented on admin page")
     public void ChangeCurrencyOnMainPageTest() {

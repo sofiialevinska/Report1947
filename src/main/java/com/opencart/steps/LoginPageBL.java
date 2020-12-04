@@ -3,6 +3,7 @@ package com.opencart.steps;
 import com.opencart.datamodel.LoginModel;
 import com.opencart.pages.AccountDashboard;
 import com.opencart.pages.LoginPage;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 
@@ -14,6 +15,7 @@ public class LoginPageBL {
         loginPage = new LoginPage();
     }
 
+    @Step("login to Main Page")
     public LoginPageBL userLogin(LoginModel loginModel) {
         inputEmail(loginModel.getEmail());
         inputPassword(loginModel.getPassword());
