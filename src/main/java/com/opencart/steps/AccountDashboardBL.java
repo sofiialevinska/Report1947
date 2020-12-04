@@ -3,6 +3,7 @@ package com.opencart.steps;
 import com.opencart.pages.AccountDashboard;
 import com.opencart.pages.RegisterPage;
 import com.opencart.util.DriverUtils;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 public class AccountDashboardBL {
@@ -13,6 +14,7 @@ public class AccountDashboardBL {
     }
 
 
+    @Step ("click on Edit Password Button on the Edit Account dashboard page")
     /**
      * Method clicks on Edit Password Button on the Edit Account dashboard page.
      */
@@ -21,6 +23,7 @@ public class AccountDashboardBL {
         return this;
     }
 
+    @Step ("click on Edit Account Button on the Edit Account dashboard page")
     /**
      * Method clicks on Edit Account Button on the Edit Account dashboard page.
      *
@@ -31,6 +34,7 @@ public class AccountDashboardBL {
         return this;
     }
 
+    @Step ("set new First Name on the Edit Account page and click on continue Button")
     /**
      * Method sets new First Name on the Edit Account page and click on continue Button.
      *
@@ -50,6 +54,7 @@ public class AccountDashboardBL {
         accountDashboard.getFirstNameInput().sendKeys(newFirstName);
     }
 
+    @Step ("set new Email on the Edit Account page and click on continue Button")
     /**
      * Method sets new Email on the Edit Account page and click on continue Button.
      *
@@ -61,6 +66,7 @@ public class AccountDashboardBL {
         return this;
     }
 
+    @Step ("set origin Email on the Edit Account page and click on continue Button")
     /**
      * Method sets old Email on the Edit Account page and click on continue Button.
      *
@@ -82,6 +88,7 @@ public class AccountDashboardBL {
         accountDashboard.getEmailInput().sendKeys(email);
     }
 
+    @Step ("set new Password on the Edit Account page and click on continue Button")
     /**
      * Method sets new Password on the Edit Account page and click on continue Button.
      *
@@ -93,6 +100,7 @@ public class AccountDashboardBL {
         return this;
     }
 
+    @Step ("set origin Password on the Edit Account page and click on continue Button")
     /**
      * Method sets old Password on the Edit Account page and click on continue Button.
      *
@@ -131,12 +139,14 @@ public class AccountDashboardBL {
      * @return AccountDashboardBL
      */
 
+    @Step ("verifyAccountEdit")
     public AccountDashboardBL verifyAccountEdit() {
         String expectedMessage = "Success: Your account has been successfully updated.";
         Assert.assertEquals(accountDashboard.getSuccessMessage().getText(), expectedMessage, "\nSuccess message after editing Account information did not appear.");
         return this;
     }
 
+    @Step ("verifyPasswordEdit")
     /**
      * Method verifies if Success message appears after User Password was edited
      * and Continue Button was clicked.
@@ -149,11 +159,13 @@ public class AccountDashboardBL {
         return this;
     }
 
+    @Step ("clickOnEditSubscriptionButton")
     public AccountDashboardBL clickOnEditSubscriptionButton() {
         accountDashboard.getEditNewsletterSubscriptionButton().click();
         return this;
     }
 
+    @Step ("chooseOtherSubscription")
     public AccountDashboardBL chooseOtherSubscription() {
         int currentSubscriptionValue = findCurrentSubscription();
         if (currentSubscriptionValue == 0) {
@@ -173,6 +185,7 @@ public class AccountDashboardBL {
         return Integer.parseInt(accountDashboard.getSubscribeOption().getAttribute("value"));
     }
 
+    @Step ("verifySubscriptionEdit")
     public void verifySubscriptionEdit() {
         String expectedMessage = "Success: Your newsletter subscription has been successfully updated!";
         Assert.assertEquals(accountDashboard.getSuccessMessage().getText(), expectedMessage, "\nSuccess message after editing Subscription settings did not appear.");

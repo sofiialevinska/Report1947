@@ -3,6 +3,7 @@ package com.opencart.steps;
 import com.opencart.containers.CurrencyContainerAdmin;
 import com.opencart.pages.AdminCurrencyPage;
 import com.opencart.util.DriverUtils;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public class AdminCurrencyPageBL {
         adminCurrencyPage = new AdminCurrencyPage();
     }
 
+    @Step("put Currencies names and values from Admin Page to Map <String,String>")
     public Map<String, String> getCurrencyValues() {
         Map<String, String> currencyValuesMap = new HashMap<>();
         List<CurrencyContainerAdmin> currencyContainersAdmin = new AdminCurrencyPage().getCurrencyContainersAdmin();
@@ -28,11 +30,13 @@ public class AdminCurrencyPageBL {
         return currencyValuesMap;
     }
 
+    @Step ("verifySubscriptionEdit")
     public AdminCurrencyPageBL clickOnAddNewCurrencyButton() {
         adminCurrencyPage.getAddNewCurrencyButton().click();
         return this;
     }
 
+    @Step ("addNewCurrency through Admin Page")
     public AdminCurrencyPageBL addNewCurrency(String newCurrencyName, String newCurrencyValue) {
         inputCurrencyTitle(newCurrencyName);
         inputCurrencyCode(newCurrencyName);
@@ -71,6 +75,7 @@ public class AdminCurrencyPageBL {
         adminCurrencyPage.getSaveNewCurrency().click();
     }
 
+    @Step ("deleteCurrency through Admin Page")
     public AdminCurrencyPageBL deleteCurrency(String currencyName) {
         clickOnCurrencyCheckbox(currencyName);
         clickOnDeleteCurrencyButton();
@@ -94,6 +99,7 @@ public class AdminCurrencyPageBL {
         new DriverUtils().acceptAlert();
     }
 
+    @Step ("verifySuccessCurrencyEdit on Admin Page")
     public AdminCurrencyPageBL verifySuccessCurrencyEdit() {
         String expectedSuccessMessage = "Success: You have modified currencies!";
         Assert.assertTrue(adminCurrencyPage.getSuccessCurrencyEditMessage().getText().contains(expectedSuccessMessage), "\nCurrency was not changed through the Admin Page.");

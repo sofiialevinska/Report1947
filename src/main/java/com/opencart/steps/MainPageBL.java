@@ -3,6 +3,7 @@ package com.opencart.steps;
 import com.opencart.containers.ProductContainer;
 import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.SearchResultPage;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MainPageBL {
         return new HeaderPageBL();
     }
 
+    @Step ("Verify that all Product's Costs from the Main Page in specified currency are correct")
     /**
      * Method finds all ProductContainers on the Page and checks
      * if their Product Cost in specified currency is correct.
@@ -34,8 +36,9 @@ public class MainPageBL {
         });
     }
 
+    @Step ("Verify that all Product's Costs from the Main Page in specified currency are correct")
     /**
-     * Method finds all ProductContainers on the Page and checks
+     * Method finds all ProductContainers on the Main Page and checks
      * if their Product Cost in specified currency is correct.
      *
      * @param currencyName  is name of Currency that needs to be checked.
@@ -83,6 +86,7 @@ public class MainPageBL {
                 Double.parseDouble(currencyValue);
     }
 
+    @Step ("Verify that all Product's Tax Rates from the Main Page in USD are correct")
     /**
      * Method verifies if TaxRates that are shown in the shopping cart
      * for first two products on the Main page are correct.

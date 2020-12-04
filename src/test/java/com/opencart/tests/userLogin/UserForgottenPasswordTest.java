@@ -14,11 +14,14 @@ public class UserForgottenPasswordTest extends BaseTest {
     @Test
     public void UserForgetPasswordWithValidData() throws Exception{
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        MainPageBL mainPageBL = new MainPageBL();
-        ForgottenPasswordPageBL forgottenPasswordPageBL = mainPageBL.getHeaderPageBL()
+        new MainPageBL()
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
+                .clickOnLoginButton();
+        new LoginPageBL()
                 .clickOnForgottenPassword();
-        forgottenPasswordPageBL.resetPassword().verifyForgottenPasswordText();
+        new ForgottenPasswordPageBL()
+                .resetPassword()
+                .verifyForgottenPasswordText();
     }
 }

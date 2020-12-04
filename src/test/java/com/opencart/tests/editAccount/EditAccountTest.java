@@ -8,6 +8,9 @@ import com.opencart.steps.HeaderPageBL;
 import com.opencart.steps.LoginPageBL;
 import com.opencart.steps.MainPageBL;
 import com.opencart.tests.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import jdk.jfr.Description;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,19 +27,23 @@ public class EditAccountTest extends BaseTest {
     private final String newPassword = "newPassword";
     private final String newEmail = "newemail@gmail.com";
 
-    @BeforeMethod (description = "Method logins to valid user account")
+    @Description("Method logins to valid user account")
+    @BeforeMethod (alwaysRun = true)
     public void loginUsingValidData() {
         new Navigation().navigateToURrl(BASE_URL.getValue());
         mainPageBL = new MainPageBL();
         headerPageBL = mainPageBL.getHeaderPageBL();
         accountDashboardBL = new AccountDashboardBL();
-        loginModel = LoginModelRepository.getValidLoginModel();
-        headerPageBL
+        loginPageBL = new LoginPageBL();
+        mainPageBL
+                .getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginModel = LoginModelRepository.getValidLoginModel();
+        loginPageBL.userLogin(loginModel);
     }
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(description = "Test checks if customer can change email to newEmail, logout and login\n" +
             "with newEmail and change email to previousEmail")
     public void changeUserEmailVerifyLogin() {
@@ -50,14 +57,15 @@ public class EditAccountTest extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginPageBL.userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditAccountButton()
                 .returnOldEmail()
                 .verifyAccountEdit();
     }
 
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(description = "Test checks if customer can change Password to newPassword, logout and\n" +
             "login with newPassword and change Password to previousPassword")
     public void changePasswordVerifyLogin() {
@@ -71,14 +79,15 @@ public class EditAccountTest extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnLogoutButton()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton()
-                .userLogin(loginModel);
+                .clickOnLoginButton();
+        loginPageBL.userLogin(loginModel);
         accountDashboardBL
                 .clickOnEditPasswordButton()
                 .returnOldPassword()
                 .verifyPasswordEdit();
     }
 
+    @Severity(value = SeverityLevel.MINOR)
     @Test(description = "Test checks if customer can change First Name to new First Name")
     public void changeUserName() {
         accountDashboardBL
@@ -87,6 +96,7 @@ public class EditAccountTest extends BaseTest {
                 .verifyAccountEdit();
     }
 
+    @Severity(value = SeverityLevel.TRIVIAL)
     @Test (description = "Test checks if customer can change subscription settings to opposite and verify the change")
     public void changeSubscription () {
         accountDashboardBL
@@ -95,7 +105,8 @@ public class EditAccountTest extends BaseTest {
                 .verifySubscriptionEdit();
     }
 
-    @AfterMethod (description = "Method logouts from user account")
+    @Description("Method logouts from user account")
+    @AfterMethod (alwaysRun = true)
     public void logout() {
         headerPageBL
                 .clickOnMyAccountButton()

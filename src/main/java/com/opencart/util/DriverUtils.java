@@ -2,6 +2,7 @@ package com.opencart.util;
 
 import com.opencart.driver.DriverRepository;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -17,8 +18,21 @@ public class DriverUtils {
         getJSExecutor().executeScript("arguments[0].click();", webElement);
     }
 
+    public boolean isAlertPresent() {
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException Ex) {
+            return false;
+        }
+    }
+
     public void acceptAlert() {
         driver.switchTo().alert().accept();
+    }
+
+    public void cancelAlert() {
+        driver.switchTo().alert().dismiss();
     }
 
     private JavascriptExecutor getJSExecutor() {
