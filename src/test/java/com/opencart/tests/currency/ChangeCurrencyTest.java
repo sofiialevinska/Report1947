@@ -1,10 +1,7 @@
 package com.opencart.tests.currency;
 
 import com.opencart.navigation.Navigation;
-import com.opencart.steps.AdminCurrencyPageBL;
-import com.opencart.steps.AdminDashboardBL;
-import com.opencart.steps.AdminLoginPageBL;
-import com.opencart.steps.MainPageBL;
+import com.opencart.steps.*;
 import com.opencart.tests.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -29,7 +26,12 @@ public class ChangeCurrencyTest extends BaseTest {
                 .clickOnLeftNavigationPanelButton("Localisation")
                 .clickOnLeftNavigationPanelButton("Currencies");
         Map<String, String> currencies = new AdminCurrencyPageBL().getCurrencyValues();
+        new AdminDashboardBL()
+                .getAdminLeftNavigationPanelPageBL()
+                .clickOnLeftNavigationPanelButton("Catalog")
+                .clickOnLeftNavigationPanelButton("Products");
+        Map<String,String> productsPricesAdmin = new AdminProductsPageBL().getProductsAdminPrices();
         new Navigation().navigateToURrl(BASE_URL.getValue());
-        new MainPageBL().verifyAllProductsPrices(currencies);
+        new MainPageBL().verifyAllProductsPrices(currencies,productsPricesAdmin);
     }
 }

@@ -1,15 +1,14 @@
 package com.opencart.tests.currency;
 
 import com.opencart.navigation.Navigation;
-import com.opencart.steps.AdminCurrencyPageBL;
-import com.opencart.steps.AdminDashboardBL;
-import com.opencart.steps.AdminLoginPageBL;
-import com.opencart.steps.MainPageBL;
+import com.opencart.steps.*;
 import com.opencart.tests.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
 import org.testng.annotations.*;
+
+import java.util.Map;
 
 import static com.opencart.enums.URLs.ADMIN_BASE_URL;
 import static com.opencart.enums.URLs.BASE_URL;
@@ -17,6 +16,7 @@ import static com.opencart.enums.URLs.BASE_URL;
 public class CheckNewCurrencyTest extends BaseTest {
     private final String newCurrencyName = "UAH";
     private final String newCurrencyValue = "28.22";
+    private Map<String,String> productsPricesAdmin;
 
     @Description("Test sets new currency with newCurrencyName, newCurrencyValue through admin page")
     @BeforeMethod (alwaysRun = true)
@@ -31,6 +31,12 @@ public class CheckNewCurrencyTest extends BaseTest {
         new AdminCurrencyPageBL()
                 .clickOnAddNewCurrencyButton()
                 .addNewCurrency(newCurrencyName, newCurrencyValue);
+        new AdminDashboardBL()
+                .getAdminLeftNavigationPanelPageBL()
+                .clickOnLeftNavigationPanelButton("Catalog")
+                .clickOnLeftNavigationPanelButton("Products");
+        productsPricesAdmin = new AdminProductsPageBL().getProductsAdminPrices();
+
     }
 
     @Severity(value = SeverityLevel.CRITICAL)
@@ -43,7 +49,7 @@ public class CheckNewCurrencyTest extends BaseTest {
                 .getHeaderPageBL()
                 .clickOnChangeCurrencyButton()
                 .clickOnCurrencyButton(newCurrencyName);
-        mainPageBL.verifyAllProductsPrices(newCurrencyName, newCurrencyValue);
+        mainPageBL.verifyAllProductsPrices(newCurrencyName, newCurrencyValue, productsPricesAdmin);
     }
 
     @Description("Test deletes new currency with newCurrencyName, newCurrencyValue through admin page")
