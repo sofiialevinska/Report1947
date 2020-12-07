@@ -1,7 +1,6 @@
 package com.opencart.steps;
 
 import com.opencart.containers.ProductContainer;
-import com.opencart.datamodel.ProductModel;
 import com.opencart.pages.SearchResultPage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -23,7 +22,7 @@ public class MainPageBL {
      * @param currencies is a Map<String, String> with currencies Codes and Values that was read
      *                   from the Admin Page.
      */
-    public void verifyAllProductsPrices(Map<String, String> currencies) {
+    public void verifyAllProductsPrices(Map<String, String> currencies, Map <String,String> productsPricesAdmin) {
         currencies.forEach((currencyName, currencyValue) -> {
             getHeaderPageBL()
                     .clickOnChangeCurrencyButton()
@@ -31,7 +30,7 @@ public class MainPageBL {
             List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
             for (ProductContainer container
                     : productContainers) {
-                verifyProductPrice(container, currencyName, currencyValue);
+                verifyProductPrice(container, currencyName, currencyValue, productsPricesAdmin);
             }
         });
     }
@@ -44,11 +43,11 @@ public class MainPageBL {
      * @param currencyName  is name of Currency that needs to be checked.
      * @param currencyValue is price index in comparison to USD of Currency that needs to be checked.
      */
-    public void verifyAllProductsPrices(String currencyName, String currencyValue) {
+    public void verifyAllProductsPrices(String currencyName, String currencyValue, Map <String,String> productsPricesAdmin) {
         List<ProductContainer> productContainers = new SearchResultPage().getProductContainers();
         for (ProductContainer container
                 : productContainers) {
-            verifyProductPrice(container, currencyName, currencyValue);
+            verifyProductPrice(container, currencyName, currencyValue, productsPricesAdmin);
         }
     }
 
@@ -59,16 +58,16 @@ public class MainPageBL {
      * @param currencyName  is name of Currency that needs to be checked.
      * @param currencyValue is price index in comparison to USD of Currency that needs to be checked.
      */
-    private void verifyProductPrice(ProductContainer container, String currencyName, String currencyValue) {
-        new ProductModel();
-        Double expectedPrice = getExpectedPrice(container, currencyValue);
+    private void verifyProductPrice(ProductContainer container, String currencyName, String currencyValue, Map <String,String> productsPricesAdmin) {
+//        new ProductModel();
+        Double expectedPrice = getExpectedPrice(container, currencyValue, productsPricesAdmin);
         String expectedPriceString;
         if (expectedPrice > 1000) {
             expectedPriceString = String.format("%,3.0f", expectedPrice);
         } else {
             expectedPriceString = String.format("%.2f", expectedPrice);
         }
-        Assert.assertTrue(container.getPrice().contains(expectedPriceString), "\nError. "
+        Assert.assertTrue(container.getPriceTax().contains(expectedPriceString), "\nError. "
                 + container.getName() + " price in " + currencyName + " is invalid.");
     }
 
@@ -81,8 +80,8 @@ public class MainPageBL {
      * @param currencyValue is price index in comparison to USD of Currency that needs to be checked.
      * @return double expected price for Product in Container.
      */
-    private double getExpectedPrice(ProductContainer container, String currencyValue) {
-        return ProductModel.getProductPriceInUSD(container.getName()) *
+    private double getExpectedPrice(ProductContainer container, String currencyValue, Map <String,String> productsPricesAdmin) {
+        return Double.parseDouble(productsPricesAdmin.get(container.getName()).substring(1)) *
                 Double.parseDouble(currencyValue);
     }
 
