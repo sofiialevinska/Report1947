@@ -1,5 +1,6 @@
 *.iml
 *.log
+*.xml
 .idea
 **/target/
 **/out/
